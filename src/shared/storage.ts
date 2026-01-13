@@ -21,8 +21,8 @@ const DEFAULT_SYNC_SETTINGS: SyncSettings = {
 
 // Sync Storage - 多设备同步的配置
 export async function getSyncSettings(): Promise<SyncSettings> {
-  const result = await chrome.storage.sync.get(DEFAULT_SYNC_SETTINGS);
-  return result as SyncSettings;
+  const result = await chrome.storage.sync.get(DEFAULT_SYNC_SETTINGS as any);
+  return result as unknown as SyncSettings;
 }
 
 export async function setSyncSettings(settings: Partial<SyncSettings>): Promise<void> {
@@ -37,7 +37,7 @@ export async function getBackendUrl(): Promise<string> {
 // Local Storage - 本地缓存数据
 export async function getLastResult(): Promise<OcrRivenResult | null> {
   const result = await chrome.storage.local.get(['lastResult']);
-  return result.lastResult || null;
+  return (result.lastResult as OcrRivenResult | null) || null;
 }
 
 export async function setLastResult(result: OcrRivenResult): Promise<void> {
@@ -57,7 +57,7 @@ export async function setLastResult(result: OcrRivenResult): Promise<void> {
 
 export async function getHistory(): Promise<OcrRivenResult[]> {
   const result = await chrome.storage.local.get(['history']);
-  return result.history || [];
+  return (result.history as OcrRivenResult[]) || [];
 }
 
 export async function clearHistory(): Promise<void> {

@@ -11,7 +11,7 @@ export async function loadDictionary(): Promise<RivenDictionary> {
   const cached = await getCachedDictionary();
   if (cached) {
     dictCache = cached;
-    return dictCache;
+    return dictCache!;
   }
 
   // 从文件加载
