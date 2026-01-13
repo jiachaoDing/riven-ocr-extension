@@ -6,16 +6,21 @@
   "action": {
     "default_popup": "popup.html"
   },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage"],
   "host_permissions": ["https://warframe.market/*"],
   "content_scripts": [
     {
       "matches": ["https://warframe.market/*"],
-      "js": ["content-script.js"]
+      "js": ["content-script.js"],
+      "type": "module"
     }
   ]
 }

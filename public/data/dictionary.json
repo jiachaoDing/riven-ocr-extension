@@ -6401,7 +6401,8 @@
           "Damage"
         ],
         "zh": [
-          "基础伤害"
+          "基础伤害",
+          "伤害"
         ]
       },
       "positive_allowed": true,
@@ -6566,7 +6567,9 @@
           "Fire Rate / Attack Speed"
         ],
         "zh": [
-          "射速/攻击速度"
+          "射速/攻击速度",
+          "射速",
+          "攻击速度"
         ]
       },
       "positive_allowed": true,
@@ -6581,7 +6584,8 @@
           "Projectile speed"
         ],
         "zh": [
-          "投射物飞行速度"
+          "投射物飞行速度",
+          "投射物速度"
         ]
       },
       "positive_allowed": true,

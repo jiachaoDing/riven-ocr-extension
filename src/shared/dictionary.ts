@@ -1,12 +1,26 @@
 // src/shared/dictionary.ts
 import type { Lang, RivenDictionary, DictEntry } from './types';
+import { getCachedDictionary, setCachedDictionary } from './storage';
 
 let dictCache: RivenDictionary | null = null;
 
 export async function loadDictionary(): Promise<RivenDictionary> {
   if (dictCache) return dictCache;
+
+  // 先尝试从缓存加载
+  const cached = await getCachedDictionary();
+  if (cached) {
+    dictCache = cached;
+    return dictCache;
+  }
+
+  // 从文件加载
   const res = await fetch(chrome.runtime.getURL('data/dictionary.json'));
   dictCache = await res.json();
+
+  // 缓存到本地存储
+  await setCachedDictionary(dictCache);
+
   return dictCache!;
 }
 
@@ -40,6 +54,10 @@ export function getWeaponEntry(
     }
   }
   return best.entry;
+}
+
+export function getAttributeEntry(urlName: string, dict: RivenDictionary): DictEntry | null {
+  return dict.attribute_dict[urlName] || null;
 }
 
 function normalize(s: string): string {
