@@ -1,0 +1,6768 @@
+{
+  "weapon_dict": {
+    "kulstar": {
+      "url_name": "kulstar",
+      "names": {
+        "en": [
+          "Kulstar"
+        ],
+        "zh": [
+          "杀星"
+        ]
+      },
+      "aliases": [
+        "Kulstar",
+        "杀星"
+      ]
+    },
+    "heliocor": {
+      "url_name": "heliocor",
+      "names": {
+        "en": [
+          "Heliocor"
+        ],
+        "zh": [
+          "赫利俄光锤"
+        ]
+      },
+      "aliases": [
+        "Heliocor",
+        "赫利俄光锤"
+      ]
+    },
+    "nagantaka": {
+      "url_name": "nagantaka",
+      "names": {
+        "en": [
+          "Nagantaka"
+        ],
+        "zh": [
+          "噬蛇弩"
+        ]
+      },
+      "aliases": [
+        "Nagantaka",
+        "噬蛇弩"
+      ]
+    },
+    "ocucor": {
+      "url_name": "ocucor",
+      "names": {
+        "en": [
+          "Ocucor"
+        ],
+        "zh": [
+          "视使之触"
+        ]
+      },
+      "aliases": [
+        "Ocucor",
+        "视使之触"
+      ]
+    },
+    "falcor": {
+      "url_name": "falcor",
+      "names": {
+        "en": [
+          "Falcor"
+        ],
+        "zh": [
+          "猎鹰轮"
+        ]
+      },
+      "aliases": [
+        "Falcor",
+        "猎鹰轮"
+      ]
+    },
+    "paracesis": {
+      "url_name": "paracesis",
+      "names": {
+        "en": [
+          "Paracesis"
+        ],
+        "zh": [
+          "心智之殁"
+        ]
+      },
+      "aliases": [
+        "Paracesis",
+        "心智之殁"
+      ]
+    },
+    "exergis": {
+      "url_name": "exergis",
+      "names": {
+        "en": [
+          "Exergis"
+        ],
+        "zh": [
+          "晶能放射器"
+        ]
+      },
+      "aliases": [
+        "Exergis",
+        "晶能放射器"
+      ]
+    },
+    "battacor": {
+      "url_name": "battacor",
+      "names": {
+        "en": [
+          "Battacor"
+        ],
+        "zh": [
+          "武使之力"
+        ]
+      },
+      "aliases": [
+        "Battacor",
+        "武使之力"
+      ]
+    },
+    "euphona_prime": {
+      "url_name": "euphona_prime",
+      "names": {
+        "en": [
+          "Euphona Prime"
+        ],
+        "zh": [
+          "悦音 Prime"
+        ]
+      },
+      "aliases": [
+        "Euphona Prime",
+        "悦音 Prime"
+      ]
+    },
+    "fusilai": {
+      "url_name": "fusilai",
+      "names": {
+        "en": [
+          "Fusilai"
+        ],
+        "zh": [
+          "齐射玻刃"
+        ]
+      },
+      "aliases": [
+        "Fusilai",
+        "齐射玻刃"
+      ]
+    },
+    "lato": {
+      "url_name": "lato",
+      "names": {
+        "en": [
+          "Lato"
+        ],
+        "zh": [
+          "拉托"
+        ]
+      },
+      "aliases": [
+        "Lato",
+        "拉托"
+      ]
+    },
+    "magnus": {
+      "url_name": "magnus",
+      "names": {
+        "en": [
+          "Magnus"
+        ],
+        "zh": [
+          "麦格努斯"
+        ]
+      },
+      "aliases": [
+        "Magnus",
+        "麦格努斯"
+      ]
+    },
+    "ack_and_brunt": {
+      "url_name": "ack_and_brunt",
+      "names": {
+        "en": [
+          "Ack & Brunt"
+        ],
+        "zh": [
+          "认知 & 冲击"
+        ]
+      },
+      "aliases": [
+        "Ack & Brunt",
+        "认知 & 冲击"
+      ]
+    },
+    "amphis": {
+      "url_name": "amphis",
+      "names": {
+        "en": [
+          "Amphis"
+        ],
+        "zh": [
+          "双头蛇"
+        ]
+      },
+      "aliases": [
+        "Amphis",
+        "双头蛇"
+      ]
+    },
+    "anku": {
+      "url_name": "anku",
+      "names": {
+        "en": [
+          "Anku"
+        ],
+        "zh": [
+          "夺魂死神"
+        ]
+      },
+      "aliases": [
+        "Anku",
+        "夺魂死神"
+      ]
+    },
+    "arca_titron": {
+      "url_name": "arca_titron",
+      "names": {
+        "en": [
+          "Arca Titron"
+        ],
+        "zh": [
+          "弧电振子锤"
+        ]
+      },
+      "aliases": [
+        "Arca Titron",
+        "弧电振子锤"
+      ]
+    },
+    "balla": {
+      "url_name": "balla",
+      "names": {
+        "en": [
+          "Balla"
+        ],
+        "zh": [
+          "宝拉"
+        ]
+      },
+      "aliases": [
+        "Balla",
+        "宝拉"
+      ]
+    },
+    "boltace": {
+      "url_name": "boltace",
+      "names": {
+        "en": [
+          "Boltace"
+        ],
+        "zh": [
+          "螺钉拐刃"
+        ]
+      },
+      "aliases": [
+        "Boltace",
+        "螺钉拐刃"
+      ]
+    },
+    "broken_war": {
+      "url_name": "broken_war",
+      "names": {
+        "en": [
+          "Broken War"
+        ],
+        "zh": [
+          "破碎的战争之剑"
+        ]
+      },
+      "aliases": [
+        "Broken War",
+        "破碎的战争之剑"
+      ]
+    },
+    "caustacyst": {
+      "url_name": "caustacyst",
+      "names": {
+        "en": [
+          "Caustacyst"
+        ],
+        "zh": [
+          "灼蚀变体镰"
+        ]
+      },
+      "aliases": [
+        "Caustacyst",
+        "灼蚀变体镰"
+      ]
+    },
+    "cerata": {
+      "url_name": "cerata",
+      "names": {
+        "en": [
+          "Cerata"
+        ],
+        "zh": [
+          "裸鳃刃"
+        ]
+      },
+      "aliases": [
+        "Cerata",
+        "裸鳃刃"
+      ]
+    },
+    "hate": {
+      "url_name": "hate",
+      "names": {
+        "en": [
+          "Hate"
+        ],
+        "zh": [
+          "憎恨"
+        ]
+      },
+      "aliases": [
+        "Hate",
+        "憎恨"
+      ]
+    },
+    "soma": {
+      "url_name": "soma",
+      "names": {
+        "en": [
+          "Soma"
+        ],
+        "zh": [
+          "月神"
+        ]
+      },
+      "aliases": [
+        "Soma",
+        "月神"
+      ]
+    },
+    "synapse": {
+      "url_name": "synapse",
+      "names": {
+        "en": [
+          "Synapse"
+        ],
+        "zh": [
+          "突触生化枪"
+        ]
+      },
+      "aliases": [
+        "Synapse",
+        "突触生化枪"
+      ]
+    },
+    "tigris": {
+      "url_name": "tigris",
+      "names": {
+        "en": [
+          "Tigris"
+        ],
+        "zh": [
+          "猛虎"
+        ]
+      },
+      "aliases": [
+        "Tigris",
+        "猛虎"
+      ]
+    },
+    "tonkor": {
+      "url_name": "tonkor",
+      "names": {
+        "en": [
+          "Tonkor"
+        ],
+        "zh": [
+          "征服榴炮"
+        ]
+      },
+      "aliases": [
+        "Tonkor",
+        "征服榴炮"
+      ]
+    },
+    "torid": {
+      "url_name": "torid",
+      "names": {
+        "en": [
+          "Torid"
+        ],
+        "zh": [
+          "托里德"
+        ]
+      },
+      "aliases": [
+        "Torid",
+        "托里德"
+      ]
+    },
+    "vectis": {
+      "url_name": "vectis",
+      "names": {
+        "en": [
+          "Vectis"
+        ],
+        "zh": [
+          "守望者"
+        ]
+      },
+      "aliases": [
+        "Vectis",
+        "守望者"
+      ]
+    },
+    "veldt": {
+      "url_name": "veldt",
+      "names": {
+        "en": [
+          "Veldt"
+        ],
+        "zh": [
+          "草原猎手"
+        ]
+      },
+      "aliases": [
+        "Veldt",
+        "草原猎手"
+      ]
+    },
+    "vulkar": {
+      "url_name": "vulkar",
+      "names": {
+        "en": [
+          "Vulkar"
+        ],
+        "zh": [
+          "金工火神"
+        ]
+      },
+      "aliases": [
+        "Vulkar",
+        "金工火神"
+      ]
+    },
+    "zarr": {
+      "url_name": "zarr",
+      "names": {
+        "en": [
+          "Zarr"
+        ],
+        "zh": [
+          "沙皇"
+        ]
+      },
+      "aliases": [
+        "Zarr",
+        "沙皇"
+      ]
+    },
+    "zenith": {
+      "url_name": "zenith",
+      "names": {
+        "en": [
+          "Zenith"
+        ],
+        "zh": [
+          "天穹之顶"
+        ]
+      },
+      "aliases": [
+        "Zenith",
+        "天穹之顶"
+      ]
+    },
+    "zhuge": {
+      "url_name": "zhuge",
+      "names": {
+        "en": [
+          "Zhuge"
+        ],
+        "zh": [
+          "诸葛连弩"
+        ]
+      },
+      "aliases": [
+        "Zhuge",
+        "诸葛连弩"
+      ]
+    },
+    "acrid": {
+      "url_name": "acrid",
+      "names": {
+        "en": [
+          "Acrid"
+        ],
+        "zh": [
+          "阿克里德"
+        ]
+      },
+      "aliases": [
+        "Acrid",
+        "阿克里德"
+      ]
+    },
+    "afuris": {
+      "url_name": "afuris",
+      "names": {
+        "en": [
+          "Afuris"
+        ],
+        "zh": [
+          "盗贼双枪"
+        ]
+      },
+      "aliases": [
+        "Afuris",
+        "盗贼双枪"
+      ]
+    },
+    "akbolto": {
+      "url_name": "akbolto",
+      "names": {
+        "en": [
+          "Akbolto"
+        ],
+        "zh": [
+          "螺钉双枪"
+        ]
+      },
+      "aliases": [
+        "Akbolto",
+        "螺钉双枪"
+      ]
+    },
+    "akbronco": {
+      "url_name": "akbronco",
+      "names": {
+        "en": [
+          "Akbronco"
+        ],
+        "zh": [
+          "野马双枪"
+        ]
+      },
+      "aliases": [
+        "Akbronco",
+        "野马双枪"
+      ]
+    },
+    "akjagara": {
+      "url_name": "akjagara",
+      "names": {
+        "en": [
+          "Akjagara"
+        ],
+        "zh": [
+          "觉醒双枪"
+        ]
+      },
+      "aliases": [
+        "Akjagara",
+        "觉醒双枪"
+      ]
+    },
+    "aklato": {
+      "url_name": "aklato",
+      "names": {
+        "en": [
+          "Aklato"
+        ],
+        "zh": [
+          "拉托双枪"
+        ]
+      },
+      "aliases": [
+        "Aklato",
+        "拉托双枪"
+      ]
+    },
+    "arca_scisco": {
+      "url_name": "arca_scisco",
+      "names": {
+        "en": [
+          "Arca Scisco"
+        ],
+        "zh": [
+          "弧电探知者"
+        ]
+      },
+      "aliases": [
+        "Arca Scisco",
+        "弧电探知者"
+      ]
+    },
+    "cycron": {
+      "url_name": "cycron",
+      "names": {
+        "en": [
+          "Cycron"
+        ],
+        "zh": [
+          "循环离子枪"
+        ]
+      },
+      "aliases": [
+        "Cycron",
+        "循环离子枪"
+      ]
+    },
+    "detron": {
+      "url_name": "detron",
+      "names": {
+        "en": [
+          "Detron"
+        ],
+        "zh": [
+          "德特昂"
+        ]
+      },
+      "aliases": [
+        "Detron",
+        "德特昂"
+      ]
+    },
+    "embolist": {
+      "url_name": "embolist",
+      "names": {
+        "en": [
+          "Embolist"
+        ],
+        "zh": [
+          "安柏勒斯"
+        ]
+      },
+      "aliases": [
+        "Embolist",
+        "安柏勒斯"
+      ]
+    },
+    "dual_kamas": {
+      "url_name": "dual_kamas",
+      "names": {
+        "en": [
+          "Dual Kamas"
+        ],
+        "zh": [
+          "双短柄战镰"
+        ]
+      },
+      "aliases": [
+        "Dual Kamas",
+        "双短柄战镰"
+      ]
+    },
+    "kuva_shildeg": {
+      "url_name": "kuva_shildeg",
+      "names": {
+        "en": [
+          "Kuva Shildeg"
+        ],
+        "zh": [
+          "赤毒·希尔德"
+        ]
+      },
+      "aliases": [
+        "Kuva Shildeg",
+        "赤毒·希尔德"
+      ]
+    },
+    "kuva_ayanga": {
+      "url_name": "kuva_ayanga",
+      "names": {
+        "en": [
+          "Kuva Ayanga"
+        ],
+        "zh": [
+          "赤毒·怒雷"
+        ]
+      },
+      "aliases": [
+        "Kuva Ayanga",
+        "赤毒·怒雷"
+      ]
+    },
+    "vermisplicer": {
+      "url_name": "vermisplicer",
+      "names": {
+        "en": [
+          "Vermisplicer"
+        ],
+        "zh": [
+          "虫置"
+        ]
+      },
+      "aliases": [
+        "Vermisplicer",
+        "虫置"
+      ]
+    },
+    "sporelacer": {
+      "url_name": "sporelacer",
+      "names": {
+        "en": [
+          "Sporelacer"
+        ],
+        "zh": [
+          "孢射"
+        ]
+      },
+      "aliases": [
+        "Sporelacer",
+        "孢射"
+      ]
+    },
+    "argonak": {
+      "url_name": "argonak",
+      "names": {
+        "en": [
+          "Argonak"
+        ],
+        "zh": [
+          "氩格纳克"
+        ]
+      },
+      "aliases": [
+        "Argonak",
+        "氩格纳克"
+      ]
+    },
+    "castanas": {
+      "url_name": "castanas",
+      "names": {
+        "en": [
+          "Castanas"
+        ],
+        "zh": [
+          "雷爆信镖"
+        ]
+      },
+      "aliases": [
+        "Castanas",
+        "雷爆信镖"
+      ]
+    },
+    "cestra": {
+      "url_name": "cestra",
+      "names": {
+        "en": [
+          "Cestra"
+        ],
+        "zh": [
+          "锡斯特"
+        ]
+      },
+      "aliases": [
+        "Cestra",
+        "锡斯特"
+      ]
+    },
+    "dual_toxocyst": {
+      "url_name": "dual_toxocyst",
+      "names": {
+        "en": [
+          "Dual Toxocyst"
+        ],
+        "zh": [
+          "毒囊双枪"
+        ]
+      },
+      "aliases": [
+        "Dual Toxocyst",
+        "毒囊双枪"
+      ]
+    },
+    "hystrix": {
+      "url_name": "hystrix",
+      "names": {
+        "en": [
+          "Hystrix"
+        ],
+        "zh": [
+          "豪猪"
+        ]
+      },
+      "aliases": [
+        "Hystrix",
+        "豪猪"
+      ]
+    },
+    "fragor": {
+      "url_name": "fragor",
+      "names": {
+        "en": [
+          "Fragor"
+        ],
+        "zh": [
+          "重击巨锤"
+        ]
+      },
+      "aliases": [
+        "Fragor",
+        "重击巨锤"
+      ]
+    },
+    "galatine": {
+      "url_name": "galatine",
+      "names": {
+        "en": [
+          "Galatine"
+        ],
+        "zh": [
+          "迦伦提恩"
+        ]
+      },
+      "aliases": [
+        "Galatine",
+        "迦伦提恩"
+      ]
+    },
+    "gazal_machete": {
+      "url_name": "gazal_machete",
+      "names": {
+        "en": [
+          "Gazal Machete"
+        ],
+        "zh": [
+          "加扎勒反曲刀"
+        ]
+      },
+      "aliases": [
+        "Gazal Machete",
+        "加扎勒反曲刀"
+      ]
+    },
+    "gram": {
+      "url_name": "gram",
+      "names": {
+        "en": [
+          "Gram"
+        ],
+        "zh": [
+          "格拉姆"
+        ]
+      },
+      "aliases": [
+        "Gram",
+        "格拉姆"
+      ]
+    },
+    "guandao": {
+      "url_name": "guandao",
+      "names": {
+        "en": [
+          "Guandao"
+        ],
+        "zh": [
+          "关刀"
+        ]
+      },
+      "aliases": [
+        "Guandao",
+        "关刀"
+      ]
+    },
+    "gunsen": {
+      "url_name": "gunsen",
+      "names": {
+        "en": [
+          "Gunsen"
+        ],
+        "zh": [
+          "军扇"
+        ]
+      },
+      "aliases": [
+        "Gunsen",
+        "军扇"
+      ]
+    },
+    "dual_skana": {
+      "url_name": "dual_skana",
+      "names": {
+        "en": [
+          "Dual Skana"
+        ],
+        "zh": [
+          "空刃双刀"
+        ]
+      },
+      "aliases": [
+        "Dual Skana",
+        "空刃双刀"
+      ]
+    },
+    "jaw_sword": {
+      "url_name": "jaw_sword",
+      "names": {
+        "en": [
+          "Jaw Sword"
+        ],
+        "zh": [
+          "蛇颚刀"
+        ]
+      },
+      "aliases": [
+        "Jaw Sword",
+        "蛇颚刀"
+      ]
+    },
+    "kesheg": {
+      "url_name": "kesheg",
+      "names": {
+        "en": [
+          "Kesheg"
+        ],
+        "zh": [
+          "怯薛"
+        ]
+      },
+      "aliases": [
+        "Kesheg",
+        "怯薛"
+      ]
+    },
+    "kestrel": {
+      "url_name": "kestrel",
+      "names": {
+        "en": [
+          "Kestrel"
+        ],
+        "zh": [
+          "红隼"
+        ]
+      },
+      "aliases": [
+        "Kestrel",
+        "红隼"
+      ]
+    },
+    "kronsh": {
+      "url_name": "kronsh",
+      "names": {
+        "en": [
+          "Kronsh"
+        ],
+        "zh": [
+          "客隆什"
+        ]
+      },
+      "aliases": [
+        "Kronsh",
+        "客隆什"
+      ]
+    },
+    "ballistica": {
+      "url_name": "ballistica",
+      "names": {
+        "en": [
+          "Ballistica"
+        ],
+        "zh": [
+          "布里斯提卡"
+        ]
+      },
+      "aliases": [
+        "Ballistica",
+        "布里斯提卡"
+      ]
+    },
+    "heat_dagger": {
+      "url_name": "heat_dagger",
+      "names": {
+        "en": [
+          "Heat Dagger"
+        ],
+        "zh": [
+          "烈焰匕首"
+        ]
+      },
+      "aliases": [
+        "Heat Dagger",
+        "烈焰匕首"
+      ]
+    },
+    "jat_kittag": {
+      "url_name": "jat_kittag",
+      "names": {
+        "en": [
+          "Jat Kittag"
+        ],
+        "zh": [
+          "喷射战锤"
+        ]
+      },
+      "aliases": [
+        "Jat Kittag",
+        "喷射战锤"
+      ]
+    },
+    "sonicor": {
+      "url_name": "sonicor",
+      "names": {
+        "en": [
+          "Sonicor"
+        ],
+        "zh": [
+          "超音波冲击枪"
+        ]
+      },
+      "aliases": [
+        "Sonicor",
+        "超音波冲击枪"
+      ]
+    },
+    "tombfinger": {
+      "url_name": "tombfinger",
+      "names": {
+        "en": [
+          "Tombfinger"
+        ],
+        "zh": [
+          "墓指"
+        ]
+      },
+      "aliases": [
+        "Tombfinger",
+        "墓指"
+      ]
+    },
+    "gaze": {
+      "url_name": "gaze",
+      "names": {
+        "en": [
+          "Gaze"
+        ],
+        "zh": [
+          "凝目"
+        ]
+      },
+      "aliases": [
+        "Gaze",
+        "凝目"
+      ]
+    },
+    "pupacyst": {
+      "url_name": "pupacyst",
+      "names": {
+        "en": [
+          "Pupacyst"
+        ],
+        "zh": [
+          "毒囊骨茧"
+        ]
+      },
+      "aliases": [
+        "Pupacyst",
+        "毒囊骨茧"
+      ]
+    },
+    "arca_plasmor": {
+      "url_name": "arca_plasmor",
+      "names": {
+        "en": [
+          "Arca Plasmor"
+        ],
+        "zh": [
+          "弧电离子枪"
+        ]
+      },
+      "aliases": [
+        "Arca Plasmor",
+        "弧电离子枪"
+      ]
+    },
+    "galvacord": {
+      "url_name": "galvacord",
+      "names": {
+        "en": [
+          "Galvacord"
+        ],
+        "zh": [
+          "电流刺索"
+        ]
+      },
+      "aliases": [
+        "Galvacord",
+        "电流刺索"
+      ]
+    },
+    "bronco": {
+      "url_name": "bronco",
+      "names": {
+        "en": [
+          "Bronco"
+        ],
+        "zh": [
+          "野马"
+        ]
+      },
+      "aliases": [
+        "Bronco",
+        "野马"
+      ]
+    },
+    "dual_cestra": {
+      "url_name": "dual_cestra",
+      "names": {
+        "en": [
+          "Dual Cestra"
+        ],
+        "zh": [
+          "锡斯特双枪"
+        ]
+      },
+      "aliases": [
+        "Dual Cestra",
+        "锡斯特双枪"
+      ]
+    },
+    "furis": {
+      "url_name": "furis",
+      "names": {
+        "en": [
+          "Furis"
+        ],
+        "zh": [
+          "盗贼"
+        ]
+      },
+      "aliases": [
+        "Furis",
+        "盗贼"
+      ]
+    },
+    "ankyros": {
+      "url_name": "ankyros",
+      "names": {
+        "en": [
+          "Ankyros"
+        ],
+        "zh": [
+          "甲龙双拳"
+        ]
+      },
+      "aliases": [
+        "Ankyros",
+        "甲龙双拳"
+      ]
+    },
+    "atterax": {
+      "url_name": "atterax",
+      "names": {
+        "en": [
+          "Atterax"
+        ],
+        "zh": [
+          "阿特拉克斯"
+        ]
+      },
+      "aliases": [
+        "Atterax",
+        "阿特拉克斯"
+      ]
+    },
+    "bo": {
+      "url_name": "bo",
+      "names": {
+        "en": [
+          "Bo"
+        ],
+        "zh": [
+          "玻之武杖"
+        ]
+      },
+      "aliases": [
+        "Bo",
+        "玻之武杖"
+      ]
+    },
+    "cassowar": {
+      "url_name": "cassowar",
+      "names": {
+        "en": [
+          "Cassowar"
+        ],
+        "zh": [
+          "鹤鸵长戟"
+        ]
+      },
+      "aliases": [
+        "Cassowar",
+        "鹤鸵长戟"
+      ]
+    },
+    "ceramic_dagger": {
+      "url_name": "ceramic_dagger",
+      "names": {
+        "en": [
+          "Ceramic Dagger"
+        ],
+        "zh": [
+          "陶瓷匕首"
+        ]
+      },
+      "aliases": [
+        "Ceramic Dagger",
+        "陶瓷匕首"
+      ]
+    },
+    "halikar": {
+      "url_name": "halikar",
+      "names": {
+        "en": [
+          "Halikar"
+        ],
+        "zh": [
+          "哈利卡"
+        ]
+      },
+      "aliases": [
+        "Halikar",
+        "哈利卡"
+      ]
+    },
+    "hirudo": {
+      "url_name": "hirudo",
+      "names": {
+        "en": [
+          "Hirudo"
+        ],
+        "zh": [
+          "蚂蟥"
+        ]
+      },
+      "aliases": [
+        "Hirudo",
+        "蚂蟥"
+      ]
+    },
+    "mire": {
+      "url_name": "mire",
+      "names": {
+        "en": [
+          "Mire"
+        ],
+        "zh": [
+          "米尔"
+        ]
+      },
+      "aliases": [
+        "Mire",
+        "米尔"
+      ]
+    },
+    "twin_krohkur": {
+      "url_name": "twin_krohkur",
+      "names": {
+        "en": [
+          "Twin Krohkur"
+        ],
+        "zh": [
+          "双子克鲁古尔"
+        ]
+      },
+      "aliases": [
+        "Twin Krohkur",
+        "双子克鲁古尔"
+      ]
+    },
+    "latron": {
+      "url_name": "latron",
+      "names": {
+        "en": [
+          "Latron"
+        ],
+        "zh": [
+          "拉特昂"
+        ]
+      },
+      "aliases": [
+        "Latron",
+        "拉特昂"
+      ]
+    },
+    "lenz": {
+      "url_name": "lenz",
+      "names": {
+        "en": [
+          "Lenz"
+        ],
+        "zh": [
+          "楞次弓"
+        ]
+      },
+      "aliases": [
+        "Lenz",
+        "楞次弓"
+      ]
+    },
+    "miter": {
+      "url_name": "miter",
+      "names": {
+        "en": [
+          "Miter"
+        ],
+        "zh": [
+          "米特尔"
+        ]
+      },
+      "aliases": [
+        "Miter",
+        "米特尔"
+      ]
+    },
+    "mutalist_cernos": {
+      "url_name": "mutalist_cernos",
+      "names": {
+        "en": [
+          "Mutalist Cernos"
+        ],
+        "zh": [
+          "异融西诺斯"
+        ]
+      },
+      "aliases": [
+        "Mutalist Cernos",
+        "异融西诺斯"
+      ]
+    },
+    "mutalist_quanta": {
+      "url_name": "mutalist_quanta",
+      "names": {
+        "en": [
+          "Mutalist Quanta"
+        ],
+        "zh": [
+          "异融量子枪"
+        ]
+      },
+      "aliases": [
+        "Mutalist Quanta",
+        "异融量子枪"
+      ]
+    },
+    "opticor": {
+      "url_name": "opticor",
+      "names": {
+        "en": [
+          "Opticor"
+        ],
+        "zh": [
+          "奥堤克光子枪"
+        ]
+      },
+      "aliases": [
+        "Opticor",
+        "奥堤克光子枪"
+      ]
+    },
+    "panthera": {
+      "url_name": "panthera",
+      "names": {
+        "en": [
+          "Panthera"
+        ],
+        "zh": [
+          "猎豹"
+        ]
+      },
+      "aliases": [
+        "Panthera",
+        "猎豹"
+      ]
+    },
+    "penta": {
+      "url_name": "penta",
+      "names": {
+        "en": [
+          "Penta"
+        ],
+        "zh": [
+          "潘塔"
+        ]
+      },
+      "aliases": [
+        "Penta",
+        "潘塔"
+      ]
+    },
+    "phage": {
+      "url_name": "phage",
+      "names": {
+        "en": [
+          "Phage"
+        ],
+        "zh": [
+          "噬菌者"
+        ]
+      },
+      "aliases": [
+        "Phage",
+        "噬菌者"
+      ]
+    },
+    "phantasma": {
+      "url_name": "phantasma",
+      "names": {
+        "en": [
+          "Phantasma"
+        ],
+        "zh": [
+          "幻离子"
+        ]
+      },
+      "aliases": [
+        "Phantasma",
+        "幻离子"
+      ]
+    },
+    "quanta": {
+      "url_name": "quanta",
+      "names": {
+        "en": [
+          "Quanta"
+        ],
+        "zh": [
+          "量子切割器"
+        ]
+      },
+      "aliases": [
+        "Quanta",
+        "量子切割器"
+      ]
+    },
+    "rubico": {
+      "url_name": "rubico",
+      "names": {
+        "en": [
+          "Rubico"
+        ],
+        "zh": [
+          "绝路"
+        ]
+      },
+      "aliases": [
+        "Rubico",
+        "绝路"
+      ]
+    },
+    "simulor": {
+      "url_name": "simulor",
+      "names": {
+        "en": [
+          "Simulor"
+        ],
+        "zh": [
+          "重力奇点拟成枪"
+        ]
+      },
+      "aliases": [
+        "Simulor",
+        "重力奇点拟成枪"
+      ]
+    },
+    "snipetron": {
+      "url_name": "snipetron",
+      "names": {
+        "en": [
+          "Snipetron"
+        ],
+        "zh": [
+          "狙击特昂"
+        ]
+      },
+      "aliases": [
+        "Snipetron",
+        "狙击特昂"
+      ]
+    },
+    "sobek": {
+      "url_name": "sobek",
+      "names": {
+        "en": [
+          "Sobek"
+        ],
+        "zh": [
+          "鳄神"
+        ]
+      },
+      "aliases": [
+        "Sobek",
+        "鳄神"
+      ]
+    },
+    "stradavar": {
+      "url_name": "stradavar",
+      "names": {
+        "en": [
+          "Stradavar"
+        ],
+        "zh": [
+          "斯特拉迪瓦"
+        ]
+      },
+      "aliases": [
+        "Stradavar",
+        "斯特拉迪瓦"
+      ]
+    },
+    "strun": {
+      "url_name": "strun",
+      "names": {
+        "en": [
+          "Strun"
+        ],
+        "zh": [
+          "斯特朗"
+        ]
+      },
+      "aliases": [
+        "Strun",
+        "斯特朗"
+      ]
+    },
+    "sybaris": {
+      "url_name": "sybaris",
+      "names": {
+        "en": [
+          "Sybaris"
+        ],
+        "zh": [
+          "席芭莉丝"
+        ]
+      },
+      "aliases": [
+        "Sybaris",
+        "席芭莉丝"
+      ]
+    },
+    "tetra": {
+      "url_name": "tetra",
+      "names": {
+        "en": [
+          "Tetra"
+        ],
+        "zh": [
+          "特拉"
+        ]
+      },
+      "aliases": [
+        "Tetra",
+        "特拉"
+      ]
+    },
+    "gammacor": {
+      "url_name": "gammacor",
+      "names": {
+        "en": [
+          "Gammacor"
+        ],
+        "zh": [
+          "咖玛腕甲枪"
+        ]
+      },
+      "aliases": [
+        "Gammacor",
+        "咖玛腕甲枪"
+      ]
+    },
+    "nukor": {
+      "url_name": "nukor",
+      "names": {
+        "en": [
+          "Nukor"
+        ],
+        "zh": [
+          "努寇微波枪"
+        ]
+      },
+      "aliases": [
+        "Nukor",
+        "努寇微波枪"
+      ]
+    },
+    "pandero": {
+      "url_name": "pandero",
+      "names": {
+        "en": [
+          "Pandero"
+        ],
+        "zh": [
+          "手鼓"
+        ]
+      },
+      "aliases": [
+        "Pandero",
+        "手鼓"
+      ]
+    },
+    "pox": {
+      "url_name": "pox",
+      "names": {
+        "en": [
+          "Pox"
+        ],
+        "zh": [
+          "脓痘"
+        ]
+      },
+      "aliases": [
+        "Pox",
+        "脓痘"
+      ]
+    },
+    "pyrana": {
+      "url_name": "pyrana",
+      "names": {
+        "en": [
+          "Pyrana"
+        ],
+        "zh": [
+          "食人鱼"
+        ]
+      },
+      "aliases": [
+        "Pyrana",
+        "食人鱼"
+      ]
+    },
+    "sicarus": {
+      "url_name": "sicarus",
+      "names": {
+        "en": [
+          "Sicarus"
+        ],
+        "zh": [
+          "暗杀者"
+        ]
+      },
+      "aliases": [
+        "Sicarus",
+        "暗杀者"
+      ]
+    },
+    "spira": {
+      "url_name": "spira",
+      "names": {
+        "en": [
+          "Spira"
+        ],
+        "zh": [
+          "旋刃飞刀"
+        ]
+      },
+      "aliases": [
+        "Spira",
+        "旋刃飞刀"
+      ]
+    },
+    "dehtat": {
+      "url_name": "dehtat",
+      "names": {
+        "en": [
+          "Dehtat"
+        ],
+        "zh": [
+          "德塔特"
+        ]
+      },
+      "aliases": [
+        "Dehtat",
+        "德塔特"
+      ]
+    },
+    "destreza": {
+      "url_name": "destreza",
+      "names": {
+        "en": [
+          "Destreza"
+        ],
+        "zh": [
+          "技巧之剑"
+        ]
+      },
+      "aliases": [
+        "Destreza",
+        "技巧之剑"
+      ]
+    },
+    "dex_dakra": {
+      "url_name": "dex_dakra",
+      "names": {
+        "en": [
+          "Dex Dakra"
+        ],
+        "zh": [
+          "Dex 达克拉双剑"
+        ]
+      },
+      "aliases": [
+        "Dex Dakra",
+        "Dex 达克拉双剑"
+      ]
+    },
+    "dokrahm": {
+      "url_name": "dokrahm",
+      "names": {
+        "en": [
+          "Dokrahm"
+        ],
+        "zh": [
+          "多克拉姆"
+        ]
+      },
+      "aliases": [
+        "Dokrahm",
+        "多克拉姆"
+      ]
+    },
+    "dragon_nikana": {
+      "url_name": "dragon_nikana",
+      "names": {
+        "en": [
+          "Dragon Nikana"
+        ],
+        "zh": [
+          "龙之侍刃"
+        ]
+      },
+      "aliases": [
+        "Dragon Nikana",
+        "龙之侍刃"
+      ]
+    },
+    "dual_cleavers": {
+      "url_name": "dual_cleavers",
+      "names": {
+        "en": [
+          "Dual Cleavers"
+        ],
+        "zh": [
+          "斩肉双刀"
+        ]
+      },
+      "aliases": [
+        "Dual Cleavers",
+        "斩肉双刀"
+      ]
+    },
+    "dual_ether": {
+      "url_name": "dual_ether",
+      "names": {
+        "en": [
+          "Dual Ether"
+        ],
+        "zh": [
+          "苍穹双剑"
+        ]
+      },
+      "aliases": [
+        "Dual Ether",
+        "苍穹双剑"
+      ]
+    },
+    "dual_heat_swords": {
+      "url_name": "dual_heat_swords",
+      "names": {
+        "en": [
+          "Dual Heat Swords"
+        ],
+        "zh": [
+          "烈焰双剑"
+        ]
+      },
+      "aliases": [
+        "Dual Heat Swords",
+        "烈焰双剑"
+      ]
+    },
+    "dual_ichor": {
+      "url_name": "dual_ichor",
+      "names": {
+        "en": [
+          "Dual Ichor"
+        ],
+        "zh": [
+          "恶脓双斧"
+        ]
+      },
+      "aliases": [
+        "Dual Ichor",
+        "恶脓双斧"
+      ]
+    },
+    "dual_keres": {
+      "url_name": "dual_keres",
+      "names": {
+        "en": [
+          "Dual Keres"
+        ],
+        "zh": [
+          "凯瑞斯双刀"
+        ]
+      },
+      "aliases": [
+        "Dual Keres",
+        "凯瑞斯双刀"
+      ]
+    },
+    "kama": {
+      "url_name": "kama",
+      "names": {
+        "en": [
+          "Kama"
+        ],
+        "zh": [
+          "短柄战镰"
+        ]
+      },
+      "aliases": [
+        "Kama",
+        "短柄战镰"
+      ]
+    },
+    "kogake": {
+      "url_name": "kogake",
+      "names": {
+        "en": [
+          "Kogake"
+        ],
+        "zh": [
+          "科加基"
+        ]
+      },
+      "aliases": [
+        "Kogake",
+        "科加基"
+      ]
+    },
+    "multron": {
+      "url_name": "multron",
+      "names": {
+        "en": [
+          "Multron"
+        ],
+        "zh": [
+          "多连穿甲枪"
+        ]
+      },
+      "aliases": [
+        "Multron",
+        "多连穿甲枪"
+      ]
+    },
+    "vulcax": {
+      "url_name": "vulcax",
+      "names": {
+        "en": [
+          "Vulcax"
+        ],
+        "zh": [
+          "金工火舌"
+        ]
+      },
+      "aliases": [
+        "Vulcax",
+        "金工火舌"
+      ]
+    },
+    "masseter": {
+      "url_name": "masseter",
+      "names": {
+        "en": [
+          "Masseter"
+        ],
+        "zh": [
+          "咀嚼金杖"
+        ]
+      },
+      "aliases": [
+        "Masseter",
+        "咀嚼金杖"
+      ]
+    },
+    "pathocyst": {
+      "url_name": "pathocyst",
+      "names": {
+        "en": [
+          "Pathocyst"
+        ],
+        "zh": [
+          "病囊飞刃"
+        ]
+      },
+      "aliases": [
+        "Pathocyst",
+        "病囊飞刃"
+      ]
+    },
+    "kuva_chakkhurr": {
+      "url_name": "kuva_chakkhurr",
+      "names": {
+        "en": [
+          "Kuva Chakkhurr"
+        ],
+        "zh": [
+          "赤毒·邪眼"
+        ]
+      },
+      "aliases": [
+        "Kuva Chakkhurr",
+        "赤毒·邪眼"
+      ]
+    },
+    "lecta": {
+      "url_name": "lecta",
+      "names": {
+        "en": [
+          "Lecta"
+        ],
+        "zh": [
+          "勒克塔"
+        ]
+      },
+      "aliases": [
+        "Lecta",
+        "勒克塔"
+      ]
+    },
+    "machete": {
+      "url_name": "machete",
+      "names": {
+        "en": [
+          "Machete"
+        ],
+        "zh": [
+          "马谢特砍刀"
+        ]
+      },
+      "aliases": [
+        "Machete",
+        "马谢特砍刀"
+      ]
+    },
+    "magistar": {
+      "url_name": "magistar",
+      "names": {
+        "en": [
+          "Magistar"
+        ],
+        "zh": [
+          "执法者"
+        ]
+      },
+      "aliases": [
+        "Magistar",
+        "执法者"
+      ]
+    },
+    "mewan": {
+      "url_name": "mewan",
+      "names": {
+        "en": [
+          "Mewan"
+        ],
+        "zh": [
+          "密丸"
+        ]
+      },
+      "aliases": [
+        "Mewan",
+        "密丸"
+      ]
+    },
+    "mios": {
+      "url_name": "mios",
+      "names": {
+        "en": [
+          "Mios"
+        ],
+        "zh": [
+          "牡狮神"
+        ]
+      },
+      "aliases": [
+        "Mios",
+        "牡狮神"
+      ]
+    },
+    "rabvee": {
+      "url_name": "rabvee",
+      "names": {
+        "en": [
+          "Rabvee"
+        ],
+        "zh": [
+          "拉比威"
+        ]
+      },
+      "aliases": [
+        "Rabvee",
+        "拉比威"
+      ]
+    },
+    "war": {
+      "url_name": "war",
+      "names": {
+        "en": [
+          "War"
+        ],
+        "zh": [
+          "战争之剑"
+        ]
+      },
+      "aliases": [
+        "War",
+        "战争之剑"
+      ]
+    },
+    "artax": {
+      "url_name": "artax",
+      "names": {
+        "en": [
+          "Artax"
+        ],
+        "zh": [
+          "阿塔克斯"
+        ]
+      },
+      "aliases": [
+        "Artax",
+        "阿塔克斯"
+      ]
+    },
+    "burst_laser": {
+      "url_name": "burst_laser",
+      "names": {
+        "en": [
+          "Burst Laser"
+        ],
+        "zh": [
+          "激光点发"
+        ]
+      },
+      "aliases": [
+        "Burst Laser",
+        "激光点发"
+      ]
+    },
+    "deth_machine_rifle": {
+      "url_name": "deth_machine_rifle",
+      "names": {
+        "en": [
+          "Deth Machine Rifle"
+        ],
+        "zh": [
+          "死亡机枪"
+        ]
+      },
+      "aliases": [
+        "Deth Machine Rifle",
+        "死亡机枪"
+      ]
+    },
+    "laser_rifle": {
+      "url_name": "laser_rifle",
+      "names": {
+        "en": [
+          "Laser Rifle"
+        ],
+        "zh": [
+          "激光步枪"
+        ]
+      },
+      "aliases": [
+        "Laser Rifle",
+        "激光步枪"
+      ]
+    },
+    "astilla": {
+      "url_name": "astilla",
+      "names": {
+        "en": [
+          "Astilla"
+        ],
+        "zh": [
+          "碎裂者"
+        ]
+      },
+      "aliases": [
+        "Astilla",
+        "碎裂者"
+      ]
+    },
+    "baza": {
+      "url_name": "baza",
+      "names": {
+        "en": [
+          "Baza"
+        ],
+        "zh": [
+          "苍鹰"
+        ]
+      },
+      "aliases": [
+        "Baza",
+        "苍鹰"
+      ]
+    },
+    "boar": {
+      "url_name": "boar",
+      "names": {
+        "en": [
+          "Boar"
+        ],
+        "zh": [
+          "野猪"
+        ]
+      },
+      "aliases": [
+        "Boar",
+        "野猪"
+      ]
+    },
+    "flux_rifle": {
+      "url_name": "flux_rifle",
+      "names": {
+        "en": [
+          "Flux Rifle"
+        ],
+        "zh": [
+          "通量步枪"
+        ]
+      },
+      "aliases": [
+        "Flux Rifle",
+        "通量步枪"
+      ]
+    },
+    "cronus": {
+      "url_name": "cronus",
+      "names": {
+        "en": [
+          "Cronus"
+        ],
+        "zh": [
+          "克洛诺斯"
+        ]
+      },
+      "aliases": [
+        "Cronus",
+        "克洛诺斯"
+      ]
+    },
+    "endura": {
+      "url_name": "endura",
+      "names": {
+        "en": [
+          "Endura"
+        ],
+        "zh": [
+          "三叶坚韧"
+        ]
+      },
+      "aliases": [
+        "Endura",
+        "三叶坚韧"
+      ]
+    },
+    "glaive": {
+      "url_name": "glaive",
+      "names": {
+        "en": [
+          "Glaive"
+        ],
+        "zh": [
+          "战刃"
+        ]
+      },
+      "aliases": [
+        "Glaive",
+        "战刃"
+      ]
+    },
+    "heat_sword": {
+      "url_name": "heat_sword",
+      "names": {
+        "en": [
+          "Heat Sword"
+        ],
+        "zh": [
+          "烈焰长剑"
+        ]
+      },
+      "aliases": [
+        "Heat Sword",
+        "烈焰长剑"
+      ]
+    },
+    "jat_kusar": {
+      "url_name": "jat_kusar",
+      "names": {
+        "en": [
+          "Jat Kusar"
+        ],
+        "zh": [
+          "喷射锁镰"
+        ]
+      },
+      "aliases": [
+        "Jat Kusar",
+        "喷射锁镰"
+      ]
+    },
+    "nami_skyla": {
+      "url_name": "nami_skyla",
+      "names": {
+        "en": [
+          "Nami Skyla"
+        ],
+        "zh": [
+          "海波斯库拉对剑"
+        ]
+      },
+      "aliases": [
+        "Nami Skyla",
+        "海波斯库拉对剑"
+      ]
+    },
+    "nami_solo": {
+      "url_name": "nami_solo",
+      "names": {
+        "en": [
+          "Nami Solo"
+        ],
+        "zh": [
+          "海波单剑"
+        ]
+      },
+      "aliases": [
+        "Nami Solo",
+        "海波单剑"
+      ]
+    },
+    "nikana": {
+      "url_name": "nikana",
+      "names": {
+        "en": [
+          "Nikana"
+        ],
+        "zh": [
+          "侍刃"
+        ]
+      },
+      "aliases": [
+        "Nikana",
+        "侍刃"
+      ]
+    },
+    "ninkondi": {
+      "url_name": "ninkondi",
+      "names": {
+        "en": [
+          "Ninkondi"
+        ],
+        "zh": [
+          "降灵追猎者"
+        ]
+      },
+      "aliases": [
+        "Ninkondi",
+        "降灵追猎者"
+      ]
+    },
+    "obex": {
+      "url_name": "obex",
+      "names": {
+        "en": [
+          "Obex"
+        ],
+        "zh": [
+          "奥比克斯"
+        ]
+      },
+      "aliases": [
+        "Obex",
+        "奥比克斯"
+      ]
+    },
+    "ohma": {
+      "url_name": "ohma",
+      "names": {
+        "en": [
+          "Ohma"
+        ],
+        "zh": [
+          "欧玛"
+        ]
+      },
+      "aliases": [
+        "Ohma",
+        "欧玛"
+      ]
+    },
+    "okina": {
+      "url_name": "okina",
+      "names": {
+        "en": [
+          "Okina"
+        ],
+        "zh": [
+          "翁"
+        ]
+      },
+      "aliases": [
+        "Okina",
+        "翁"
+      ]
+    },
+    "ooltha": {
+      "url_name": "ooltha",
+      "names": {
+        "en": [
+          "Ooltha"
+        ],
+        "zh": [
+          "乌尔萨"
+        ]
+      },
+      "aliases": [
+        "Ooltha",
+        "乌尔萨"
+      ]
+    },
+    "orthos": {
+      "url_name": "orthos",
+      "names": {
+        "en": [
+          "Orthos"
+        ],
+        "zh": [
+          "欧特鲁斯"
+        ]
+      },
+      "aliases": [
+        "Orthos",
+        "欧特鲁斯"
+      ]
+    },
+    "orvius": {
+      "url_name": "orvius",
+      "names": {
+        "en": [
+          "Orvius"
+        ],
+        "zh": [
+          "灵枢"
+        ]
+      },
+      "aliases": [
+        "Orvius",
+        "灵枢"
+      ]
+    },
+    "pangolin_sword": {
+      "url_name": "pangolin_sword",
+      "names": {
+        "en": [
+          "Pangolin Sword"
+        ],
+        "zh": [
+          "鲮鲤剑"
+        ]
+      },
+      "aliases": [
+        "Pangolin Sword",
+        "鲮鲤剑"
+      ]
+    },
+    "plague_keewar": {
+      "url_name": "plague_keewar",
+      "names": {
+        "en": [
+          "Plague Keewar"
+        ],
+        "zh": [
+          "瘟疫 奇沃"
+        ]
+      },
+      "aliases": [
+        "Plague Keewar",
+        "瘟疫 奇沃"
+      ]
+    },
+    "plague_kripath": {
+      "url_name": "plague_kripath",
+      "names": {
+        "en": [
+          "Plague Kripath"
+        ],
+        "zh": [
+          "瘟疫 克里帕丝"
+        ]
+      },
+      "aliases": [
+        "Plague Kripath",
+        "瘟疫 克里帕丝"
+      ]
+    },
+    "plasma_sword": {
+      "url_name": "plasma_sword",
+      "names": {
+        "en": [
+          "Plasma Sword"
+        ],
+        "zh": [
+          "等离子长剑"
+        ]
+      },
+      "aliases": [
+        "Plasma Sword",
+        "等离子长剑"
+      ]
+    },
+    "prova": {
+      "url_name": "prova",
+      "names": {
+        "en": [
+          "Prova"
+        ],
+        "zh": [
+          "普罗沃"
+        ]
+      },
+      "aliases": [
+        "Prova",
+        "普罗沃"
+      ]
+    },
+    "redeemer": {
+      "url_name": "redeemer",
+      "names": {
+        "en": [
+          "Redeemer"
+        ],
+        "zh": [
+          "救赎者"
+        ]
+      },
+      "aliases": [
+        "Redeemer",
+        "救赎者"
+      ]
+    },
+    "skana": {
+      "url_name": "skana",
+      "names": {
+        "en": [
+          "Skana"
+        ],
+        "zh": [
+          "空刃"
+        ]
+      },
+      "aliases": [
+        "Skana",
+        "空刃"
+      ]
+    },
+    "harpak": {
+      "url_name": "harpak",
+      "names": {
+        "en": [
+          "Harpak"
+        ],
+        "zh": [
+          "哈帕克"
+        ]
+      },
+      "aliases": [
+        "Harpak",
+        "哈帕克"
+      ]
+    },
+    "hema": {
+      "url_name": "hema",
+      "names": {
+        "en": [
+          "Hema"
+        ],
+        "zh": [
+          "血肢"
+        ]
+      },
+      "aliases": [
+        "Hema",
+        "血肢"
+      ]
+    },
+    "hind": {
+      "url_name": "hind",
+      "names": {
+        "en": [
+          "Hind"
+        ],
+        "zh": [
+          "雌鹿"
+        ]
+      },
+      "aliases": [
+        "Hind",
+        "雌鹿"
+      ]
+    },
+    "ignis": {
+      "url_name": "ignis",
+      "names": {
+        "en": [
+          "Ignis"
+        ],
+        "zh": [
+          "伊格尼斯"
+        ]
+      },
+      "aliases": [
+        "Ignis",
+        "伊格尼斯"
+      ]
+    },
+    "javlok": {
+      "url_name": "javlok",
+      "names": {
+        "en": [
+          "Javlok"
+        ],
+        "zh": [
+          "燃焰标枪"
+        ]
+      },
+      "aliases": [
+        "Javlok",
+        "燃焰标枪"
+      ]
+    },
+    "karak": {
+      "url_name": "karak",
+      "names": {
+        "en": [
+          "Karak"
+        ],
+        "zh": [
+          "卡拉克"
+        ]
+      },
+      "aliases": [
+        "Karak",
+        "卡拉克"
+      ]
+    },
+    "kohm": {
+      "url_name": "kohm",
+      "names": {
+        "en": [
+          "Kohm"
+        ],
+        "zh": [
+          "寇恩热能枪"
+        ]
+      },
+      "aliases": [
+        "Kohm",
+        "寇恩热能枪"
+      ]
+    },
+    "lanka": {
+      "url_name": "lanka",
+      "names": {
+        "en": [
+          "Lanka"
+        ],
+        "zh": [
+          "兰卡"
+        ]
+      },
+      "aliases": [
+        "Lanka",
+        "兰卡"
+      ]
+    },
+    "paris": {
+      "url_name": "paris",
+      "names": {
+        "en": [
+          "Paris"
+        ],
+        "zh": [
+          "帕里斯"
+        ]
+      },
+      "aliases": [
+        "Paris",
+        "帕里斯"
+      ]
+    },
+    "quartakk": {
+      "url_name": "quartakk",
+      "names": {
+        "en": [
+          "Quartakk"
+        ],
+        "zh": [
+          "夸塔克"
+        ]
+      },
+      "aliases": [
+        "Quartakk",
+        "夸塔克"
+      ]
+    },
+    "scourge": {
+      "url_name": "scourge",
+      "names": {
+        "en": [
+          "Scourge"
+        ],
+        "zh": [
+          "祸根"
+        ]
+      },
+      "aliases": [
+        "Scourge",
+        "祸根"
+      ]
+    },
+    "spectra": {
+      "url_name": "spectra",
+      "names": {
+        "en": [
+          "Spectra"
+        ],
+        "zh": [
+          "光谱切割器"
+        ]
+      },
+      "aliases": [
+        "Spectra",
+        "光谱切割器"
+      ]
+    },
+    "staticor": {
+      "url_name": "staticor",
+      "names": {
+        "en": [
+          "Staticor"
+        ],
+        "zh": [
+          "静电能量导引枪"
+        ]
+      },
+      "aliases": [
+        "Staticor",
+        "静电能量导引枪"
+      ]
+    },
+    "stubba": {
+      "url_name": "stubba",
+      "names": {
+        "en": [
+          "Stubba"
+        ],
+        "zh": [
+          "史度巴"
+        ]
+      },
+      "aliases": [
+        "Stubba",
+        "史度巴"
+      ]
+    },
+    "stug": {
+      "url_name": "stug",
+      "names": {
+        "en": [
+          "Stug"
+        ],
+        "zh": [
+          "史特克"
+        ]
+      },
+      "aliases": [
+        "Stug",
+        "史特克"
+      ]
+    },
+    "talons": {
+      "url_name": "talons",
+      "names": {
+        "en": [
+          "Talons"
+        ],
+        "zh": [
+          "鹰爪"
+        ]
+      },
+      "aliases": [
+        "Talons",
+        "鹰爪"
+      ]
+    },
+    "twin_grakatas": {
+      "url_name": "twin_grakatas",
+      "names": {
+        "en": [
+          "Twin Grakatas"
+        ],
+        "zh": [
+          "双子葛拉卡达"
+        ]
+      },
+      "aliases": [
+        "Twin Grakatas",
+        "双子葛拉卡达"
+      ]
+    },
+    "twin_gremlins": {
+      "url_name": "twin_gremlins",
+      "names": {
+        "en": [
+          "Twin Gremlins"
+        ],
+        "zh": [
+          "双子小精灵"
+        ]
+      },
+      "aliases": [
+        "Twin Gremlins",
+        "双子小精灵"
+      ]
+    },
+    "twin_kohmak": {
+      "url_name": "twin_kohmak",
+      "names": {
+        "en": [
+          "Twin Kohmak"
+        ],
+        "zh": [
+          "双子寇恩霰机枪"
+        ]
+      },
+      "aliases": [
+        "Twin Kohmak",
+        "双子寇恩霰机枪"
+      ]
+    },
+    "twin_rogga": {
+      "url_name": "twin_rogga",
+      "names": {
+        "en": [
+          "Twin Rogga"
+        ],
+        "zh": [
+          "双子罗格"
+        ]
+      },
+      "aliases": [
+        "Twin Rogga",
+        "双子罗格"
+      ]
+    },
+    "twin_vipers": {
+      "url_name": "twin_vipers",
+      "names": {
+        "en": [
+          "Twin Vipers"
+        ],
+        "zh": [
+          "双子蝰蛇"
+        ]
+      },
+      "aliases": [
+        "Twin Vipers",
+        "双子蝰蛇"
+      ]
+    },
+    "tysis": {
+      "url_name": "tysis",
+      "names": {
+        "en": [
+          "Tysis"
+        ],
+        "zh": [
+          "啐沫者"
+        ]
+      },
+      "aliases": [
+        "Tysis",
+        "啐沫者"
+      ]
+    },
+    "vasto": {
+      "url_name": "vasto",
+      "names": {
+        "en": [
+          "Vasto"
+        ],
+        "zh": [
+          "瓦斯托"
+        ]
+      },
+      "aliases": [
+        "Vasto",
+        "瓦斯托"
+      ]
+    },
+    "viper": {
+      "url_name": "viper",
+      "names": {
+        "en": [
+          "Viper"
+        ],
+        "zh": [
+          "蝰蛇"
+        ]
+      },
+      "aliases": [
+        "Viper",
+        "蝰蛇"
+      ]
+    },
+    "zylok": {
+      "url_name": "zylok",
+      "names": {
+        "en": [
+          "Zylok"
+        ],
+        "zh": [
+          "席尔火枪"
+        ]
+      },
+      "aliases": [
+        "Zylok",
+        "席尔火枪"
+      ]
+    },
+    "dakra_prime": {
+      "url_name": "dakra_prime",
+      "names": {
+        "en": [
+          "Dakra Prime"
+        ],
+        "zh": [
+          "达克拉 Prime"
+        ]
+      },
+      "aliases": [
+        "Dakra Prime",
+        "达克拉 Prime"
+      ]
+    },
+    "dark_dagger": {
+      "url_name": "dark_dagger",
+      "names": {
+        "en": [
+          "Dark Dagger"
+        ],
+        "zh": [
+          "暗黑匕首"
+        ]
+      },
+      "aliases": [
+        "Dark Dagger",
+        "暗黑匕首"
+      ]
+    },
+    "kuva_twin_stubbas": {
+      "url_name": "kuva_twin_stubbas",
+      "names": {
+        "en": [
+          "Kuva Twin Stubbas"
+        ],
+        "zh": [
+          "赤毒·双子史度巴"
+        ]
+      },
+      "aliases": [
+        "Kuva Twin Stubbas",
+        "赤毒·双子史度巴"
+      ]
+    },
+    "pennant": {
+      "url_name": "pennant",
+      "names": {
+        "en": [
+          "Pennant"
+        ],
+        "zh": [
+          "尖幡"
+        ]
+      },
+      "aliases": [
+        "Pennant",
+        "尖幡"
+      ]
+    },
+    "kuva_bramma": {
+      "url_name": "kuva_bramma",
+      "names": {
+        "en": [
+          "Kuva Bramma"
+        ],
+        "zh": [
+          "赤毒·布拉玛"
+        ]
+      },
+      "aliases": [
+        "Kuva Bramma",
+        "赤毒·布拉玛"
+      ]
+    },
+    "stropha": {
+      "url_name": "stropha",
+      "names": {
+        "en": [
+          "Stropha"
+        ],
+        "zh": [
+          "诡计之刃"
+        ]
+      },
+      "aliases": [
+        "Stropha",
+        "诡计之刃"
+      ]
+    },
+    "morgha": {
+      "url_name": "morgha",
+      "names": {
+        "en": [
+          "Morgha"
+        ],
+        "zh": [
+          "置灵者"
+        ]
+      },
+      "aliases": [
+        "Morgha",
+        "置灵者"
+      ]
+    },
+    "catabolyst": {
+      "url_name": "catabolyst",
+      "names": {
+        "en": [
+          "Catabolyst"
+        ],
+        "zh": [
+          "异化者"
+        ]
+      },
+      "aliases": [
+        "Catabolyst",
+        "异化者"
+      ]
+    },
+    "hikou": {
+      "url_name": "hikou",
+      "names": {
+        "en": [
+          "Hikou"
+        ],
+        "zh": [
+          "飞扬"
+        ]
+      },
+      "aliases": [
+        "Hikou",
+        "飞扬"
+      ]
+    },
+    "knell": {
+      "url_name": "knell",
+      "names": {
+        "en": [
+          "Knell"
+        ],
+        "zh": [
+          "丧钟"
+        ]
+      },
+      "aliases": [
+        "Knell",
+        "丧钟"
+      ]
+    },
+    "kohmak": {
+      "url_name": "kohmak",
+      "names": {
+        "en": [
+          "Kohmak"
+        ],
+        "zh": [
+          "寇恩霰机枪"
+        ]
+      },
+      "aliases": [
+        "Kohmak",
+        "寇恩霰机枪"
+      ]
+    },
+    "kraken": {
+      "url_name": "kraken",
+      "names": {
+        "en": [
+          "Kraken"
+        ],
+        "zh": [
+          "北海巨妖"
+        ]
+      },
+      "aliases": [
+        "Kraken",
+        "北海巨妖"
+      ]
+    },
+    "kunai": {
+      "url_name": "kunai",
+      "names": {
+        "en": [
+          "Kunai"
+        ],
+        "zh": [
+          "苦无"
+        ]
+      },
+      "aliases": [
+        "Kunai",
+        "苦无"
+      ]
+    },
+    "lex": {
+      "url_name": "lex",
+      "names": {
+        "en": [
+          "Lex"
+        ],
+        "zh": [
+          "雷克斯"
+        ]
+      },
+      "aliases": [
+        "Lex",
+        "雷克斯"
+      ]
+    },
+    "marelok": {
+      "url_name": "marelok",
+      "names": {
+        "en": [
+          "Marelok"
+        ],
+        "zh": [
+          "玛瑞火枪"
+        ]
+      },
+      "aliases": [
+        "Marelok",
+        "玛瑞火枪"
+      ]
+    },
+    "broken_scepter": {
+      "url_name": "broken_scepter",
+      "names": {
+        "en": [
+          "Broken Scepter"
+        ],
+        "zh": [
+          "破损珽杖"
+        ]
+      },
+      "aliases": [
+        "Broken Scepter",
+        "破损珽杖"
+      ]
+    },
+    "dual_zoren": {
+      "url_name": "dual_zoren",
+      "names": {
+        "en": [
+          "Dual Zoren"
+        ],
+        "zh": [
+          "佐伦双斧"
+        ]
+      },
+      "aliases": [
+        "Dual Zoren",
+        "佐伦双斧"
+      ]
+    },
+    "ether_daggers": {
+      "url_name": "ether_daggers",
+      "names": {
+        "en": [
+          "Ether Daggers"
+        ],
+        "zh": [
+          "苍穹匕首"
+        ]
+      },
+      "aliases": [
+        "Ether Daggers",
+        "苍穹匕首"
+      ]
+    },
+    "ether_reaper": {
+      "url_name": "ether_reaper",
+      "names": {
+        "en": [
+          "Ether Reaper"
+        ],
+        "zh": [
+          "苍穹死神"
+        ]
+      },
+      "aliases": [
+        "Ether Reaper",
+        "苍穹死神"
+      ]
+    },
+    "ether_sword": {
+      "url_name": "ether_sword",
+      "names": {
+        "en": [
+          "Ether Sword"
+        ],
+        "zh": [
+          "苍穹之剑"
+        ]
+      },
+      "aliases": [
+        "Ether Sword",
+        "苍穹之剑"
+      ]
+    },
+    "fang": {
+      "url_name": "fang",
+      "names": {
+        "en": [
+          "Fang"
+        ],
+        "zh": [
+          "狼牙"
+        ]
+      },
+      "aliases": [
+        "Fang",
+        "狼牙"
+      ]
+    },
+    "furax": {
+      "url_name": "furax",
+      "names": {
+        "en": [
+          "Furax"
+        ],
+        "zh": [
+          "弗拉克斯"
+        ]
+      },
+      "aliases": [
+        "Furax",
+        "弗拉克斯"
+      ]
+    },
+    "karyst": {
+      "url_name": "karyst",
+      "names": {
+        "en": [
+          "Karyst"
+        ],
+        "zh": [
+          "凯洛斯特"
+        ]
+      },
+      "aliases": [
+        "Karyst",
+        "凯洛斯特"
+      ]
+    },
+    "stinger": {
+      "url_name": "stinger",
+      "names": {
+        "en": [
+          "Stinger"
+        ],
+        "zh": [
+          "毒刺"
+        ]
+      },
+      "aliases": [
+        "Stinger",
+        "毒刺"
+      ]
+    },
+    "vulklok": {
+      "url_name": "vulklok",
+      "names": {
+        "en": [
+          "Vulklok"
+        ],
+        "zh": [
+          "金工火枪"
+        ]
+      },
+      "aliases": [
+        "Vulklok",
+        "金工火枪"
+      ]
+    },
+    "catchmoon": {
+      "url_name": "catchmoon",
+      "names": {
+        "en": [
+          "Catchmoon"
+        ],
+        "zh": [
+          "捕月"
+        ]
+      },
+      "aliases": [
+        "Catchmoon",
+        "捕月"
+      ]
+    },
+    "plinx": {
+      "url_name": "plinx",
+      "names": {
+        "en": [
+          "Plinx"
+        ],
+        "zh": [
+          "漫射者"
+        ]
+      },
+      "aliases": [
+        "Plinx",
+        "漫射者"
+      ]
+    },
+    "korrudo": {
+      "url_name": "korrudo",
+      "names": {
+        "en": [
+          "Korrudo"
+        ],
+        "zh": [
+          "库鲁多"
+        ]
+      },
+      "aliases": [
+        "Korrudo",
+        "库鲁多"
+      ]
+    },
+    "fulmin": {
+      "url_name": "fulmin",
+      "names": {
+        "en": [
+          "Fulmin"
+        ],
+        "zh": [
+          "雷霆"
+        ]
+      },
+      "aliases": [
+        "Fulmin",
+        "雷霆"
+      ]
+    },
+    "cobra_and_crane": {
+      "url_name": "cobra_and_crane",
+      "names": {
+        "en": [
+          "Cobra & Crane"
+        ],
+        "zh": [
+          "眼镜蛇 & 鹤"
+        ]
+      },
+      "aliases": [
+        "Cobra & Crane",
+        "眼镜蛇 & 鹤"
+      ]
+    },
+    "komorex": {
+      "url_name": "komorex",
+      "names": {
+        "en": [
+          "Komorex"
+        ],
+        "zh": [
+          "猛毒"
+        ]
+      },
+      "aliases": [
+        "Komorex",
+        "猛毒"
+      ]
+    },
+    "cyanex": {
+      "url_name": "cyanex",
+      "names": {
+        "en": [
+          "Cyanex"
+        ],
+        "zh": [
+          "氰毒"
+        ]
+      },
+      "aliases": [
+        "Cyanex",
+        "氰毒"
+      ]
+    },
+    "tatsu": {
+      "url_name": "tatsu",
+      "names": {
+        "en": [
+          "Tatsu"
+        ],
+        "zh": [
+          "龙辰"
+        ]
+      },
+      "aliases": [
+        "Tatsu",
+        "龙辰"
+      ]
+    },
+    "cyngas": {
+      "url_name": "cyngas",
+      "names": {
+        "en": [
+          "Cyngas"
+        ],
+        "zh": [
+          "合成燃气炮"
+        ]
+      },
+      "aliases": [
+        "Cyngas",
+        "合成燃气炮"
+      ]
+    },
+    "larkspur": {
+      "url_name": "larkspur",
+      "names": {
+        "en": [
+          "Larkspur"
+        ],
+        "zh": [
+          "翠雀"
+        ]
+      },
+      "aliases": [
+        "Larkspur",
+        "翠雀"
+      ]
+    },
+    "imperator": {
+      "url_name": "imperator",
+      "names": {
+        "en": [
+          "Imperator"
+        ],
+        "zh": [
+          "凯旋将军"
+        ]
+      },
+      "aliases": [
+        "Imperator",
+        "凯旋将军"
+      ]
+    },
+    "corvas": {
+      "url_name": "corvas",
+      "names": {
+        "en": [
+          "Corvas"
+        ],
+        "zh": [
+          "黑鸦"
+        ]
+      },
+      "aliases": [
+        "Corvas",
+        "黑鸦"
+      ]
+    },
+    "phaedra": {
+      "url_name": "phaedra",
+      "names": {
+        "en": [
+          "Phaedra"
+        ],
+        "zh": [
+          "菲德菈"
+        ]
+      },
+      "aliases": [
+        "Phaedra",
+        "菲德菈"
+      ]
+    },
+    "grattler": {
+      "url_name": "grattler",
+      "names": {
+        "en": [
+          "Grattler"
+        ],
+        "zh": [
+          "葛拉特勒"
+        ]
+      },
+      "aliases": [
+        "Grattler",
+        "葛拉特勒"
+      ]
+    },
+    "dual_decurion": {
+      "url_name": "dual_decurion",
+      "names": {
+        "en": [
+          "Dual Decurion"
+        ],
+        "zh": [
+          "什长双枪"
+        ]
+      },
+      "aliases": [
+        "Dual Decurion",
+        "什长双枪"
+      ]
+    },
+    "attica": {
+      "url_name": "attica",
+      "names": {
+        "en": [
+          "Attica"
+        ],
+        "zh": [
+          "阿提卡"
+        ]
+      },
+      "aliases": [
+        "Attica",
+        "阿提卡"
+      ]
+    },
+    "boltor": {
+      "url_name": "boltor",
+      "names": {
+        "en": [
+          "Boltor"
+        ],
+        "zh": [
+          "螺钉步枪"
+        ]
+      },
+      "aliases": [
+        "Boltor",
+        "螺钉步枪"
+      ]
+    },
+    "braton": {
+      "url_name": "braton",
+      "names": {
+        "en": [
+          "Braton"
+        ],
+        "zh": [
+          "布莱顿"
+        ]
+      },
+      "aliases": [
+        "Braton",
+        "布莱顿"
+      ]
+    },
+    "corinth": {
+      "url_name": "corinth",
+      "names": {
+        "en": [
+          "Corinth"
+        ],
+        "zh": [
+          "科林斯"
+        ]
+      },
+      "aliases": [
+        "Corinth",
+        "科林斯"
+      ]
+    },
+    "ferrox": {
+      "url_name": "ferrox",
+      "names": {
+        "en": [
+          "Ferrox"
+        ],
+        "zh": [
+          "铁晶磁轨炮"
+        ]
+      },
+      "aliases": [
+        "Ferrox",
+        "铁晶磁轨炮"
+      ]
+    },
+    "hek": {
+      "url_name": "hek",
+      "names": {
+        "en": [
+          "Hek"
+        ],
+        "zh": [
+          "海克"
+        ]
+      },
+      "aliases": [
+        "Hek",
+        "海克"
+      ]
+    },
+    "ogris": {
+      "url_name": "ogris",
+      "names": {
+        "en": [
+          "Ogris"
+        ],
+        "zh": [
+          "食人女魔"
+        ]
+      },
+      "aliases": [
+        "Ogris",
+        "食人女魔"
+      ]
+    },
+    "paracyst": {
+      "url_name": "paracyst",
+      "names": {
+        "en": [
+          "Paracyst"
+        ],
+        "zh": [
+          "附肢寄生者"
+        ]
+      },
+      "aliases": [
+        "Paracyst",
+        "附肢寄生者"
+      ]
+    },
+    "supra": {
+      "url_name": "supra",
+      "names": {
+        "en": [
+          "Supra"
+        ],
+        "zh": [
+          "苏普拉"
+        ]
+      },
+      "aliases": [
+        "Supra",
+        "苏普拉"
+      ]
+    },
+    "tenora": {
+      "url_name": "tenora",
+      "names": {
+        "en": [
+          "Tenora"
+        ],
+        "zh": [
+          "双簧管"
+        ]
+      },
+      "aliases": [
+        "Tenora",
+        "双簧管"
+      ]
+    },
+    "tiberon": {
+      "url_name": "tiberon",
+      "names": {
+        "en": [
+          "Tiberon"
+        ],
+        "zh": [
+          "狂鲨"
+        ]
+      },
+      "aliases": [
+        "Tiberon",
+        "狂鲨"
+      ]
+    },
+    "aklex": {
+      "url_name": "aklex",
+      "names": {
+        "en": [
+          "Aklex"
+        ],
+        "zh": [
+          "雷克斯双枪"
+        ]
+      },
+      "aliases": [
+        "Aklex",
+        "雷克斯双枪"
+      ]
+    },
+    "akmagnus": {
+      "url_name": "akmagnus",
+      "names": {
+        "en": [
+          "Akmagnus"
+        ],
+        "zh": [
+          "麦格努斯双枪"
+        ]
+      },
+      "aliases": [
+        "Akmagnus",
+        "麦格努斯双枪"
+      ]
+    },
+    "aksomati": {
+      "url_name": "aksomati",
+      "names": {
+        "en": [
+          "Aksomati"
+        ],
+        "zh": [
+          "轻灵月神双枪"
+        ]
+      },
+      "aliases": [
+        "Aksomati",
+        "轻灵月神双枪"
+      ]
+    },
+    "akstiletto": {
+      "url_name": "akstiletto",
+      "names": {
+        "en": [
+          "Akstiletto"
+        ],
+        "zh": [
+          "史提托双枪"
+        ]
+      },
+      "aliases": [
+        "Akstiletto",
+        "史提托双枪"
+      ]
+    },
+    "akvasto": {
+      "url_name": "akvasto",
+      "names": {
+        "en": [
+          "Akvasto"
+        ],
+        "zh": [
+          "瓦斯托双枪"
+        ]
+      },
+      "aliases": [
+        "Akvasto",
+        "瓦斯托双枪"
+      ]
+    },
+    "akzani": {
+      "url_name": "akzani",
+      "names": {
+        "en": [
+          "Akzani"
+        ],
+        "zh": [
+          "荒谬双枪"
+        ]
+      },
+      "aliases": [
+        "Akzani",
+        "荒谬双枪"
+      ]
+    },
+    "angstrum": {
+      "url_name": "angstrum",
+      "names": {
+        "en": [
+          "Angstrum"
+        ],
+        "zh": [
+          "安格斯壮"
+        ]
+      },
+      "aliases": [
+        "Angstrum",
+        "安格斯壮"
+      ]
+    },
+    "atomos": {
+      "url_name": "atomos",
+      "names": {
+        "en": [
+          "Atomos"
+        ],
+        "zh": [
+          "原子矿融炮"
+        ]
+      },
+      "aliases": [
+        "Atomos",
+        "原子矿融炮"
+      ]
+    },
+    "azima": {
+      "url_name": "azima",
+      "names": {
+        "en": [
+          "Azima"
+        ],
+        "zh": [
+          "方位角"
+        ]
+      },
+      "aliases": [
+        "Azima",
+        "方位角"
+      ]
+    },
+    "bolto": {
+      "url_name": "bolto",
+      "names": {
+        "en": [
+          "Bolto"
+        ],
+        "zh": [
+          "螺钉手枪"
+        ]
+      },
+      "aliases": [
+        "Bolto",
+        "螺钉手枪"
+      ]
+    },
+    "brakk": {
+      "url_name": "brakk",
+      "names": {
+        "en": [
+          "Brakk"
+        ],
+        "zh": [
+          "布拉克"
+        ]
+      },
+      "aliases": [
+        "Brakk",
+        "布拉克"
+      ]
+    },
+    "despair": {
+      "url_name": "despair",
+      "names": {
+        "en": [
+          "Despair"
+        ],
+        "zh": [
+          "绝望"
+        ]
+      },
+      "aliases": [
+        "Despair",
+        "绝望"
+      ]
+    },
+    "dual_raza": {
+      "url_name": "dual_raza",
+      "names": {
+        "en": [
+          "Dual Raza"
+        ],
+        "zh": [
+          "锋月双斧"
+        ]
+      },
+      "aliases": [
+        "Dual Raza",
+        "锋月双斧"
+      ]
+    },
+    "reaper_prime": {
+      "url_name": "reaper_prime",
+      "names": {
+        "en": [
+          "Reaper Prime"
+        ],
+        "zh": [
+          "收割者 Prime"
+        ]
+      },
+      "aliases": [
+        "Reaper Prime",
+        "收割者 Prime"
+      ]
+    },
+    "ripkas": {
+      "url_name": "ripkas",
+      "names": {
+        "en": [
+          "Ripkas"
+        ],
+        "zh": [
+          "锐卡斯"
+        ]
+      },
+      "aliases": [
+        "Ripkas",
+        "锐卡斯"
+      ]
+    },
+    "dark_sword": {
+      "url_name": "dark_sword",
+      "names": {
+        "en": [
+          "Dark Sword"
+        ],
+        "zh": [
+          "暗黑长剑"
+        ]
+      },
+      "aliases": [
+        "Dark Sword",
+        "暗黑长剑"
+      ]
+    },
+    "kreska": {
+      "url_name": "kreska",
+      "names": {
+        "en": [
+          "Kreska"
+        ],
+        "zh": [
+          "直镐"
+        ]
+      },
+      "aliases": [
+        "Kreska",
+        "直镐"
+      ]
+    },
+    "velocitus": {
+      "url_name": "velocitus",
+      "names": {
+        "en": [
+          "Velocitus"
+        ],
+        "zh": [
+          "极速电磁步枪"
+        ]
+      },
+      "aliases": [
+        "Velocitus",
+        "极速电磁步枪"
+      ]
+    },
+    "fluctus": {
+      "url_name": "fluctus",
+      "names": {
+        "en": [
+          "Fluctus"
+        ],
+        "zh": [
+          "巨浪"
+        ]
+      },
+      "aliases": [
+        "Fluctus",
+        "巨浪"
+      ]
+    },
+    "quatz": {
+      "url_name": "quatz",
+      "names": {
+        "en": [
+          "Quatz"
+        ],
+        "zh": [
+          "夸兹"
+        ]
+      },
+      "aliases": [
+        "Quatz",
+        "夸兹"
+      ]
+    },
+    "acceltra": {
+      "url_name": "acceltra",
+      "names": {
+        "en": [
+          "Acceltra"
+        ],
+        "zh": [
+          "迅发电浆炮"
+        ]
+      },
+      "aliases": [
+        "Acceltra",
+        "迅发电浆炮"
+      ]
+    },
+    "akarius": {
+      "url_name": "akarius",
+      "names": {
+        "en": [
+          "Akarius"
+        ],
+        "zh": [
+          "阿利乌双枪"
+        ]
+      },
+      "aliases": [
+        "Akarius",
+        "阿利乌双枪"
+      ]
+    },
+    "tazicor": {
+      "url_name": "tazicor",
+      "names": {
+        "en": [
+          "Tazicor"
+        ],
+        "zh": [
+          "泰瑟步枪"
+        ]
+      },
+      "aliases": [
+        "Tazicor",
+        "泰瑟步枪"
+      ]
+    },
+    "cryotra": {
+      "url_name": "cryotra",
+      "names": {
+        "en": [
+          "Cryotra"
+        ],
+        "zh": [
+          "急冻喷枪"
+        ]
+      },
+      "aliases": [
+        "Cryotra",
+        "急冻喷枪"
+      ]
+    },
+    "shedu": {
+      "url_name": "shedu",
+      "names": {
+        "en": [
+          "Shedu"
+        ],
+        "zh": [
+          "舍杜"
+        ]
+      },
+      "aliases": [
+        "Shedu",
+        "舍杜"
+      ]
+    },
+    "cortege": {
+      "url_name": "cortege",
+      "names": {
+        "en": [
+          "Cortege"
+        ],
+        "zh": [
+          "送葬者"
+        ]
+      },
+      "aliases": [
+        "Cortege",
+        "送葬者"
+      ]
+    },
+    "vitrica": {
+      "url_name": "vitrica",
+      "names": {
+        "en": [
+          "Vitrica"
+        ],
+        "zh": [
+          "金璃剑"
+        ]
+      },
+      "aliases": [
+        "Vitrica",
+        "金璃剑"
+      ]
+    },
+    "pulmonars": {
+      "url_name": "pulmonars",
+      "names": {
+        "en": [
+          "Pulmonars"
+        ],
+        "zh": [
+          "感染连枷"
+        ]
+      },
+      "aliases": [
+        "Pulmonars",
+        "感染连枷"
+      ]
+    },
+    "bubonico": {
+      "url_name": "bubonico",
+      "names": {
+        "en": [
+          "Bubonico"
+        ],
+        "zh": [
+          "横痃重炮"
+        ]
+      },
+      "aliases": [
+        "Bubonico",
+        "横痃重炮"
+      ]
+    },
+    "proboscis_cernos": {
+      "url_name": "proboscis_cernos",
+      "names": {
+        "en": [
+          "Proboscis Cernos"
+        ],
+        "zh": [
+          "刺吸西诺斯"
+        ]
+      },
+      "aliases": [
+        "Proboscis Cernos",
+        "刺吸西诺斯"
+      ]
+    },
+    "sporothrix": {
+      "url_name": "sporothrix",
+      "names": {
+        "en": [
+          "Sporothrix"
+        ],
+        "zh": [
+          "孢丝感染枪"
+        ]
+      },
+      "aliases": [
+        "Sporothrix",
+        "孢丝感染枪"
+      ]
+    },
+    "arum_spinosa": {
+      "url_name": "arum_spinosa",
+      "names": {
+        "en": [
+          "Arum Spinosa"
+        ],
+        "zh": [
+          "疆南星刺"
+        ]
+      },
+      "aliases": [
+        "Arum Spinosa",
+        "疆南星刺"
+      ]
+    },
+    "sarpa": {
+      "url_name": "sarpa",
+      "names": {
+        "en": [
+          "Sarpa"
+        ],
+        "zh": [
+          "蛇刃"
+        ]
+      },
+      "aliases": [
+        "Sarpa",
+        "蛇刃"
+      ]
+    },
+    "scindo": {
+      "url_name": "scindo",
+      "names": {
+        "en": [
+          "Scindo"
+        ],
+        "zh": [
+          "分裂斩斧"
+        ]
+      },
+      "aliases": [
+        "Scindo",
+        "分裂斩斧"
+      ]
+    },
+    "scoliac": {
+      "url_name": "scoliac",
+      "names": {
+        "en": [
+          "Scoliac"
+        ],
+        "zh": [
+          "脊椎节鞭"
+        ]
+      },
+      "aliases": [
+        "Scoliac",
+        "脊椎节鞭"
+      ]
+    },
+    "sepfahn": {
+      "url_name": "sepfahn",
+      "names": {
+        "en": [
+          "Sepfahn"
+        ],
+        "zh": [
+          "瑟普梵"
+        ]
+      },
+      "aliases": [
+        "Sepfahn",
+        "瑟普梵"
+      ]
+    },
+    "serro": {
+      "url_name": "serro",
+      "names": {
+        "en": [
+          "Serro"
+        ],
+        "zh": [
+          "电能斩锯"
+        ]
+      },
+      "aliases": [
+        "Serro",
+        "电能斩锯"
+      ]
+    },
+    "shaku": {
+      "url_name": "shaku",
+      "names": {
+        "en": [
+          "Shaku"
+        ],
+        "zh": [
+          "双节尺棍"
+        ]
+      },
+      "aliases": [
+        "Shaku",
+        "双节尺棍"
+      ]
+    },
+    "sheev": {
+      "url_name": "sheev",
+      "names": {
+        "en": [
+          "Sheev"
+        ],
+        "zh": [
+          "希芙"
+        ]
+      },
+      "aliases": [
+        "Sheev",
+        "希芙"
+      ]
+    },
+    "sibear": {
+      "url_name": "sibear",
+      "names": {
+        "en": [
+          "Sibear"
+        ],
+        "zh": [
+          "西伯利亚冰锤"
+        ]
+      },
+      "aliases": [
+        "Sibear",
+        "西伯利亚冰锤"
+      ]
+    },
+    "sigma_and_octantis": {
+      "url_name": "sigma_and_octantis",
+      "names": {
+        "en": [
+          "Sigma & Octantis"
+        ],
+        "zh": [
+          "西格玛 & 南极座"
+        ]
+      },
+      "aliases": [
+        "Sigma & Octantis",
+        "西格玛 & 南极座"
+      ]
+    },
+    "silva_and_aegis": {
+      "url_name": "silva_and_aegis",
+      "names": {
+        "en": [
+          "Silva & Aegis"
+        ],
+        "zh": [
+          "席瓦 & 神盾"
+        ]
+      },
+      "aliases": [
+        "Silva & Aegis",
+        "席瓦 & 神盾"
+      ]
+    },
+    "skiajati": {
+      "url_name": "skiajati",
+      "names": {
+        "en": [
+          "Skiajati"
+        ],
+        "zh": [
+          "影生"
+        ]
+      },
+      "aliases": [
+        "Skiajati",
+        "影生"
+      ]
+    },
+    "sydon": {
+      "url_name": "sydon",
+      "names": {
+        "en": [
+          "Sydon"
+        ],
+        "zh": [
+          "恶龙"
+        ]
+      },
+      "aliases": [
+        "Sydon",
+        "恶龙"
+      ]
+    },
+    "tekko": {
+      "url_name": "tekko",
+      "names": {
+        "en": [
+          "Tekko"
+        ],
+        "zh": [
+          "铁钩手甲"
+        ]
+      },
+      "aliases": [
+        "Tekko",
+        "铁钩手甲"
+      ]
+    },
+    "tipedo": {
+      "url_name": "tipedo",
+      "names": {
+        "en": [
+          "Tipedo"
+        ],
+        "zh": [
+          "提佩多"
+        ]
+      },
+      "aliases": [
+        "Tipedo",
+        "提佩多"
+      ]
+    },
+    "tonbo": {
+      "url_name": "tonbo",
+      "names": {
+        "en": [
+          "Tonbo"
+        ],
+        "zh": [
+          "蜻蛉薙"
+        ]
+      },
+      "aliases": [
+        "Tonbo",
+        "蜻蛉薙"
+      ]
+    },
+    "twin_basolk": {
+      "url_name": "twin_basolk",
+      "names": {
+        "en": [
+          "Twin Basolk"
+        ],
+        "zh": [
+          "双子巴萨克"
+        ]
+      },
+      "aliases": [
+        "Twin Basolk",
+        "双子巴萨克"
+      ]
+    },
+    "amprex": {
+      "url_name": "amprex",
+      "names": {
+        "en": [
+          "Amprex"
+        ],
+        "zh": [
+          "安培克斯"
+        ]
+      },
+      "aliases": [
+        "Amprex",
+        "安培克斯"
+      ]
+    },
+    "burston": {
+      "url_name": "burston",
+      "names": {
+        "en": [
+          "Burston"
+        ],
+        "zh": [
+          "伯斯顿"
+        ]
+      },
+      "aliases": [
+        "Burston",
+        "伯斯顿"
+      ]
+    },
+    "buzlok": {
+      "url_name": "buzlok",
+      "names": {
+        "en": [
+          "Buzlok"
+        ],
+        "zh": [
+          "巴兹火枪"
+        ]
+      },
+      "aliases": [
+        "Buzlok",
+        "巴兹火枪"
+      ]
+    },
+    "cernos": {
+      "url_name": "cernos",
+      "names": {
+        "en": [
+          "Cernos"
+        ],
+        "zh": [
+          "西诺斯"
+        ]
+      },
+      "aliases": [
+        "Cernos",
+        "西诺斯"
+      ]
+    },
+    "convectrix": {
+      "url_name": "convectrix",
+      "names": {
+        "en": [
+          "Convectrix"
+        ],
+        "zh": [
+          "导热聚焦枪"
+        ]
+      },
+      "aliases": [
+        "Convectrix",
+        "导热聚焦枪"
+      ]
+    },
+    "daikyu": {
+      "url_name": "daikyu",
+      "names": {
+        "en": [
+          "Daikyu"
+        ],
+        "zh": [
+          "大久和弓"
+        ]
+      },
+      "aliases": [
+        "Daikyu",
+        "大久和弓"
+      ]
+    },
+    "dera": {
+      "url_name": "dera",
+      "names": {
+        "en": [
+          "Dera"
+        ],
+        "zh": [
+          "德拉"
+        ]
+      },
+      "aliases": [
+        "Dera",
+        "德拉"
+      ]
+    },
+    "drakgoon": {
+      "url_name": "drakgoon",
+      "names": {
+        "en": [
+          "Drakgoon"
+        ],
+        "zh": [
+          "龙骑兵"
+        ]
+      },
+      "aliases": [
+        "Drakgoon",
+        "龙骑兵"
+      ]
+    },
+    "dread": {
+      "url_name": "dread",
+      "names": {
+        "en": [
+          "Dread"
+        ],
+        "zh": [
+          "恐惧"
+        ]
+      },
+      "aliases": [
+        "Dread",
+        "恐惧"
+      ]
+    },
+    "glaxion": {
+      "url_name": "glaxion",
+      "names": {
+        "en": [
+          "Glaxion"
+        ],
+        "zh": [
+          "冷冻光束步枪"
+        ]
+      },
+      "aliases": [
+        "Glaxion",
+        "冷冻光束步枪"
+      ]
+    },
+    "gorgon": {
+      "url_name": "gorgon",
+      "names": {
+        "en": [
+          "Gorgon"
+        ],
+        "zh": [
+          "蛇发女妖"
+        ]
+      },
+      "aliases": [
+        "Gorgon",
+        "蛇发女妖"
+      ]
+    },
+    "grakata": {
+      "url_name": "grakata",
+      "names": {
+        "en": [
+          "Grakata"
+        ],
+        "zh": [
+          "葛拉卡达"
+        ]
+      },
+      "aliases": [
+        "Grakata",
+        "葛拉卡达"
+      ]
+    },
+    "grinlok": {
+      "url_name": "grinlok",
+      "names": {
+        "en": [
+          "Grinlok"
+        ],
+        "zh": [
+          "葛恩火枪"
+        ]
+      },
+      "aliases": [
+        "Grinlok",
+        "葛恩火枪"
+      ]
+    },
+    "seer": {
+      "url_name": "seer",
+      "names": {
+        "en": [
+          "Seer"
+        ],
+        "zh": [
+          "预言者"
+        ]
+      },
+      "aliases": [
+        "Seer",
+        "预言者"
+      ]
+    },
+    "zakti": {
+      "url_name": "zakti",
+      "names": {
+        "en": [
+          "Zakti"
+        ],
+        "zh": [
+          "毒芽"
+        ]
+      },
+      "aliases": [
+        "Zakti",
+        "毒芽"
+      ]
+    },
+    "cyath": {
+      "url_name": "cyath",
+      "names": {
+        "en": [
+          "Cyath"
+        ],
+        "zh": [
+          "西亚什"
+        ]
+      },
+      "aliases": [
+        "Cyath",
+        "西亚什"
+      ]
+    },
+    "dark_split_sword_(dual_swords)": {
+      "url_name": "dark_split_sword_(dual_swords)",
+      "names": {
+        "en": [
+          "Dark Split-Sword"
+        ],
+        "zh": [
+          "暗黑分合剑"
+        ]
+      },
+      "aliases": [
+        "Dark Split-Sword",
+        "暗黑分合剑"
+      ]
+    },
+    "krohkur": {
+      "url_name": "krohkur",
+      "names": {
+        "en": [
+          "Krohkur"
+        ],
+        "zh": [
+          "克鲁古尔"
+        ]
+      },
+      "aliases": [
+        "Krohkur",
+        "克鲁古尔"
+      ]
+    },
+    "kronen": {
+      "url_name": "kronen",
+      "names": {
+        "en": [
+          "Kronen"
+        ],
+        "zh": [
+          "皇家拐刃"
+        ]
+      },
+      "aliases": [
+        "Kronen",
+        "皇家拐刃"
+      ]
+    },
+    "lacera": {
+      "url_name": "lacera",
+      "names": {
+        "en": [
+          "Lacera"
+        ],
+        "zh": [
+          "悲痛之刃"
+        ]
+      },
+      "aliases": [
+        "Lacera",
+        "悲痛之刃"
+      ]
+    },
+    "lesion": {
+      "url_name": "lesion",
+      "names": {
+        "en": [
+          "Lesion"
+        ],
+        "zh": [
+          "病变"
+        ]
+      },
+      "aliases": [
+        "Lesion",
+        "病变"
+      ]
+    },
+    "venka": {
+      "url_name": "venka",
+      "names": {
+        "en": [
+          "Venka"
+        ],
+        "zh": [
+          "凯旋之爪"
+        ]
+      },
+      "aliases": [
+        "Venka",
+        "凯旋之爪"
+      ]
+    },
+    "volnus": {
+      "url_name": "volnus",
+      "names": {
+        "en": [
+          "Volnus"
+        ],
+        "zh": [
+          "创伤"
+        ]
+      },
+      "aliases": [
+        "Volnus",
+        "创伤"
+      ]
+    },
+    "zenistar": {
+      "url_name": "zenistar",
+      "names": {
+        "en": [
+          "Zenistar"
+        ],
+        "zh": [
+          "天顶之星"
+        ]
+      },
+      "aliases": [
+        "Zenistar",
+        "天顶之星"
+      ]
+    },
+    "deconstructor": {
+      "url_name": "deconstructor",
+      "names": {
+        "en": [
+          "Deconstructor"
+        ],
+        "zh": [
+          "分离"
+        ]
+      },
+      "aliases": [
+        "Deconstructor",
+        "分离"
+      ]
+    },
+    "sweeper": {
+      "url_name": "sweeper",
+      "names": {
+        "en": [
+          "Sweeper"
+        ],
+        "zh": [
+          "扫除者"
+        ]
+      },
+      "aliases": [
+        "Sweeper",
+        "扫除者"
+      ]
+    },
+    "rattleguts": {
+      "url_name": "rattleguts",
+      "names": {
+        "en": [
+          "Rattleguts"
+        ],
+        "zh": [
+          "响胆"
+        ]
+      },
+      "aliases": [
+        "Rattleguts",
+        "响胆"
+      ]
+    },
+    "wolf_sledge": {
+      "url_name": "wolf_sledge",
+      "names": {
+        "en": [
+          "Wolf Sledge"
+        ],
+        "zh": [
+          "恶狼战锤"
+        ]
+      },
+      "aliases": [
+        "Wolf Sledge",
+        "恶狼战锤"
+      ]
+    },
+    "quellor": {
+      "url_name": "quellor",
+      "names": {
+        "en": [
+          "Quellor"
+        ],
+        "zh": [
+          "压制者"
+        ]
+      },
+      "aliases": [
+        "Quellor",
+        "压制者"
+      ]
+    },
+    "basmu": {
+      "url_name": "basmu",
+      "names": {
+        "en": [
+          "Basmu"
+        ],
+        "zh": [
+          "巴什穆"
+        ]
+      },
+      "aliases": [
+        "Basmu",
+        "巴什穆"
+      ]
+    },
+    "stahlta": {
+      "url_name": "stahlta",
+      "names": {
+        "en": [
+          "Stahlta"
+        ],
+        "zh": [
+          "钢刃步枪"
+        ]
+      },
+      "aliases": [
+        "Stahlta",
+        "钢刃步枪"
+      ]
+    },
+    "velox": {
+      "url_name": "velox",
+      "names": {
+        "en": [
+          "Velox"
+        ],
+        "zh": [
+          "逐电"
+        ]
+      },
+      "aliases": [
+        "Velox",
+        "逐电"
+      ]
+    },
+    "helstrum": {
+      "url_name": "helstrum",
+      "names": {
+        "en": [
+          "Helstrum"
+        ],
+        "zh": [
+          "赫尔斯壮"
+        ]
+      },
+      "aliases": [
+        "Helstrum",
+        "赫尔斯壮"
+      ]
+    },
+    "xoris": {
+      "url_name": "xoris",
+      "names": {
+        "en": [
+          "Xoris"
+        ],
+        "zh": [
+          "驱魔之刃"
+        ]
+      },
+      "aliases": [
+        "Xoris",
+        "驱魔之刃"
+      ]
+    },
+    "athodai": {
+      "url_name": "athodai",
+      "names": {
+        "en": [
+          "Athodai"
+        ],
+        "zh": [
+          "阿索代"
+        ]
+      },
+      "aliases": [
+        "Athodai",
+        "阿索代"
+      ]
+    },
+    "sepulcrum": {
+      "url_name": "sepulcrum",
+      "names": {
+        "en": [
+          "Sepulcrum"
+        ],
+        "zh": [
+          "追击者"
+        ]
+      },
+      "aliases": [
+        "Sepulcrum",
+        "追击者"
+      ]
+    },
+    "quassus": {
+      "url_name": "quassus",
+      "names": {
+        "en": [
+          "Quassus"
+        ],
+        "zh": [
+          "威震武扇"
+        ]
+      },
+      "aliases": [
+        "Quassus",
+        "威震武扇"
+      ]
+    },
+    "trumna": {
+      "url_name": "trumna",
+      "names": {
+        "en": [
+          "Trumna"
+        ],
+        "zh": [
+          "灭杀者"
+        ]
+      },
+      "aliases": [
+        "Trumna",
+        "灭杀者"
+      ]
+    },
+    "zymos": {
+      "url_name": "zymos",
+      "names": {
+        "en": [
+          "Zymos"
+        ],
+        "zh": [
+          "邪莫斯"
+        ]
+      },
+      "aliases": [
+        "Zymos",
+        "邪莫斯"
+      ]
+    },
+    "keratinos": {
+      "url_name": "keratinos",
+      "names": {
+        "en": [
+          "Keratinos"
+        ],
+        "zh": [
+          "卡提努之爪"
+        ]
+      },
+      "aliases": [
+        "Keratinos",
+        "卡提努之爪"
+      ]
+    },
+    "mausolon": {
+      "url_name": "mausolon",
+      "names": {
+        "en": [
+          "Mausolon"
+        ],
+        "zh": [
+          "惩戒者"
+        ]
+      },
+      "aliases": [
+        "Mausolon",
+        "惩戒者"
+      ]
+    },
+    "cedo": {
+      "url_name": "cedo",
+      "names": {
+        "en": [
+          "Cedo"
+        ],
+        "zh": [
+          "塞多"
+        ]
+      },
+      "aliases": [
+        "Cedo",
+        "塞多"
+      ]
+    },
+    "verglas": {
+      "url_name": "verglas",
+      "names": {
+        "en": [
+          "Verglas"
+        ],
+        "zh": [
+          "冰凇"
+        ]
+      },
+      "aliases": [
+        "Verglas",
+        "冰凇"
+      ]
+    },
+    "epitaph": {
+      "url_name": "epitaph",
+      "names": {
+        "en": [
+          "Epitaph"
+        ],
+        "zh": [
+          "葬铭"
+        ]
+      },
+      "aliases": [
+        "Epitaph",
+        "葬铭"
+      ]
+    },
+    "tenet_envoy": {
+      "url_name": "tenet_envoy",
+      "names": {
+        "en": [
+          "Tenet Envoy"
+        ],
+        "zh": [
+          "信条·典客"
+        ]
+      },
+      "aliases": [
+        "Tenet Envoy",
+        "信条·典客"
+      ]
+    },
+    "tenet_spirex": {
+      "url_name": "tenet_spirex",
+      "names": {
+        "en": [
+          "Tenet Spirex"
+        ],
+        "zh": [
+          "信条·斯派克斯"
+        ]
+      },
+      "aliases": [
+        "Tenet Spirex",
+        "信条·斯派克斯"
+      ]
+    },
+    "kompressa": {
+      "url_name": "kompressa",
+      "names": {
+        "en": [
+          "Kompressa"
+        ],
+        "zh": [
+          "卡帕压力枪"
+        ]
+      },
+      "aliases": [
+        "Kompressa",
+        "卡帕压力枪"
+      ]
+    },
+    "tenet_exec": {
+      "url_name": "tenet_exec",
+      "names": {
+        "en": [
+          "Tenet Exec"
+        ],
+        "zh": [
+          "信条·枢密"
+        ]
+      },
+      "aliases": [
+        "Tenet Exec",
+        "信条·枢密"
+      ]
+    },
+    "tenet_grigori": {
+      "url_name": "tenet_grigori",
+      "names": {
+        "en": [
+          "Tenet Grigori"
+        ],
+        "zh": [
+          "信条·格里高利"
+        ]
+      },
+      "aliases": [
+        "Tenet Grigori",
+        "信条·格里高利"
+      ]
+    },
+    "ambassador": {
+      "url_name": "ambassador",
+      "names": {
+        "en": [
+          "Ambassador"
+        ],
+        "zh": [
+          "使节"
+        ]
+      },
+      "aliases": [
+        "Ambassador",
+        "使节"
+      ]
+    },
+    "cadus": {
+      "url_name": "cadus",
+      "names": {
+        "en": [
+          "Cadus"
+        ],
+        "zh": [
+          "卡德斯"
+        ]
+      },
+      "aliases": [
+        "Cadus",
+        "卡德斯"
+      ]
+    },
+    "tenet_livia": {
+      "url_name": "tenet_livia",
+      "names": {
+        "en": [
+          "Tenet Livia"
+        ],
+        "zh": [
+          "信条·莉薇娅"
+        ]
+      },
+      "aliases": [
+        "Tenet Livia",
+        "信条·莉薇娅"
+      ]
+    },
+    "tenet_diplos": {
+      "url_name": "tenet_diplos",
+      "names": {
+        "en": [
+          "Tenet Diplos"
+        ],
+        "zh": [
+          "信条·纵横双枪"
+        ]
+      },
+      "aliases": [
+        "Tenet Diplos",
+        "信条·纵横双枪"
+      ]
+    },
+    "tenet_agendus": {
+      "url_name": "tenet_agendus",
+      "names": {
+        "en": [
+          "Tenet Agendus"
+        ],
+        "zh": [
+          "信条·集议"
+        ]
+      },
+      "aliases": [
+        "Tenet Agendus",
+        "信条·集议"
+      ]
+    },
+    "lacerten": {
+      "url_name": "lacerten",
+      "names": {
+        "en": [
+          "Lacerten"
+        ],
+        "zh": [
+          "莱斯腾"
+        ]
+      },
+      "aliases": [
+        "Lacerten",
+        "莱斯腾"
+      ]
+    },
+    "akaten": {
+      "url_name": "akaten",
+      "names": {
+        "en": [
+          "Akaten"
+        ],
+        "zh": [
+          "阿卡腾"
+        ]
+      },
+      "aliases": [
+        "Akaten",
+        "阿卡腾"
+      ]
+    },
+    "batoten": {
+      "url_name": "batoten",
+      "names": {
+        "en": [
+          "Batoten"
+        ],
+        "zh": [
+          "巴托腾"
+        ]
+      },
+      "aliases": [
+        "Batoten",
+        "巴托腾"
+      ]
+    },
+    "vastilok": {
+      "url_name": "vastilok",
+      "names": {
+        "en": [
+          "Vastilok"
+        ],
+        "zh": [
+          "瓦斯提枪刃"
+        ]
+      },
+      "aliases": [
+        "Vastilok",
+        "瓦斯提枪刃"
+      ]
+    },
+    "ghoulsaw": {
+      "url_name": "ghoulsaw",
+      "names": {
+        "en": [
+          "Ghoulsaw"
+        ],
+        "zh": [
+          "尸鬼电锯"
+        ]
+      },
+      "aliases": [
+        "Ghoulsaw",
+        "尸鬼电锯"
+      ]
+    },
+    "verdilac": {
+      "url_name": "verdilac",
+      "names": {
+        "en": [
+          "Verdilac"
+        ],
+        "zh": [
+          "蝰首骨妖"
+        ]
+      },
+      "aliases": [
+        "Verdilac",
+        "蝰首骨妖"
+      ]
+    },
+    "nepheri": {
+      "url_name": "nepheri",
+      "names": {
+        "en": [
+          "Nepheri"
+        ],
+        "zh": [
+          "赤炎流星"
+        ]
+      },
+      "aliases": [
+        "Nepheri",
+        "赤炎流星"
+      ]
+    },
+    "rumblejack": {
+      "url_name": "rumblejack",
+      "names": {
+        "en": [
+          "Rumblejack"
+        ],
+        "zh": [
+          "电匕怪杰"
+        ]
+      },
+      "aliases": [
+        "Rumblejack",
+        "电匕怪杰"
+      ]
+    },
+    "korumm": {
+      "url_name": "korumm",
+      "names": {
+        "en": [
+          "Korumm"
+        ],
+        "zh": [
+          "雷霆暴君"
+        ]
+      },
+      "aliases": [
+        "Korumm",
+        "雷霆暴君"
+      ]
+    },
+    "venato": {
+      "url_name": "venato",
+      "names": {
+        "en": [
+          "Venato"
+        ],
+        "zh": [
+          "脉纹"
+        ]
+      },
+      "aliases": [
+        "Venato",
+        "脉纹"
+      ]
+    },
+    "nataruk": {
+      "url_name": "nataruk",
+      "names": {
+        "en": [
+          "Nataruk"
+        ],
+        "zh": [
+          "太始弓"
+        ]
+      },
+      "aliases": [
+        "Nataruk",
+        "太始弓"
+      ]
+    },
+    "hespar": {
+      "url_name": "hespar",
+      "names": {
+        "en": [
+          "Hespar"
+        ],
+        "zh": [
+          "暮斩"
+        ]
+      },
+      "aliases": [
+        "Hespar",
+        "暮斩"
+      ]
+    },
+    "alternox": {
+      "url_name": "alternox",
+      "names": {
+        "en": [
+          "Alternox"
+        ],
+        "zh": [
+          "电幻步枪"
+        ]
+      },
+      "aliases": [
+        "Alternox",
+        "电幻步枪"
+      ]
+    },
+    "aeolak": {
+      "url_name": "aeolak",
+      "names": {
+        "en": [
+          "Aeolak"
+        ],
+        "zh": [
+          "风鸣"
+        ]
+      },
+      "aliases": [
+        "Aeolak",
+        "风鸣"
+      ]
+    },
+    "phenmor": {
+      "url_name": "phenmor",
+      "names": {
+        "en": [
+          "Phenmor"
+        ],
+        "zh": [
+          "凤殁"
+        ]
+      },
+      "aliases": [
+        "Phenmor",
+        "凤殁"
+      ]
+    },
+    "laetum": {
+      "url_name": "laetum",
+      "names": {
+        "en": [
+          "Laetum"
+        ],
+        "zh": [
+          "奏凯"
+        ]
+      },
+      "aliases": [
+        "Laetum",
+        "奏凯"
+      ]
+    },
+    "praedos": {
+      "url_name": "praedos",
+      "names": {
+        "en": [
+          "Praedos"
+        ],
+        "zh": [
+          "双雄"
+        ]
+      },
+      "aliases": [
+        "Praedos",
+        "双雄"
+      ]
+    },
+    "innodem": {
+      "url_name": "innodem",
+      "names": {
+        "en": [
+          "Innodem"
+        ],
+        "zh": [
+          "清刚"
+        ]
+      },
+      "aliases": [
+        "Innodem",
+        "清刚"
+      ]
+    },
+    "felarx": {
+      "url_name": "felarx",
+      "names": {
+        "en": [
+          "Felarx"
+        ],
+        "zh": [
+          "逐枭"
+        ]
+      },
+      "aliases": [
+        "Felarx",
+        "逐枭"
+      ]
+    },
+    "vericres": {
+      "url_name": "vericres",
+      "names": {
+        "en": [
+          "Vericres"
+        ],
+        "zh": [
+          "真月武扇"
+        ]
+      },
+      "aliases": [
+        "Vericres",
+        "真月武扇"
+      ]
+    },
+    "slaytra": {
+      "url_name": "slaytra",
+      "names": {
+        "en": [
+          "Slaytra"
+        ],
+        "zh": [
+          "屠煞"
+        ]
+      },
+      "aliases": [
+        "Slaytra",
+        "屠煞"
+      ]
+    },
+    "aegrit": {
+      "url_name": "aegrit",
+      "names": {
+        "en": [
+          "Aegrit"
+        ],
+        "zh": [
+          "骇敌榴弹"
+        ]
+      },
+      "aliases": [
+        "Aegrit",
+        "骇敌榴弹"
+      ]
+    },
+    "afentis": {
+      "url_name": "afentis",
+      "names": {
+        "en": [
+          "Afentis"
+        ],
+        "zh": [
+          "圣英"
+        ]
+      },
+      "aliases": [
+        "Afentis",
+        "圣英"
+      ]
+    },
+    "sarofang": {
+      "url_name": "sarofang",
+      "names": {
+        "en": [
+          "Sarofang"
+        ],
+        "zh": [
+          "沙罗之牙"
+        ]
+      },
+      "aliases": [
+        "Sarofang",
+        "沙罗之牙"
+      ]
+    },
+    "perigale": {
+      "url_name": "perigale",
+      "names": {
+        "en": [
+          "Perigale"
+        ],
+        "zh": [
+          "月面狂风"
+        ]
+      },
+      "aliases": [
+        "Perigale",
+        "月面狂风"
+      ]
+    },
+    "corufell": {
+      "url_name": "corufell",
+      "names": {
+        "en": [
+          "Corufell"
+        ],
+        "zh": [
+          "闪劫"
+        ]
+      },
+      "aliases": [
+        "Corufell",
+        "闪劫"
+      ]
+    },
+    "steflos": {
+      "url_name": "steflos",
+      "names": {
+        "en": [
+          "Steflos"
+        ],
+        "zh": [
+          "石晶之花"
+        ]
+      },
+      "aliases": [
+        "Steflos",
+        "石晶之花"
+      ]
+    },
+    "sampotes": {
+      "url_name": "sampotes",
+      "names": {
+        "en": [
+          "Sampotes"
+        ],
+        "zh": [
+          "三宝聚"
+        ]
+      },
+      "aliases": [
+        "Sampotes",
+        "三宝聚"
+      ]
+    },
+    "azothane": {
+      "url_name": "azothane",
+      "names": {
+        "en": [
+          "Azothane"
+        ],
+        "zh": [
+          "溶灵尊"
+        ]
+      },
+      "aliases": [
+        "Azothane",
+        "溶灵尊"
+      ]
+    },
+    "syam": {
+      "url_name": "syam",
+      "names": {
+        "en": [
+          "Syam"
+        ],
+        "zh": [
+          "业珀"
+        ]
+      },
+      "aliases": [
+        "Syam",
+        "业珀"
+      ]
+    },
+    "cinta": {
+      "url_name": "cinta",
+      "names": {
+        "en": [
+          "Cinta"
+        ],
+        "zh": [
+          "遂心"
+        ]
+      },
+      "aliases": [
+        "Cinta",
+        "遂心"
+      ]
+    },
+    "sun_and_moon": {
+      "url_name": "sun_and_moon",
+      "names": {
+        "en": [
+          "Sun & Moon"
+        ],
+        "zh": [
+          "赤阳 & 幽月"
+        ]
+      },
+      "aliases": [
+        "Sun & Moon",
+        "赤阳 & 幽月"
+      ]
+    },
+    "edun": {
+      "url_name": "edun",
+      "names": {
+        "en": [
+          "Edun"
+        ],
+        "zh": [
+          "雷石祭"
+        ]
+      },
+      "aliases": [
+        "Edun",
+        "雷石祭"
+      ]
+    },
+    "rauta": {
+      "url_name": "rauta",
+      "names": {
+        "en": [
+          "Rauta"
+        ],
+        "zh": [
+          "锐铁"
+        ]
+      },
+      "aliases": [
+        "Rauta",
+        "锐铁"
+      ]
+    },
+    "argo_and_vel": {
+      "url_name": "argo_and_vel",
+      "names": {
+        "en": [
+          "Argo & Vel"
+        ],
+        "zh": [
+          "星舟 & 帆"
+        ]
+      },
+      "aliases": [
+        "Argo & Vel",
+        "星舟 & 帆"
+      ]
+    },
+    "gotva_prime": {
+      "url_name": "gotva_prime",
+      "names": {
+        "en": [
+          "Gotva Prime"
+        ],
+        "zh": [
+          "骨葬 Prime"
+        ]
+      },
+      "aliases": [
+        "Gotva Prime",
+        "骨葬 Prime"
+      ]
+    },
+    "dorrclave": {
+      "url_name": "dorrclave",
+      "names": {
+        "en": [
+          "Dorrclave"
+        ],
+        "zh": [
+          "怒斩"
+        ]
+      },
+      "aliases": [
+        "Dorrclave",
+        "怒斩"
+      ]
+    },
+    "ekhein": {
+      "url_name": "ekhein",
+      "names": {
+        "en": [
+          "Ekhein"
+        ],
+        "zh": [
+          "映声战锤"
+        ]
+      },
+      "aliases": [
+        "Ekhein",
+        "映声战锤"
+      ]
+    },
+    "mandonel": {
+      "url_name": "mandonel",
+      "names": {
+        "en": [
+          "Mandonel"
+        ],
+        "zh": [
+          "辐光弩炮"
+        ]
+      },
+      "aliases": [
+        "Mandonel",
+        "辐光弩炮"
+      ]
+    },
+    "grimoire": {
+      "url_name": "grimoire",
+      "names": {
+        "en": [
+          "Grimoire"
+        ],
+        "zh": [
+          "魔典"
+        ]
+      },
+      "aliases": [
+        "Grimoire",
+        "魔典"
+      ]
+    },
+    "onos": {
+      "url_name": "onos",
+      "names": {
+        "en": [
+          "Onos"
+        ],
+        "zh": [
+          "赘骨"
+        ]
+      },
+      "aliases": [
+        "Onos",
+        "赘骨"
+      ]
+    },
+    "ruvox": {
+      "url_name": "ruvox",
+      "names": {
+        "en": [
+          "Ruvox"
+        ],
+        "zh": [
+          "古声"
+        ]
+      },
+      "aliases": [
+        "Ruvox",
+        "古声"
+      ]
+    },
+    "dex_nikana": {
+      "url_name": "dex_nikana",
+      "names": {
+        "en": [
+          "Dex Nikana"
+        ],
+        "zh": [
+          "Dex 侍刃"
+        ]
+      },
+      "aliases": [
+        "Dex Nikana",
+        "Dex 侍刃"
+      ]
+    },
+    "cantare": {
+      "url_name": "cantare",
+      "names": {
+        "en": [
+          "Cantare"
+        ],
+        "zh": [
+          "歌颂"
+        ]
+      },
+      "aliases": [
+        "Cantare",
+        "歌颂"
+      ]
+    },
+    "evensong": {
+      "url_name": "evensong",
+      "names": {
+        "en": [
+          "Evensong"
+        ],
+        "zh": [
+          "晚祷"
+        ]
+      },
+      "aliases": [
+        "Evensong",
+        "晚祷"
+      ]
+    },
+    "harmony": {
+      "url_name": "harmony",
+      "names": {
+        "en": [
+          "Harmony"
+        ],
+        "zh": [
+          "和谐"
+        ]
+      },
+      "aliases": [
+        "Harmony",
+        "和谐"
+      ]
+    },
+    "ax_52": {
+      "url_name": "ax_52",
+      "names": {
+        "en": [
+          "AX-52"
+        ],
+        "zh": [
+          "AX-52"
+        ]
+      },
+      "aliases": [
+        "AX-52",
+        "AX-52"
+      ]
+    },
+    "higasa": {
+      "url_name": "higasa",
+      "names": {
+        "en": [
+          "Higasa"
+        ],
+        "zh": [
+          "晴日伞"
+        ]
+      },
+      "aliases": [
+        "Higasa",
+        "晴日伞"
+      ]
+    },
+    "amanata": {
+      "url_name": "amanata",
+      "names": {
+        "en": [
+          "Amanata"
+        ],
+        "zh": [
+          "天薙刀"
+        ]
+      },
+      "aliases": [
+        "Amanata",
+        "天薙刀"
+      ]
+    },
+    "vesper_77": {
+      "url_name": "vesper_77",
+      "names": {
+        "en": [
+          "Vesper 77"
+        ],
+        "zh": [
+          "夜语者 77"
+        ]
+      },
+      "aliases": [
+        "Vesper 77",
+        "夜语者 77"
+      ]
+    },
+    "reconifex": {
+      "url_name": "reconifex",
+      "names": {
+        "en": [
+          "Reconifex"
+        ],
+        "zh": [
+          "侦察者"
+        ]
+      },
+      "aliases": [
+        "Reconifex",
+        "侦察者"
+      ]
+    },
+    "riot_848": {
+      "url_name": "riot_848",
+      "names": {
+        "en": [
+          "Riot-848"
+        ],
+        "zh": [
+          "暴乱-848"
+        ]
+      },
+      "aliases": [
+        "Riot-848",
+        "暴乱-848"
+      ]
+    },
+    "purgator_1": {
+      "url_name": "purgator_1",
+      "names": {
+        "en": [
+          "Purgator 1"
+        ],
+        "zh": [
+          "净化者 1"
+        ]
+      },
+      "aliases": [
+        "Purgator 1",
+        "净化者 1"
+      ]
+    },
+    "dual_viciss": {
+      "url_name": "dual_viciss",
+      "names": {
+        "en": [
+          "Dual Viciss"
+        ],
+        "zh": [
+          "双子恶行"
+        ]
+      },
+      "aliases": [
+        "Dual Viciss",
+        "双子恶行"
+      ]
+    },
+    "efv_8_mars": {
+      "url_name": "efv_8_mars",
+      "names": {
+        "en": [
+          "EFV-8 Mars"
+        ],
+        "zh": [
+          "艾弗旺-8 火星"
+        ]
+      },
+      "aliases": [
+        "EFV-8 Mars",
+        "艾弗旺-8 火星"
+      ]
+    },
+    "efv_5_jupiter": {
+      "url_name": "efv_5_jupiter",
+      "names": {
+        "en": [
+          "EFV-5 Jupiter"
+        ],
+        "zh": [
+          "艾弗旺-5 木星"
+        ]
+      },
+      "aliases": [
+        "EFV-5 Jupiter",
+        "艾弗旺-5 木星"
+      ]
+    },
+    "dual_coda_torxica": {
+      "url_name": "dual_coda_torxica",
+      "names": {
+        "en": [
+          "Dual Coda Torxica"
+        ],
+        "zh": [
+          "终幕·孢蚀双枪"
+        ]
+      },
+      "aliases": [
+        "Dual Coda Torxica",
+        "终幕·孢蚀双枪"
+      ]
+    },
+    "coda_motovore": {
+      "url_name": "coda_motovore",
+      "names": {
+        "en": [
+          "Coda Motovore"
+        ],
+        "zh": [
+          "终幕·噬轮"
+        ]
+      },
+      "aliases": [
+        "Coda Motovore",
+        "终幕·噬轮"
+      ]
+    },
+    "coda_bassocyst": {
+      "url_name": "coda_bassocyst",
+      "names": {
+        "en": [
+          "Coda Bassocyst"
+        ],
+        "zh": [
+          "终幕·低音爆囊"
+        ]
+      },
+      "aliases": [
+        "Coda Bassocyst",
+        "终幕·低音爆囊"
+      ]
+    },
+    "tak_and_lug": {
+      "url_name": "tak_and_lug",
+      "names": {
+        "en": [
+          "Tak & Lug"
+        ],
+        "zh": [
+          "塔克 & 卢格"
+        ]
+      },
+      "aliases": [
+        "Tak & Lug",
+        "塔克 & 卢格"
+      ]
+    },
+    "tonkkatt": {
+      "url_name": "tonkkatt",
+      "names": {
+        "en": [
+          "Tonkkatt"
+        ],
+        "zh": [
+          "通卡拐刃"
+        ]
+      },
+      "aliases": [
+        "Tonkkatt",
+        "通卡拐刃"
+      ]
+    },
+    "thalys": {
+      "url_name": "thalys",
+      "names": {
+        "en": [
+          "Thalys"
+        ],
+        "zh": [
+          "大力士"
+        ]
+      },
+      "aliases": [
+        "Thalys",
+        "大力士"
+      ]
+    },
+    "scyotid": {
+      "url_name": "scyotid",
+      "names": {
+        "en": [
+          "Scyotid"
+        ],
+        "zh": [
+          "镰刃刺"
+        ]
+      },
+      "aliases": [
+        "Scyotid",
+        "镰刃刺"
+      ]
+    },
+    "spinnerex": {
+      "url_name": "spinnerex",
+      "names": {
+        "en": [
+          "Spinnerex"
+        ],
+        "zh": [
+          "丝蛛皇"
+        ]
+      },
+      "aliases": [
+        "Spinnerex",
+        "丝蛛皇"
+      ]
+    },
+    "vadarya_prime": {
+      "url_name": "vadarya_prime",
+      "names": {
+        "en": [
+          "Vadarya Prime"
+        ],
+        "zh": [
+          "瓦德雅 Prime"
+        ]
+      },
+      "aliases": [
+        "Vadarya Prime",
+        "瓦德雅 Prime"
+      ]
+    },
+    "arbucep": {
+      "url_name": "arbucep",
+      "names": {
+        "en": [
+          "Arbucep"
+        ],
+        "zh": [
+          "蕈菇"
+        ]
+      },
+      "aliases": [
+        "Arbucep",
+        "蕈菇"
+      ]
+    },
+    "thornbak": {
+      "url_name": "thornbak",
+      "names": {
+        "en": [
+          "Thornbak"
+        ],
+        "zh": [
+          "棘背"
+        ]
+      },
+      "aliases": [
+        "Thornbak",
+        "棘背"
+      ]
+    },
+    "vinquibus": {
+      "url_name": "vinquibus",
+      "names": {
+        "en": [
+          "Vinquibus"
+        ],
+        "zh": [
+          "制胜者"
+        ]
+      },
+      "aliases": [
+        "Vinquibus",
+        "制胜者"
+      ]
+    },
+    "galariak_prime": {
+      "url_name": "galariak_prime",
+      "names": {
+        "en": [
+          "Galariak Prime"
+        ],
+        "zh": [
+          "加拉亚 Prime"
+        ]
+      },
+      "aliases": [
+        "Galariak Prime",
+        "加拉亚 Prime"
+      ]
+    },
+    "sagek_prime": {
+      "url_name": "sagek_prime",
+      "names": {
+        "en": [
+          "Sagek Prime"
+        ],
+        "zh": [
+          "杀格 Prime"
+        ]
+      },
+      "aliases": [
+        "Sagek Prime",
+        "杀格 Prime"
+      ]
+    },
+    "vinquibus_melee": {
+      "url_name": "vinquibus_melee",
+      "names": {
+        "en": [
+          "Vinquibus (Melee)"
+        ],
+        "zh": [
+          "制胜者 (近战)"
+        ]
+      },
+      "aliases": [
+        "Vinquibus (Melee)",
+        "制胜者 (近战)"
+      ]
+    }
+  },
+  "attribute_dict": {
+    "punch_through": {
+      "url_name": "punch_through",
+      "names": {
+        "en": [
+          "Punch Through"
+        ],
+        "zh": [
+          "穿透"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Lexi",
+      "suffix": "Nok"
+    },
+    "slash_damage": {
+      "url_name": "slash_damage",
+      "names": {
+        "en": [
+          "Slash"
+        ],
+        "zh": [
+          "切割伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Sci",
+      "suffix": "Sus"
+    },
+    "impact_damage": {
+      "url_name": "impact_damage",
+      "names": {
+        "en": [
+          "Impact"
+        ],
+        "zh": [
+          "冲击伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Magna",
+      "suffix": "Ton"
+    },
+    "toxin_damage": {
+      "url_name": "toxin_damage",
+      "names": {
+        "en": [
+          "Toxin"
+        ],
+        "zh": [
+          "毒素伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Toxi",
+      "suffix": "Tox"
+    },
+    "status_duration": {
+      "url_name": "status_duration",
+      "names": {
+        "en": [
+          "Status Duration"
+        ],
+        "zh": [
+          "触发时间"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Deci",
+      "suffix": "Des"
+    },
+    "ammo_maximum": {
+      "url_name": "ammo_maximum",
+      "names": {
+        "en": [
+          "Ammo Maximum"
+        ],
+        "zh": [
+          "弹药上限",
+          "弹药最大值"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Ampi",
+      "suffix": "Bin"
+    },
+    "recoil": {
+      "url_name": "recoil",
+      "names": {
+        "en": [
+          "Weapon Recoil"
+        ],
+        "zh": [
+          "后坐力"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Zeti",
+      "suffix": "Mag"
+    },
+    "zoom": {
+      "url_name": "zoom",
+      "names": {
+        "en": [
+          "Zoom"
+        ],
+        "zh": [
+          "变焦"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Hera",
+      "suffix": "Lis"
+    },
+    "channeling_damage": {
+      "url_name": "channeling_damage",
+      "names": {
+        "en": [
+          "Initial combo"
+        ],
+        "zh": [
+          "初始连击数"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Para",
+      "suffix": "Um"
+    },
+    "channeling_efficiency": {
+      "url_name": "channeling_efficiency",
+      "names": {
+        "en": [
+          "Heavy Attack Efficiency"
+        ],
+        "zh": [
+          "重击效率"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Forti",
+      "suffix": "Us"
+    },
+    "critical_chance": {
+      "url_name": "critical_chance",
+      "names": {
+        "en": [
+          "Critical Chance"
+        ],
+        "zh": [
+          "暴击率",
+          "暴击几率"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Crita",
+      "suffix": "Cron"
+    },
+    "critical_damage": {
+      "url_name": "critical_damage",
+      "names": {
+        "en": [
+          "Critical Damage"
+        ],
+        "zh": [
+          "暴击伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Acri",
+      "suffix": "Tis"
+    },
+    "base_damage_/_melee_damage": {
+      "url_name": "base_damage_/_melee_damage",
+      "names": {
+        "en": [
+          "Damage"
+        ],
+        "zh": [
+          "基础伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Visi",
+      "suffix": "Ata"
+    },
+    "heat_damage": {
+      "url_name": "heat_damage",
+      "names": {
+        "en": [
+          "Heat"
+        ],
+        "zh": [
+          "火焰伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Igni",
+      "suffix": "Pha"
+    },
+    "multishot": {
+      "url_name": "multishot",
+      "names": {
+        "en": [
+          "Multishot"
+        ],
+        "zh": [
+          "多重射击"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Sati",
+      "suffix": "Can"
+    },
+    "reload_speed": {
+      "url_name": "reload_speed",
+      "names": {
+        "en": [
+          "Reload Speed"
+        ],
+        "zh": [
+          "装填速度"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Feva",
+      "suffix": "Tak"
+    },
+    "range": {
+      "url_name": "range",
+      "names": {
+        "en": [
+          "Range"
+        ],
+        "zh": [
+          "攻击范围"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Locti",
+      "suffix": "Tor"
+    },
+    "damage_vs_corpus": {
+      "url_name": "damage_vs_corpus",
+      "names": {
+        "en": [
+          "Damage to Corpus"
+        ],
+        "zh": [
+          "对Corpus伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Manti",
+      "suffix": "Tron"
+    },
+    "damage_vs_grineer": {
+      "url_name": "damage_vs_grineer",
+      "names": {
+        "en": [
+          "Damage to Grineer"
+        ],
+        "zh": [
+          "对Grineer伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Argi",
+      "suffix": "Con"
+    },
+    "puncture_damage": {
+      "url_name": "puncture_damage",
+      "names": {
+        "en": [
+          "Puncture"
+        ],
+        "zh": [
+          "穿刺伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Insi",
+      "suffix": "Cak"
+    },
+    "damage_vs_infested": {
+      "url_name": "damage_vs_infested",
+      "names": {
+        "en": [
+          "Damage to Infested"
+        ],
+        "zh": [
+          "对Infested伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Pura",
+      "suffix": "Ada"
+    },
+    "electric_damage": {
+      "url_name": "electric_damage",
+      "names": {
+        "en": [
+          "Electricity"
+        ],
+        "zh": [
+          "电击伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Vexi",
+      "suffix": "Tio"
+    },
+    "finisher_damage": {
+      "url_name": "finisher_damage",
+      "names": {
+        "en": [
+          "Finisher Damage"
+        ],
+        "zh": [
+          "处决伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Exi",
+      "suffix": "Cta"
+    },
+    "fire_rate_/_attack_speed": {
+      "url_name": "fire_rate_/_attack_speed",
+      "names": {
+        "en": [
+          "Fire Rate / Attack Speed"
+        ],
+        "zh": [
+          "射速/攻击速度"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Croni",
+      "suffix": "Dra"
+    },
+    "projectile_speed": {
+      "url_name": "projectile_speed",
+      "names": {
+        "en": [
+          "Projectile speed"
+        ],
+        "zh": [
+          "投射物飞行速度"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Conci",
+      "suffix": "Nak"
+    },
+    "magazine_capacity": {
+      "url_name": "magazine_capacity",
+      "names": {
+        "en": [
+          "Magazine Capacity"
+        ],
+        "zh": [
+          "弹匣容量"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Arma",
+      "suffix": "Tin"
+    },
+    "status_chance": {
+      "url_name": "status_chance",
+      "names": {
+        "en": [
+          "Status Chance"
+        ],
+        "zh": [
+          "触发几率",
+          "触发率",
+          "状态几率"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Hexa",
+      "suffix": "Dex"
+    },
+    "cold_damage": {
+      "url_name": "cold_damage",
+      "names": {
+        "en": [
+          "Cold"
+        ],
+        "zh": [
+          "冰冻伤害"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Geli",
+      "suffix": "Do"
+    },
+    "combo_duration": {
+      "url_name": "combo_duration",
+      "names": {
+        "en": [
+          "Combo Duration"
+        ],
+        "zh": [
+          "连击持续时间"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Tempi",
+      "suffix": "Nem"
+    },
+    "critical_chance_on_slide_attack": {
+      "url_name": "critical_chance_on_slide_attack",
+      "names": {
+        "en": [
+          "Critical Chance for Slide Attack"
+        ],
+        "zh": [
+          "滑行攻击暴击率"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Pleci",
+      "suffix": "Nent"
+    },
+    "chance_to_gain_extra_combo_count": {
+      "url_name": "chance_to_gain_extra_combo_count",
+      "names": {
+        "en": [
+          "Additional Combo Count Chance"
+        ],
+        "zh": [
+          "额外连击数获取"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "Laci",
+      "suffix": "Nus"
+    },
+    "chance_to_gain_combo_count": {
+      "url_name": "chance_to_gain_combo_count",
+      "names": {
+        "en": [
+          "Chance to Gain Combo Count"
+        ],
+        "zh": [
+          "的几率来获得连击数"
+        ]
+      },
+      "positive_allowed": true,
+      "negative_allowed": true,
+      "prefix": "",
+      "suffix": ""
+    }
+  },
+  "riven_name_dict": {
+    "prefix_map": {
+      "Lexi": "punch_through",
+      "Sci": "slash_damage",
+      "Magna": "impact_damage",
+      "Toxi": "toxin_damage",
+      "Deci": "status_duration",
+      "Ampi": "ammo_maximum",
+      "Zeti": "recoil",
+      "Hera": "zoom",
+      "Para": "channeling_damage",
+      "Forti": "channeling_efficiency",
+      "Crita": "critical_chance",
+      "Acri": "critical_damage",
+      "Visi": "base_damage_/_melee_damage",
+      "Igni": "heat_damage",
+      "Sati": "multishot",
+      "Feva": "reload_speed",
+      "Locti": "range",
+      "Manti": "damage_vs_corpus",
+      "Argi": "damage_vs_grineer",
+      "Insi": "puncture_damage",
+      "Pura": "damage_vs_infested",
+      "Vexi": "electric_damage",
+      "Exi": "finisher_damage",
+      "Croni": "fire_rate_/_attack_speed",
+      "Conci": "projectile_speed",
+      "Arma": "magazine_capacity",
+      "Hexa": "status_chance",
+      "Geli": "cold_damage",
+      "Tempi": "combo_duration",
+      "Pleci": "critical_chance_on_slide_attack",
+      "Laci": "chance_to_gain_extra_combo_count"
+    },
+    "suffix_map": {
+      "Nok": "punch_through",
+      "Sus": "slash_damage",
+      "Ton": "impact_damage",
+      "Tox": "toxin_damage",
+      "Des": "status_duration",
+      "Bin": "ammo_maximum",
+      "Mag": "recoil",
+      "Lis": "zoom",
+      "Um": "channeling_damage",
+      "Us": "channeling_efficiency",
+      "Cron": "critical_chance",
+      "Tis": "critical_damage",
+      "Ata": "base_damage_/_melee_damage",
+      "Pha": "heat_damage",
+      "Can": "multishot",
+      "Tak": "reload_speed",
+      "Tor": "range",
+      "Tron": "damage_vs_corpus",
+      "Con": "damage_vs_grineer",
+      "Cak": "puncture_damage",
+      "Ada": "damage_vs_infested",
+      "Tio": "electric_damage",
+      "Cta": "finisher_damage",
+      "Dra": "fire_rate_/_attack_speed",
+      "Nak": "projectile_speed",
+      "Tin": "magazine_capacity",
+      "Dex": "status_chance",
+      "Do": "cold_damage",
+      "Nem": "combo_duration",
+      "Nent": "critical_chance_on_slide_attack",
+      "Nus": "chance_to_gain_extra_combo_count"
+    }
+  }
+}

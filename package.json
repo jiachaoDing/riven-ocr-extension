@@ -1,0 +1,24 @@
+{
+  "name": "riven-ocr-extension",
+  "version": "1.0.0",
+  "description": "Browser extension for OCR and dictionary lookup",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": ["browser-extension", "ocr", "dictionary"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "^0.1.33",
+    "@types/jsdom": "^27.0.0",
+    "jsdom": "^27.4.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.17"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Riven OCR Assistant",
+  "version": "0.1.0",
+  "description": "自动识别 Warframe 紫卡并填入 warframe.market 拍卖表单。",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://warframe.market/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://warframe.market/*"],
+      "js": ["content-script.js"]
+    }
+  ]
+}
