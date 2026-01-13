@@ -19,6 +19,7 @@ interface OcrRivenResult {
   weapon_url_name?: string;
   weapon_name?: string;
   name?: string;
+  re_rolls?: number;
   mastery_level?: number;
   polarity?: 'madurai' | 'naramon' | 'vazarin' | 'unknown';
   mod_rank?: number;
@@ -194,30 +195,57 @@ function buildAttributeSearchText(urlName: string, dict: any, lang: Lang): strin
   return entry.names[lang][0] || urlName;
 }
 
+async function clearExistingAttributes(root: Document | HTMLElement): Promise<void> {
+  console.log('[Riven OCR] Clearing existing attributes...');
+  // 查找已选择词条的删除按钮
+  const removeButtons = Array.from(root.querySelectorAll('.attribute-seeker__selected .selected-unit .btn')) as HTMLButtonElement[];
+  
+  if (removeButtons.length > 0) {
+    console.log(`[Riven OCR] Found ${removeButtons.length} attributes to clear`);
+    for (const btn of removeButtons) {
+      btn.click();
+      // 每次点击后稍微等待，让网页更新 DOM
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+}
+
 // DOM 填充函数
 async function openAuctionModalIfNeeded(root: Document | HTMLElement): Promise<void> {
   console.log('[Riven OCR] Checking if auction modal needs to be opened...');
 
-  // 检查模态框是否已经打开 - 使用文档中提到的选择器
-  const existingModal = document.querySelector('.widget-modal__content--DCGVm');
-  if (existingModal) {
-    console.log('[Riven OCR] Auction modal already open');
-    return;
+  const modal = document.querySelector('.modal--Csf66');
+  const createButton = document.querySelector('.auction-create__button-circle') as HTMLButtonElement;
+
+  // 如果有按钮，优先点击按钮，这是最稳妥的打开方式
+  if (createButton) {
+    console.log('[Riven OCR] Found create auction button, clicking it...');
+    createButton.click();
+    // 给一点时间让系统处理点击事件并添加 class
+    await new Promise(resolve => setTimeout(resolve, 300));
   }
 
-  console.log('[Riven OCR] Looking for create auction button...');
-  // 使用文档中提到的选择器
-  const createButton = document.querySelector('.auction-create__button-circle') as HTMLButtonElement;
-  console.log('[Riven OCR] Create button found:', !!createButton);
+  // 无论有没有点击按钮，都确保 class 被正确添加（双重保险）
+  const targetModal = modal || document.querySelector('.modal--Csf66');
+  if (targetModal) {
+    console.log('[Riven OCR] Ensuring "opened--LfN_k" class is applied to modal...');
+    if (!targetModal.classList.contains('opened--LfN_k')) {
+      targetModal.classList.add('opened--LfN_k');
+    }
+    
+    // 等待过渡动画
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    // 再次确认是否真的可见了
+    if (targetModal.classList.contains('opened--LfN_k')) {
+      console.log('[Riven OCR] Auction modal should now be visible');
+      return;
+    }
+  }
 
-  if (createButton) {
-    console.log('[Riven OCR] Clicking create auction button...');
-    createButton.click();
-    // 等待模态框出现
-    await waitForElement('.widget-modal__content--DCGVm', 3000);
-    console.log('[Riven OCR] Auction modal opened successfully');
-  } else {
-    console.warn('[Riven OCR] Create auction button not found');
+  if (!createButton && !targetModal) {
+    console.error('[Riven OCR] Both create button and modal element not found');
+    throw new Error('未找到拍卖模态框，请确保已登录并处于正确的页面');
   }
 }
 
@@ -423,12 +451,13 @@ async function fillRanksAndPolarity(root: Document | HTMLElement, ocr: OcrRivenR
     console.log('[Riven OCR] Mod rank set to:', rankValue);
   }
 
-  // 重掷次数 (暂时填 0)
+  // 重掷次数
   const rerollsInput = root.querySelector('#auction-create__reRolls') as HTMLInputElement;
   if (rerollsInput) {
-    rerollsInput.value = '0';
+    const rerollsValue = typeof ocr.re_rolls === 'number' ? ocr.re_rolls : 0;
+    rerollsInput.value = rerollsValue.toString();
     triggerInputEvent(rerollsInput);
-    console.log('[Riven OCR] Rerolls set to: 0');
+    console.log('[Riven OCR] Rerolls set to:', rerollsValue);
   }
 
   // 极性
@@ -463,12 +492,18 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         console.log('[Riven OCR] Waiting for modal to load...');
         await new Promise(resolve => setTimeout(resolve, 500));
 
-        const modal = document.querySelector('.widget-modal__content--DCGVm') as HTMLElement;
+        // 尝试获取模态框内容区域
+        const modal = (document.querySelector('.widget-modal__content--DCGVm') || 
+                       document.querySelector('.modal--Csf66.opened--LfN_k')) as HTMLElement;
+        
         if (!modal) {
           console.error('[Riven OCR] Modal not found');
           throw new Error('未找到拍卖创建模态框');
         }
         console.log('[Riven OCR] Modal found, starting form filling...');
+
+        // 预处理：清理已有的词条内容，防止干扰识别
+        await clearExistingAttributes(modal);
 
         // 按顺序填充表单
         console.log('[Riven OCR] Filling category...');
@@ -481,8 +516,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           await fillWeapon(modal, weaponText);
         }
 
-        const positiveAttrs = ocr.attributes.filter(a => a.positive);
-        console.log('[Riven OCR] Positive attributes:', positiveAttrs.length);
+        // 过滤重复词条：按 url_name 去重，只保留第一个出现的
+        const seenAttrs = new Set<string>();
+        const positiveAttrs = ocr.attributes.filter(a => {
+          if (a.positive && !seenAttrs.has(a.url_name)) {
+            seenAttrs.add(a.url_name);
+            return true;
+          }
+          return false;
+        });
+
+        console.log('[Riven OCR] Positive attributes (deduplicated):', positiveAttrs.length);
         await fillPositiveAttributes(modal, positiveAttrs, dict, lang);
 
         const negativeAttr = ocr.attributes.find(a => !a.positive);

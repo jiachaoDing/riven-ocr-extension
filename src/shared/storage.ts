@@ -3,8 +3,10 @@ import type { OcrRivenResult } from './types';
 
 export interface SyncSettings {
   backendUrl: string;
+  marketPriceUrl: string;
   autoFillRows: boolean;
   autoOpenModal: boolean;
+  theme: 'light' | 'dark' | 'system';
 }
 
 export interface LocalData {
@@ -14,9 +16,11 @@ export interface LocalData {
 }
 
 const DEFAULT_SYNC_SETTINGS: SyncSettings = {
-  backendUrl: 'http://127.0.0.1:8000',
+  backendUrl: 'http://49.234.200.196:80',
+  marketPriceUrl: 'https://lab.webutilitykit.com', 
   autoFillRows: true,
-  autoOpenModal: true
+  autoOpenModal: true,
+  theme: 'system'
 };
 
 // Sync Storage - 多设备同步的配置

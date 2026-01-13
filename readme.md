@@ -109,6 +109,7 @@ interface OcrRivenResult {
   weapon_name?: string;
   name?: string;            // Riven mod 名称，如 "Ampi-saticon"
   mastery_level?: number;   // 段位
+  re_rolls:number //洗练次数
   polarity?: 'madurai' | 'naramon' | 'vazarin' | 'unknown';
   mod_rank?: number;        // 蓝点数
   attributes: OcrAttribute[];
@@ -236,7 +237,7 @@ interface RivenDictionary {
 2. 后端调用：
 
    * 通过 `fetch` 调用 `/api/v1/riven/parse` 或 `/parse-base64`；
-   * 基础 URL 从 `chrome.storage.sync` 读取（Options 页面配置，默认本地 `http://127.0.0.1:8000`）。 
+   * 基础 URL 从 `chrome.storage.sync` 读取（Options 页面配置，默认本地 `http://127.0.0.1:80`）。 
 
 3. 错误处理：
 
