@@ -34,6 +34,37 @@ interface OcrAttribute {
   positive: boolean;
 }
 
+// 编辑距离函数，用于模糊匹配
+function levenshteinDistance(str1: string, str2: string): number {
+  const matrix = [];
+
+  // 初始化矩阵
+  for (let i = 0; i <= str2.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= str1.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  // 填充矩阵
+  for (let i = 1; i <= str2.length; i++) {
+    for (let j = 1; j <= str1.length; j++) {
+      if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // 替换
+          matrix[i][j - 1] + 1,     // 插入
+          matrix[i - 1][j] + 1      // 删除
+        );
+      }
+    }
+  }
+
+  return matrix[str2.length][str1.length];
+}
+
 // 内联字典相关函数
 function detectLangFromUrl(url: string): Lang {
   return url.includes('/zh-hans/') ? 'zh' : 'en';
@@ -414,11 +445,20 @@ async function fillRivenModName(root: Document | HTMLElement, modName: string): 
 
   console.log('[Riven OCR] Found mod name options:', options.map(o => o.textContent));
 
-  // 改进匹配逻辑：模糊匹配
+  // 改进匹配逻辑：模糊匹配，支持编辑距离
   const targetName = modName.toLowerCase().replace(/[^a-z0-9]/g, '');
   const matchingOption = options.find(option => {
     const optText = (option.textContent || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    return optText.includes(targetName) || targetName.includes(optText);
+
+    // 完全匹配
+    if (optText === targetName) return true;
+
+    // 包含关系匹配
+    if (optText.includes(targetName) || targetName.includes(optText)) return true;
+
+    // 编辑距离匹配（允许1-2个字符差异）
+    const distance = levenshteinDistance(optText, targetName);
+    return distance <= Math.min(2, Math.max(1, Math.floor(targetName.length * 0.3)));
   });
 
   if (matchingOption) {

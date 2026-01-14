@@ -1,8 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Riven OCR Assistant",
+  "short_name": "紫卡助手",
   "version": "1.0.0",
   "description": "自动识别 Warframe 紫卡并填入 warframe.market 拍卖表单。",
+  "author": "yinb9933@gmail.com",
+  "lang": "zh-CN",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

@@ -1,7 +1,7 @@
 // src/popup/main.ts
 import type { OcrRivenResult, MarketPriceResult } from '../shared/types';
 import { getLastResult, testBackendConnection, getSyncSettings, setSyncSettings } from '../shared/storage';
-import { loadDictionary } from '../shared/dictionary';
+import { loadDictionary, getAttributeEntry } from '../shared/dictionary';
 
 // --- DOM Elements ---
 const mainView = document.getElementById('main-view') as HTMLDivElement;
@@ -104,6 +104,9 @@ async function fetchMarketPrice(weaponUrlName: string): Promise<MarketPriceResul
 async function displayOcrResult(result: OcrRivenResult) {
   resultArea.innerHTML = '';
 
+  // 加载字典
+  const dict = await loadDictionary();
+
   const weaponName = result.weapon_name || result.weapon_url_name;
   const seenAttrs = new Set<string>();
   const positiveAttrs = result.attributes.filter(a => {
@@ -115,6 +118,11 @@ async function displayOcrResult(result: OcrRivenResult) {
   });
   const negativeAttr = result.attributes.find(a => !a.positive);
 
+  // 获取属性显示名称
+  const getAttributeDisplayName = (urlName: string) => {
+    const entry = getAttributeEntry(urlName, dict);
+    return entry ? entry.names.zh[0] || urlName : urlName;
+  };
   // 检查是否有缺失字段
   const isWeaponMissing = !weaponName;
   const isNameMissing = !result.name;
@@ -152,10 +160,10 @@ async function displayOcrResult(result: OcrRivenResult) {
     </div>
     <div style="margin-top: 10px; font-size: 13px;">
       <div style="color: var(--text-secondary); margin-bottom: 4px;">属性：</div>
-      ${positiveAttrs.length > 0 
-        ? positiveAttrs.map(a => `<div style="color: #10b981;">+ ${a.url_name} ${a.value}</div>`).join('')
+      ${positiveAttrs.length > 0
+        ? positiveAttrs.map(a => `<div style="color: #10b981;">+ ${getAttributeDisplayName(a.url_name)} ${a.value}</div>`).join('')
         : '<div style="color: #9ca3af; font-size: 11px; font-style: italic;">[ 正面属性未识别 ]</div>'}
-      ${negativeAttr ? `<div style="color: #ef4444;">- ${negativeAttr.url_name} ${negativeAttr.value}</div>` : ''}
+      ${negativeAttr ? `<div style="color: #ef4444;">- ${getAttributeDisplayName(negativeAttr.url_name)} ${negativeAttr.value}</div>` : ''}
     </div>
     <div id="market-price-container">${priceHtml}</div>
     <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center;">
