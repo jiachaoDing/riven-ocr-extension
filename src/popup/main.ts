@@ -177,7 +177,7 @@ async function displayOcrResult(result: OcrRivenResult) {
     if (container) {
       if (priceData && priceData.success) {
         container.innerHTML = `
-          <a href="https://lab.webutilitykit.com/apps/RivenTracker/" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
+          <a href="https://lab.webutilitykit.com/apps/RivenTracker/?weapon=${result.weapon_url_name}" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
             <div class="price-card" style="padding: 10px; background: var(--bg-main); border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s ease;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
                 <span style="font-size: 11px; color: var(--text-secondary);">市场行情 (昨日底价均价)</span>
