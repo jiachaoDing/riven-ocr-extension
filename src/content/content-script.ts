@@ -160,7 +160,12 @@ function waitForElement(selector: string, timeout = 5000): Promise<Element> {
 }
 
 function triggerInputEvent(element: HTMLInputElement | HTMLSelectElement) {
-  element.dispatchEvent(new Event('input', { bubbles: true }));
+  // 尽量贴近真实输入：React 常依赖 input 事件
+  try {
+    element.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, composed: true }));
+  } catch {
+    element.dispatchEvent(new Event('input', { bubbles: true }));
+  }
   element.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
@@ -168,9 +173,126 @@ function triggerKeyupEvent(element: HTMLInputElement) {
   element.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true }));
 }
 
+function setNativeValue<T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+  element: T,
+  value: string
+) {
+  // 关键：使用原型上的 setter，避免 React/Vue 读不到 value 变更
+  const proto = Object.getPrototypeOf(element);
+  const desc = Object.getOwnPropertyDescriptor(proto, 'value');
+  if (desc?.set) {
+    desc.set.call(element, value);
+  } else {
+    (element as any).value = value;
+  }
+}
+
+function parseOptionalNumberAttr(el: Element, attrName: 'min' | 'max' | 'step'): number | null {
+  const v = (el as HTMLInputElement).getAttribute(attrName);
+  if (!v || v === 'any') return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function decimalsFromStep(stepAttr: string | null): number {
+  if (!stepAttr || stepAttr === 'any') return 1;
+  const i = stepAttr.indexOf('.');
+  return i >= 0 ? stepAttr.length - i - 1 : 0;
+}
+
+function clampNumber(v: number, min: number | null, max: number | null): number {
+  let out = v;
+  if (min !== null) out = Math.max(min, out);
+  if (max !== null) out = Math.min(max, out);
+  return out;
+}
+
+function roundToStep(v: number, step: number | null): number {
+  if (step === null || step <= 0) return v;
+  return Math.round(v / step) * step;
+}
+
+function formatForNumberInput(input: HTMLInputElement, value: number): string {
+  const step = parseOptionalNumberAttr(input, 'step');
+  const stepAttr = input.getAttribute('step');
+
+  let v = value;
+  v = roundToStep(v, step);
+
+  const decimals = decimalsFromStep(stepAttr);
+  // 避免 33.60000000000001 这类浮点长尾
+  const fixed = v.toFixed(decimals);
+  // number input 接受 "1.0"/"1.00"，不强制去尾；但把 -0 归一化
+  return fixed === '-0' || fixed === '-0.0' || fixed === '-0.00' ? fixed.replace('-', '') : fixed;
+}
+
+function computeNegativeValueForInput(rawValue: number, input: HTMLInputElement): number {
+  // 按你的反馈：后端/识别结果返回的就是“页面该填的数值”，插件侧不要再做任何换算。
+  // 同时为了贴近手动输入体验，这里统一写“绝对值”，符号交给页面自身在序列化/校验时处理。
+  void input;
+  return Math.abs(Number(rawValue));
+}
+
+function isElementVisible(el: Element): boolean {
+  // 兼容：元素存在但被 display:none / visibility:hidden / opacity:0 / 尺寸为0 的情况
+  const htmlEl = el as HTMLElement;
+  const style = window.getComputedStyle(htmlEl);
+  if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return false;
+  const rect = htmlEl.getBoundingClientRect();
+  return rect.width > 0 && rect.height > 0;
+}
+
+async function waitForVisibleElement(selector: string, timeout = 7000): Promise<Element> {
+  const started = Date.now();
+  while (Date.now() - started < timeout) {
+    const el = document.querySelector(selector);
+    if (el && isElementVisible(el)) return el;
+    await new Promise((r) => setTimeout(r, 50));
+  }
+  throw new Error(`Visible element ${selector} not found within ${timeout}ms`);
+}
+
+async function waitForClassOnElement(el: Element, className: string, timeout = 7000): Promise<void> {
+  if (el.classList.contains(className)) return;
+
+  await new Promise<void>((resolve, reject) => {
+    const observer = new MutationObserver(() => {
+      if (el.classList.contains(className)) {
+        observer.disconnect();
+        resolve();
+      }
+    });
+
+    observer.observe(el, { attributes: true, attributeFilter: ['class'] });
+
+    setTimeout(() => {
+      observer.disconnect();
+      reject(new Error(`Element did not receive class "${className}" within ${timeout}ms`));
+    }, timeout);
+  });
+}
+
+function simulateUserClick(el: Element) {
+  const target = el as HTMLElement;
+  target.focus?.();
+
+  // React/现代站点常依赖 pointer 事件；尽量模拟完整序列
+  const common = { bubbles: true, cancelable: true, composed: true };
+  try {
+    target.dispatchEvent(new PointerEvent('pointerdown', { ...common, pointerId: 1, pointerType: 'mouse', isPrimary: true }));
+    target.dispatchEvent(new PointerEvent('pointerup', { ...common, pointerId: 1, pointerType: 'mouse', isPrimary: true }));
+  } catch {
+    // 某些浏览器环境可能没有 PointerEvent
+  }
+  target.dispatchEvent(new MouseEvent('mousedown', common));
+  target.dispatchEvent(new MouseEvent('mouseup', common));
+  // 只触发一次 click：避免某些组件在“重复 click”下录入两次（会导致重复词条/空 value）
+  target.click?.();
+}
+
 async function simulateTyping(input: HTMLInputElement, text: string) {
   input.focus();
-  input.value = text;
+  setNativeValue(input, text);
   triggerInputEvent(input);
   triggerKeyupEvent(input);
   // 等待下拉列表渲染
@@ -184,7 +306,8 @@ async function selectFromDropdown(root: Element, input: HTMLInputElement, search
   await new Promise(resolve => setTimeout(resolve, 200));
 
   // 在整个文档中查找下拉项，因为下拉菜单可能不在 root 元素内
-  const dropdownItems = document.querySelectorAll(selector);
+  // 只点击“可见”的项，避免点到隐藏的旧列表（这是重复录入的常见来源）
+  const dropdownItems = Array.from(document.querySelectorAll(selector)).filter(isElementVisible);
   console.log('[Riven OCR] Found dropdown items:', dropdownItems.length);
 
   for (const item of Array.from(dropdownItems)) {
@@ -192,13 +315,34 @@ async function selectFromDropdown(root: Element, input: HTMLInputElement, search
     console.log('[Riven OCR] Checking dropdown item:', text);
     if (text && (text.toLowerCase().includes(searchText.toLowerCase()) || searchText.toLowerCase().includes(text.toLowerCase()))) {
       console.log('[Riven OCR] Clicking dropdown item:', text);
-      (item as HTMLElement).click();
+      const clickable =
+        ((item as HTMLElement).closest('li.selectable') ||
+          (item as HTMLElement).closest('li') ||
+          (item as HTMLElement)) as HTMLElement;
+      simulateUserClick(clickable);
       // 等待选择完成
       await new Promise(resolve => setTimeout(resolve, 100));
       return true;
     }
   }
   return false;
+}
+
+async function clearSelectedUnitsWithin(container: Element): Promise<void> {
+  const selectedUnits = Array.from(container.querySelectorAll('.attribute-seeker__selected .selected-unit'));
+  if (selectedUnits.length === 0) return;
+
+  console.log('[Riven OCR] Clearing selected units within container:', selectedUnits.length);
+  for (const unit of selectedUnits) {
+    const removeBtn =
+      (unit.querySelector('.btn') ||
+        unit.querySelector('button') ||
+        unit.querySelector('[role="button"]')) as HTMLElement | null;
+    if (removeBtn) {
+      simulateUserClick(removeBtn);
+      await new Promise((r) => setTimeout(r, 100));
+    }
+  }
 }
 
 // 业务逻辑函数
@@ -228,13 +372,19 @@ function buildAttributeSearchText(urlName: string, dict: any, lang: Lang): strin
 
 async function clearExistingAttributes(root: Document | HTMLElement): Promise<void> {
   console.log('[Riven OCR] Clearing existing attributes...');
-  // 查找已选择词条的删除按钮
-  const removeButtons = Array.from(root.querySelectorAll('.attribute-seeker__selected .selected-unit .btn')) as HTMLButtonElement[];
+  // 查找已选择词条的删除按钮（站点样式可能变动，选择器尽量宽松）
+  const removeButtons = Array.from(
+    root.querySelectorAll(
+      '.attribute-seeker__selected .selected-unit .btn, ' +
+        '.attribute-seeker__selected .selected-unit button, ' +
+        '.attribute-seeker__selected .selected-unit [role="button"]'
+    )
+  ) as HTMLElement[];
   
   if (removeButtons.length > 0) {
     console.log(`[Riven OCR] Found ${removeButtons.length} attributes to clear`);
     for (const btn of removeButtons) {
-      btn.click();
+      simulateUserClick(btn);
       // 每次点击后稍微等待，让网页更新 DOM
       await new Promise(resolve => setTimeout(resolve, 100));
     }
@@ -245,46 +395,42 @@ async function clearExistingAttributes(root: Document | HTMLElement): Promise<vo
 async function openAuctionModalIfNeeded(root: Document | HTMLElement): Promise<void> {
   console.log('[Riven OCR] Checking if auction modal needs to be opened...');
 
-  const modal = document.querySelector('.modal--Csf66');
-  const createButton = document.querySelector('.auction-create__button-circle') as HTMLButtonElement;
-
-  // 如果有按钮，优先点击按钮，这是最稳妥的打开方式
-  if (createButton) {
-    console.log('[Riven OCR] Found create auction button, clicking it...');
-    createButton.click();
-    // 给一点时间让系统处理点击事件并添加 class
-    await new Promise(resolve => setTimeout(resolve, 300));
+  // 以 warframe.market 的状态类为准：.modal--Csf66 + opened--LfN_k 代表“真正打开”
+  const alreadyOpened = document.querySelector('.modal--Csf66.opened--LfN_k');
+  if (alreadyOpened) {
+    console.log('[Riven OCR] Auction modal already opened');
+    return;
   }
 
-  // 无论有没有点击按钮，都确保 class 被正确添加（双重保险）
-  const targetModal = modal || document.querySelector('.modal--Csf66');
-  if (targetModal) {
-    console.log('[Riven OCR] Ensuring "opened--LfN_k" class is applied to modal...');
-    if (!targetModal.classList.contains('opened--LfN_k')) {
-      targetModal.classList.add('opened--LfN_k');
-    }
-    
-    // 等待过渡动画
-    await new Promise(resolve => setTimeout(resolve, 400));
-    
-    // 再次确认是否真的可见了
-    if (targetModal.classList.contains('opened--LfN_k')) {
-      console.log('[Riven OCR] Auction modal should now be visible');
-      return;
-    }
+  // 只允许通过官方按钮打开，避免绕过网站内部初始化逻辑导致提交 400
+  const createButton =
+    (document.querySelector('.auction-create__button[role="button"]') ||
+      document.querySelector('.auction-create__button')) as HTMLElement | null;
+  if (!createButton) {
+    console.error('[Riven OCR] Create auction button not found');
+    throw new Error('未找到创建拍卖按钮，请确保已登录并处于正确的页面');
   }
 
-  if (!createButton && !targetModal) {
-    console.error('[Riven OCR] Both create button and modal element not found');
-    throw new Error('未找到拍卖模态框，请确保已登录并处于正确的页面');
+  // modal 容器一般常驻 DOM（即使未打开）；如果不存在则等待其出现
+  let modalContainer = document.querySelector('.modal--Csf66') as HTMLElement | null;
+  if (!modalContainer) {
+    modalContainer = (await waitForElement('.modal--Csf66', 7000)) as HTMLElement;
   }
+
+  console.log('[Riven OCR] Clicking create auction button...');
+  simulateUserClick(createButton);
+
+  // 等待 opened class 出现 —— 这是“点击打开成功”的最准信号
+  await waitForClassOnElement(modalContainer, 'opened--LfN_k', 7000);
+
+  console.log('[Riven OCR] Auction modal opened and ready');
 }
 
 async function fillCategory(root: Document | HTMLElement): Promise<void> {
   console.log('[Riven OCR] Filling category...');
   const categorySelect = root.querySelector('#auction-create__auctionCategory') as HTMLSelectElement;
   if (categorySelect) {
-    categorySelect.value = 'riven'; // 设置为裂罅 Mod
+    setNativeValue(categorySelect, 'riven'); // 设置为裂罅 Mod
     triggerInputEvent(categorySelect);
     console.log('[Riven OCR] Category set to riven');
   } else {
@@ -375,13 +521,20 @@ async function fillPositiveAttributes(root: Document | HTMLElement, attrs: any[]
     if (dropdownInputs) {
       const searchText = buildAttributeSearchText(attr.url_name, dict, lang);
       if (searchText) {
-        await selectFromDropdown(container, dropdownInputs, searchText, 'li.selectable span');
+        const selected = await selectFromDropdown(container, dropdownInputs, searchText, 'li.selectable span');
+        if (!selected) {
+          console.warn('[Riven OCR] Positive attribute not selected, skip value input:', attr.url_name);
+          continue;
+        }
       }
     }
 
     if (valueInput) {
-      valueInput.value = Math.abs(attr.value).toString();
+      const v = Math.abs(Number(attr.value));
+      setNativeValue(valueInput, formatForNumberInput(valueInput, v));
       triggerInputEvent(valueInput);
+      triggerKeyupEvent(valueInput);
+      valueInput.dispatchEvent(new Event('blur', { bubbles: true }));
     }
   }
 }
@@ -397,6 +550,9 @@ async function fillNegativeAttribute(root: Document | HTMLElement, attr: any, di
 
   console.log('[Riven OCR] Negative container found');
 
+  // 关键：只清理负面容器自己的已选词条，防止残留导致 payload 出现“重复负面 + 一条没 value”
+  await clearSelectedUnitsWithin(negativeContainer);
+
   // 点击action按钮打开dropdown
   const actionButton = negativeContainer.querySelector('.attribute-seeker__action') as HTMLButtonElement;
   if (actionButton) {
@@ -406,18 +562,47 @@ async function fillNegativeAttribute(root: Document | HTMLElement, attr: any, di
 
   // 填充属性
   const dropdownInputs = negativeContainer.querySelector('.attribute-seeker__dropdown .dropdown__inputs .real-input input') as HTMLInputElement;
-  const valueInput = root.querySelector('#auction-create__value_negative') as HTMLInputElement;
+  const valueInput =
+    (negativeContainer.querySelector('input[id^="auction-create__value_negative"]') ||
+      root.querySelector('#auction-create__value_negative')) as HTMLInputElement;
 
   if (dropdownInputs) {
     const searchText = buildAttributeSearchText(attr.url_name, dict, lang);
     if (searchText) {
-      await selectFromDropdown(negativeContainer, dropdownInputs, searchText, 'li.selectable span');
+      const selected = await selectFromDropdown(negativeContainer, dropdownInputs, searchText, 'li.selectable span');
+      if (!selected) {
+        console.warn('[Riven OCR] Negative attribute not selected, skip value input:', attr.url_name);
+        return;
+      }
     }
   }
 
   if (valueInput) {
-    valueInput.value = Math.abs(attr.value).toString();
+    // 根据不同负面输入框（倍率 x / 百分比减法）写入正确的数值范围与符号
+    const max = parseOptionalNumberAttr(valueInput, 'max');
+    const abs = Math.abs(Number(attr.value));
+    const computed = max !== null && max <= 0 ? -abs : abs;
+    setNativeValue(valueInput, formatForNumberInput(valueInput, computed));
     triggerInputEvent(valueInput);
+    triggerKeyupEvent(valueInput);
+    valueInput.dispatchEvent(new Event('blur', { bubbles: true }));
+  }
+
+  // 兜底：如果依然出现多个 selected-unit，删除到只剩 1 个（避免提交 invalid_form）
+  const afterUnits = Array.from(negativeContainer.querySelectorAll('.attribute-seeker__selected .selected-unit'));
+  if (afterUnits.length > 1) {
+    console.warn('[Riven OCR] Multiple negative selected units detected, trimming:', afterUnits.length);
+    for (let i = 0; i < afterUnits.length - 1; i++) {
+      const unit = afterUnits[i];
+      const removeBtn =
+        (unit.querySelector('.btn') ||
+          unit.querySelector('button') ||
+          unit.querySelector('[role="button"]')) as HTMLElement | null;
+      if (removeBtn) {
+        simulateUserClick(removeBtn);
+        await new Promise((r) => setTimeout(r, 100));
+      }
+    }
   }
 }
 
@@ -462,7 +647,7 @@ async function fillRivenModName(root: Document | HTMLElement, modName: string): 
   });
 
   if (matchingOption) {
-    modNameSelect.value = matchingOption.value;
+    setNativeValue(modNameSelect, matchingOption.value);
     triggerInputEvent(modNameSelect);
     console.log('[Riven OCR] Riven mod name set to:', matchingOption.textContent);
   } else {
@@ -477,8 +662,9 @@ async function fillRanksAndPolarity(root: Document | HTMLElement, ocr: OcrRivenR
   // 段位
   const masteryInput = root.querySelector('#auction-create__masteryRank') as HTMLInputElement;
   if (masteryInput && typeof ocr.mastery_level === 'number') {
-    masteryInput.value = ocr.mastery_level.toString();
+    setNativeValue(masteryInput, ocr.mastery_level.toString());
     triggerInputEvent(masteryInput);
+    masteryInput.dispatchEvent(new Event('blur', { bubbles: true }));
     console.log('[Riven OCR] Mastery level set to:', ocr.mastery_level);
   }
 
@@ -486,8 +672,9 @@ async function fillRanksAndPolarity(root: Document | HTMLElement, ocr: OcrRivenR
   const modRankInput = root.querySelector('#auction-create__modRank') as HTMLInputElement;
   if (modRankInput) {
     const rankValue = typeof ocr.mod_rank === 'number' ? ocr.mod_rank : 0;
-    modRankInput.value = rankValue.toString();
+    setNativeValue(modRankInput, rankValue.toString());
     triggerInputEvent(modRankInput);
+    modRankInput.dispatchEvent(new Event('blur', { bubbles: true }));
     console.log('[Riven OCR] Mod rank set to:', rankValue);
   }
 
@@ -495,15 +682,16 @@ async function fillRanksAndPolarity(root: Document | HTMLElement, ocr: OcrRivenR
   const rerollsInput = root.querySelector('#auction-create__reRolls') as HTMLInputElement;
   if (rerollsInput) {
     const rerollsValue = typeof ocr.re_rolls === 'number' ? ocr.re_rolls : 0;
-    rerollsInput.value = rerollsValue.toString();
+    setNativeValue(rerollsInput, rerollsValue.toString());
     triggerInputEvent(rerollsInput);
+    rerollsInput.dispatchEvent(new Event('blur', { bubbles: true }));
     console.log('[Riven OCR] Rerolls set to:', rerollsValue);
   }
 
   // 极性
   const polaritySelect = root.querySelector('#auctions-create__polarity') as HTMLSelectElement;
   if (polaritySelect && ocr.polarity && ocr.polarity !== 'unknown') {
-    polaritySelect.value = ocr.polarity;
+    setNativeValue(polaritySelect, ocr.polarity);
     triggerInputEvent(polaritySelect);
     console.log('[Riven OCR] Polarity set to:', ocr.polarity);
   }
@@ -528,13 +716,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         // 打开拍卖模态框
         await openAuctionModalIfNeeded(document);
 
-        // 等待模态框完全加载
-        console.log('[Riven OCR] Waiting for modal to load...');
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        // 尝试获取模态框内容区域
-        const modal = (document.querySelector('.widget-modal__content--DCGVm') || 
-                       document.querySelector('.modal--Csf66.opened--LfN_k')) as HTMLElement;
+        // 等待模态框完全加载：以 opened 状态的 modal 容器为 root（不依赖 hash class）
+        console.log('[Riven OCR] Waiting for opened modal container...');
+        const modal = document.querySelector('.modal--Csf66.opened--LfN_k') as HTMLElement | null;
         
         if (!modal) {
           console.error('[Riven OCR] Modal not found');
