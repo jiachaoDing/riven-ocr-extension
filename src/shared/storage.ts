@@ -16,7 +16,7 @@ export interface LocalData {
 }
 
 const DEFAULT_SYNC_SETTINGS: SyncSettings = {
-  backendUrl: 'http://49.234.200.196:80',
+  backendUrl: 'http://your-english-backend-url:80', // TODO: User to provide actual URL
   marketPriceUrl: 'https://lab.webutilitykit.com', 
   autoFillRows: true,
   autoOpenModal: true,

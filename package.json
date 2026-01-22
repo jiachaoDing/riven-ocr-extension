@@ -8,15 +8,22 @@
     "build": "vite build",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "tailwind": "tailwindcss -i ./src/input.css -o ./src/popup/popup.css --watch"
   },
-  "keywords": ["browser-extension", "ocr", "dictionary"],
+  "keywords": [
+    "browser-extension",
+    "ocr",
+    "dictionary"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "@types/chrome": "^0.1.33",
     "@types/jsdom": "^27.0.0",
     "jsdom": "^27.4.0",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vitest": "^4.0.17"

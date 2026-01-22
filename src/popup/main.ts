@@ -1,14 +1,14 @@
 // src/popup/main.ts
 import type { OcrRivenResult, MarketPriceResult } from '../shared/types';
-import { getLastResult, testBackendConnection, getSyncSettings, setSyncSettings } from '../shared/storage';
+import { getLastResult, getSyncSettings, setSyncSettings } from '../shared/storage';
 import { loadDictionary, getAttributeEntry } from '../shared/dictionary';
+import { SettingsManager } from './settings';
+
+// --- Initialize Settings ---
+const settingsManager = new SettingsManager();
 
 // --- DOM Elements ---
-const mainView = document.getElementById('main-view') as HTMLDivElement;
-const settingsView = document.getElementById('settings-view') as HTMLDivElement;
 const viewToggleBtn = document.getElementById('view-toggle') as HTMLButtonElement;
-const settingsIcon = document.getElementById('settings-icon') as unknown as SVGElement;
-const backIcon = document.getElementById('back-icon') as unknown as SVGElement;
 const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
 
 // Main View Elements
@@ -21,43 +21,18 @@ const previewContainer = document.getElementById('preview-container') as HTMLDiv
 const imagePreview = document.getElementById('image-preview') as HTMLImageElement;
 const removePreviewBtn = document.getElementById('remove-preview') as HTMLButtonElement;
 
-// Settings View Elements
-const backendUrlInput = document.getElementById('backend-url') as HTMLInputElement;
-const marketPriceUrlInput = document.getElementById('market-price-url') as HTMLInputElement;
-const backendStatus = document.getElementById('backend-status') as HTMLDivElement;
-const testBackendBtn = document.getElementById('test-backend') as HTMLButtonElement;
-const saveBackendBtn = document.getElementById('save-backend') as HTMLButtonElement;
-const dictVersion = document.getElementById('dict-version') as HTMLDivElement;
-const dictStatus = document.getElementById('dict-status') as HTMLDivElement;
-const updateDictBtn = document.getElementById('update-dict') as HTMLButtonElement;
-const autoFillRowsCheckbox = document.getElementById('auto-fill-rows') as HTMLInputElement;
-const autoOpenModalCheckbox = document.getElementById('auto-open-modal') as HTMLInputElement;
-const saveSettingsBtn = document.getElementById('save-settings') as HTMLButtonElement;
-
 // --- State ---
 let currentImageFile: File | null = null;
 let lastOcrResult: OcrRivenResult | null = null;
-let currentView: 'main' | 'settings' = 'main';
 
 // --- View Logic ---
-function switchView(view: 'main' | 'settings') {
-  currentView = view;
-  if (view === 'main') {
-    mainView.classList.add('active');
-    settingsView.classList.remove('active');
-    settingsIcon.style.display = 'block';
-    backIcon.style.display = 'none';
-  } else {
-    mainView.classList.remove('active');
-    settingsView.classList.add('active');
-    settingsIcon.style.display = 'none';
-    backIcon.style.display = 'block';
-    refreshSettingsView();
-  }
-}
-
 viewToggleBtn.addEventListener('click', () => {
-  switchView(currentView === 'main' ? 'settings' : 'main');
+  settingsManager.toggleView();
+});
+
+// Listen for settings saved event
+document.addEventListener('settings-saved', (e: any) => {
+  setStatus(e.detail.message, 'success');
 });
 
 // --- Theme Logic ---
@@ -79,7 +54,7 @@ themeToggleBtn.addEventListener('click', async () => {
 // --- Main OCR Logic ---
 function setStatus(text: string, type: 'info' | 'success' | 'error' = 'info') {
   statusEl.textContent = text;
-  // 可以根据 type 改变样式，这里先简单实现
+  statusEl.className = `status-badge ${type} text-center block w-full`;
 }
 
 function enableFillButton(enabled: boolean) {
@@ -121,7 +96,7 @@ async function displayOcrResult(result: OcrRivenResult) {
   // 获取属性显示名称
   const getAttributeDisplayName = (urlName: string) => {
     const entry = getAttributeEntry(urlName, dict);
-    return entry ? entry.names.zh[0] || urlName : urlName;
+    return entry ? entry.names.en[0] || urlName : urlName;
   };
   // 检查是否有缺失字段
   const isWeaponMissing = !weaponName;
@@ -135,42 +110,68 @@ async function displayOcrResult(result: OcrRivenResult) {
 
   const renderField = (label: string, value: any, isMissing: boolean) => {
     const displayValue = isMissing 
-      ? '<span style="color: #9ca3af; font-size: 11px; border: 1px dashed var(--border); padding: 0 4px; border-radius: 4px; font-style: italic;">待补全</span>' 
-      : `<span style="font-weight: 500;">${value}</span>`;
-    return `<div><span style="color: var(--text-secondary)">${label}：</span>${displayValue}</div>`;
+      ? '<span class="text-[10px] text-on-surface-variant/40 italic border border-dashed border-outline/20 px-1.5 rounded">Required</span>' 
+      : `<span class="font-bold text-on-surface">${value}</span>`;
+    return `<div class="flex flex-col"><span class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">${label}</span>${displayValue}</div>`;
   };
 
   // 异步获取价格信息
-  let priceHtml = '<div id="price-loading" style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">正在查询市场参考价...</div>';
+  let priceHtml = '<div id="price-loading" class="text-[11px] text-on-surface-variant/60 animate-pulse mt-4 flex items-center gap-2"><div class="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>Fetching market prices...</div>';
   
   const card = document.createElement('div');
-  card.className = 'result-card';
+  card.className = 'm3-card relative overflow-hidden';
   card.innerHTML = `
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 4px;">
-      <span style="font-weight: 700;">识别结果</span>
-      ${hasAnyMissing ? '<span style="font-size: 10px; color: var(--text-secondary); background: var(--bg-main); border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px;">数据不全</span>' : ''}
+    <div class="flex justify-between items-center mb-4 border-b border-outline/10 pb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-4 bg-primary rounded-full"></div>
+        <span class="font-bold text-sm tracking-tight text-on-surface">OCR Result</span>
+      </div>
+      ${hasAnyMissing ? '<span class="text-[9px] font-bold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full uppercase tracking-wider">Incomplete</span>' : ''}
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px;">
-      ${renderField('武器', weaponName, isWeaponMissing)}
-      ${renderField('名称', result.name, isNameMissing)}
-      ${renderField('段位', result.mastery_level, isMasteryMissing)}
-      ${renderField('极性', result.polarity, isPolarityMissing)}
-      ${renderField('等级', result.mod_rank, isRankMissing)}
-      ${renderField('洗炼', result.re_rolls, isRerollsMissing)}
+    
+    <div class="grid grid-cols-3 gap-y-4 gap-x-2 text-xs">
+      ${renderField('Weapon', weaponName, isWeaponMissing)}
+      ${renderField('Name', result.name, isNameMissing)}
+      ${renderField('MR', result.mastery_level, isMasteryMissing)}
+      ${renderField('Polarity', result.polarity, isPolarityMissing)}
+      ${renderField('Rank', result.mod_rank, isRankMissing)}
+      ${renderField('Rerolls', result.re_rolls, isRerollsMissing)}
     </div>
-    <div style="margin-top: 10px; font-size: 13px;">
-      <div style="color: var(--text-secondary); margin-bottom: 4px;">属性：</div>
-      ${positiveAttrs.length > 0
-        ? positiveAttrs.map(a => `<div style="color: #10b981;">+ ${getAttributeDisplayName(a.url_name)} ${a.value}</div>`).join('')
-        : '<div style="color: #9ca3af; font-size: 11px; font-style: italic;">[ 正面属性未识别 ]</div>'}
-      ${negativeAttr ? `<div style="color: #ef4444;">- ${getAttributeDisplayName(negativeAttr.url_name)} ${negativeAttr.value}</div>` : ''}
+
+    <div class="mt-5 space-y-2">
+      <div class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-60">Attributes</div>
+      <div class="bg-surface/40 rounded-lg p-2.5 space-y-1.5 border border-outline/5">
+        ${positiveAttrs.length > 0
+          ? positiveAttrs.map(a => `
+            <div class="flex items-center gap-2 text-[13px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span class="w-12 shrink-0 font-bold tabular-nums">${a.value}</span>
+              <span class="opacity-90">${getAttributeDisplayName(a.url_name)}</span>
+            </div>`).join('')
+          : '<div class="text-[11px] text-on-surface-variant/40 italic py-1">No positive attributes detected</div>'}
+        
+        ${negativeAttr ? `
+          <div class="h-px bg-outline/5 my-1"></div>
+          <div class="flex items-center gap-2 text-[13px] font-medium text-rose-600 dark:text-rose-400">
+            <span class="w-12 shrink-0 font-bold tabular-nums">${negativeAttr.value}</span>
+            <span class="opacity-90">${getAttributeDisplayName(negativeAttr.url_name)}</span>
+          </div>` : ''}
+      </div>
     </div>
+
     <div id="market-price-container">${priceHtml}</div>
-    <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center;">
-      <span>置信度: ${(result.confidence * 100).toFixed(1)}%</span>
-      <button id="write-button" class="btn-primary" style="width: auto; padding: 4px 12px; font-size: 12px;">写入页面</button>
+
+    <div class="mt-6 flex items-center justify-between border-t border-outline/10 pt-4">
+      <div class="flex flex-col">
+        <span class="text-[9px] uppercase font-bold text-on-surface-variant opacity-50 tracking-widest">Confidence</span>
+        <span class="text-xs font-bold text-primary">${(result.confidence * 100).toFixed(1)}%</span>
+      </div>
+      <button id="write-button" class="m3-btn-tonal !bg-primary !text-on-primary shadow-sm hover:shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Fill Page
+      </button>
     </div>
-    ${hasAnyMissing ? `<div style="margin-top: 8px; font-size: 10px; color: #9ca3af; font-style: italic;">提示：虚线框项未能自动识别，写入后请在网页上手动补全。</div>` : ''}
+    
+    ${hasAnyMissing ? `<div class="mt-3 text-[9px] text-on-surface-variant/50 italic leading-tight text-center">Items in dashed boxes need manual correction on the page.</div>` : ''}
   `;
 
   resultArea.appendChild(card);
@@ -185,31 +186,29 @@ async function displayOcrResult(result: OcrRivenResult) {
     if (container) {
       if (priceData && priceData.success) {
         container.innerHTML = `
-          <a href="https://lab.webutilitykit.com/apps/RivenTracker/?weapon=${result.weapon_url_name}" target="_blank" style="text-decoration: none; color: inherit; display: block; margin-top: 10px;">
-            <div class="price-card" style="padding: 10px; background: var(--bg-main); border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <span style="font-size: 11px; color: var(--text-secondary);">市场行情 (昨日底价均价)</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary); opacity: 0.5;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <a href="https://lab.webutilitykit.com/apps/RivenTracker/?weapon=${result.weapon_url_name}" target="_blank" class="block mt-4 group no-underline">
+            <div class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30 rounded-xl p-3 transition-all hover:scale-[1.02] hover:shadow-md active:scale-95">
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700/70 dark:text-amber-500/70">Market Trend</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 opacity-50"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <span style="font-size: 20px; font-weight: 800; color: #f59e0b;">${priceData.avg_bottom_price} <span style="font-size: 12px; font-weight: 400;">白金</span></span>
-                <span style="font-size: 11px; color: var(--text-secondary);">在售数量: ${priceData.active_count}</span>
+              <div class="flex justify-between items-end">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-black text-amber-600 dark:text-amber-400 tabular-nums">${priceData.avg_bottom_price}</span>
+                  <span class="text-[10px] font-bold text-amber-600/60 uppercase">PLT</span>
+                </div>
+                <div class="text-[10px] text-on-surface-variant opacity-60 font-medium">
+                  ${priceData.active_count} Listings
+                </div>
               </div>
-              <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 9px; color: var(--text-secondary); text-align: right; opacity: 0.6;">
-                数据来源: Riven Tracker
+              <div class="mt-2 text-[8px] text-on-surface-variant opacity-40 text-right uppercase tracking-widest font-bold">
+                Source: Riven Tracker
               </div>
             </div>
           </a>
-          <style>
-            .price-card:hover {
-              border-color: #f59e0b;
-              transform: translateY(-1px);
-              box-shadow: var(--shadow);
-            }
-          </style>
         `;
       } else {
-        container.innerHTML = ''; // 或者显示查询失败
+        container.innerHTML = '';
       }
     }
   } else {
@@ -218,17 +217,16 @@ async function displayOcrResult(result: OcrRivenResult) {
   }
 }
 
-// 写入按钮处理逻辑 (从原 writeButton 事件搬迁并微调)
 async function handleWriteToPage() {
   if (!lastOcrResult) return;
   const btn = document.getElementById('write-button') as HTMLButtonElement;
   try {
-    setStatus('正在写入页面...', 'info');
+    setStatus('Filling page...', 'info');
     if (btn) btn.disabled = true;
 
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     if (!tab.id || !tab.url?.includes('warframe.market')) {
-      throw new Error('请在 warframe.market 页面使用此功能');
+      throw new Error('Please use this on warframe.market');
     }
 
     const response = await chrome.tabs.sendMessage(tab.id, {
@@ -237,12 +235,12 @@ async function handleWriteToPage() {
     });
 
     if (response.ok) {
-      setStatus('写入成功！', 'success');
+      setStatus('Successfully filled!', 'success');
     } else {
-      throw new Error(response.error || '写入失败');
+      throw new Error(response.error || 'Failed to fill');
     }
   } catch (error: any) {
-    setStatus(`写入失败：${error.message}`, 'error');
+    setStatus(`Failed: ${error.message}`, 'error');
   } finally {
     if (btn) btn.disabled = false;
   }
@@ -252,11 +250,11 @@ function handleFiles(files: FileList | null) {
   if (!files || files.length === 0) return;
   const file = files[0];
   if (!file.type.startsWith('image/')) {
-    setStatus('请选择图片文件', 'error');
+    setStatus('Please select an image file', 'error');
     return;
   }
   currentImageFile = file;
-  setStatus(`已选择：${file.name}`);
+  setStatus(`Selected: ${file.name}`);
   enableFillButton(true);
   showPreview(file);
 }
@@ -265,8 +263,10 @@ function showPreview(file: File) {
   const reader = new FileReader();
   reader.onload = (e) => {
     imagePreview.src = e.target?.result as string;
-    previewContainer.style.display = 'block';
-    dropArea.style.display = 'none';
+    // 使用 flex 确保预览图居中，同时移除 hidden
+    previewContainer.classList.remove('hidden');
+    previewContainer.classList.add('flex');
+    dropArea.classList.add('hidden');
   };
   reader.readAsDataURL(file);
 }
@@ -274,10 +274,11 @@ function showPreview(file: File) {
 function removePreview() {
   currentImageFile = null;
   imagePreview.src = '';
-  previewContainer.style.display = 'none';
-  dropArea.style.display = 'block';
+  previewContainer.classList.add('hidden');
+  previewContainer.classList.remove('flex');
+  dropArea.classList.remove('hidden');
   enableFillButton(false);
-  setStatus('准备就绪，请上传紫卡截图');
+  setStatus('Ready, please upload Riven screenshot');
 }
 
 removePreviewBtn.addEventListener('click', (e) => {
@@ -299,7 +300,7 @@ window.addEventListener('paste', (e) => {
     const file = item.getAsFile();
     if (file) {
       currentImageFile = file;
-      setStatus('已从剪贴板获取图片');
+      setStatus('Image obtained from clipboard');
       enableFillButton(true);
       showPreview(file);
     }
@@ -309,7 +310,7 @@ window.addEventListener('paste', (e) => {
 fillButton.addEventListener('click', async () => {
   if (!currentImageFile) return;
   try {
-    setStatus('正在识别图片...');
+    setStatus('Recognizing image...');
     fillButton.disabled = true;
 
     const reader = new FileReader();
@@ -327,76 +328,15 @@ fillButton.addEventListener('click', async () => {
     if (response.ok && response.data) {
       lastOcrResult = response.data;
       displayOcrResult(response.data);
-      setStatus('识别成功！', 'success');
+      setStatus('Recognition successful!', 'success');
     } else {
-      throw new Error(response.error || '识别失败');
+      throw new Error(response.error || 'Recognition failed');
     }
   } catch (error: any) {
-    setStatus(`识别失败：${error.message}`, 'error');
+    setStatus(`Failed: ${error.message}`, 'error');
   } finally {
     fillButton.disabled = false;
   }
-});
-
-// --- Settings Logic ---
-async function refreshSettingsView() {
-  const settings = await getSyncSettings();
-  backendUrlInput.value = settings.backendUrl;
-  marketPriceUrlInput.value = settings.marketPriceUrl || '';
-  autoFillRowsCheckbox.checked = settings.autoFillRows;
-  autoOpenModalCheckbox.checked = settings.autoOpenModal;
-
-  // Check Backend
-  setLoadingBadge(backendStatus, '测试中...');
-  const result = await testBackendConnection(settings.backendUrl);
-  setBadge(backendStatus, result.message, result.success ? 'success' : 'error');
-
-  // Check Dictionary
-  try {
-    const dict = await loadDictionary();
-    dictVersion.textContent = `${Object.keys(dict.weapon_dict).length} 武器 / ${Object.keys(dict.attribute_dict).length} 属性`;
-    setBadge(dictStatus, '加载成功', 'success');
-  } catch (e) {
-    setBadge(dictStatus, '加载失败', 'error');
-  }
-}
-
-function setBadge(el: HTMLElement, text: string, type: 'success' | 'error' | 'info') {
-  el.textContent = text;
-  el.className = `status-badge ${type}`;
-}
-
-function setLoadingBadge(el: HTMLElement, text: string) {
-  el.textContent = text;
-  el.className = `status-badge info`;
-}
-
-testBackendBtn.addEventListener('click', async () => {
-  setLoadingBadge(backendStatus, '正在测试...');
-  const result = await testBackendConnection(backendUrlInput.value);
-  setBadge(backendStatus, result.message, result.success ? 'success' : 'error');
-});
-
-saveBackendBtn.addEventListener('click', async () => {
-  await setSyncSettings({ backendUrl: backendUrlInput.value });
-  setBadge(backendStatus, '已保存', 'success');
-});
-
-updateDictBtn.addEventListener('click', async () => {
-  setBadge(dictStatus, '正在更新...', 'info');
-  await chrome.storage.local.remove(['dictionary']);
-  await refreshSettingsView();
-});
-
-saveSettingsBtn.addEventListener('click', async () => {
-  await setSyncSettings({
-    backendUrl: backendUrlInput.value,
-    marketPriceUrl: marketPriceUrlInput.value,
-    autoFillRows: autoFillRowsCheckbox.checked,
-    autoOpenModal: autoOpenModalCheckbox.checked
-  });
-  setStatus('设置已保存', 'success');
-  switchView('main');
 });
 
 // --- Initialize ---
@@ -409,7 +349,7 @@ async function initialize() {
     if (lastResult) {
       lastOcrResult = lastResult;
       displayOcrResult(lastResult);
-      setStatus('已加载上次识别结果');
+      setStatus('Loaded last recognition result');
     }
   } catch (e) {
     console.error('Failed to load last result', e);

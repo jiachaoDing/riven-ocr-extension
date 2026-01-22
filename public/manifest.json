@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "紫卡助手",
-  "version": "1.0.3",
-  "description": "自动识别 Warframe 紫卡并填入 warframe.market 拍卖表单。",
+  "name": "Riven Lens OCR",
+  "version": "1.0.0",
+  "description": "Automatically recognize Warframe Riven mods and fill them into warframe.market auction forms.",
 
   "author": "yinb9933@gmail.com",
 
@@ -23,11 +23,6 @@
     "128": "icons/web-app-manifest-192x192.png"
   },
 
-  "options_ui": {
-    "page": "options.html",
-    "open_in_tab": false
-  },
-
   "background": {
     "service_worker": "background.js",
     "type": "module"
@@ -44,13 +39,17 @@
   "content_scripts": [
     {
       "matches": ["https://warframe.market/*"],
-      "js": ["content-script.js"]
+      "js": ["content-script-loader.js"]
     }
   ],
 
   "minimum_chrome_version": "88",
 
   "web_accessible_resources": [
+    {
+      "resources": ["content-script.js", "chunks/*"],
+      "matches": ["https://warframe.market/*"]
+    },
     {
       "resources": ["icons/*"],
       "matches": ["https://warframe.market/*"]
