@@ -317,7 +317,20 @@
         </div>
         
         <div id="status">准备就绪，请上传紫卡截图</div>
-        
+
+        <div id="refinement-warning" style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: #92400e;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <div>
+              <strong>重要提示：</strong>洗炼次数识别有较大概率出错，请务必手动检查确认后再发布拍卖。
+            </div>
+          </div>
+        </div>
+
         <div class="actions" style="display: flex; flex-direction: column; gap: 8px;">
           <button id="fill-button" class="btn-primary" disabled>识别并解析图片</button>
         </div>

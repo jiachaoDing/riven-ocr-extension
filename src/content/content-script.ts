@@ -194,36 +194,12 @@ function parseOptionalNumberAttr(el: Element, attrName: 'min' | 'max' | 'step'):
   return Number.isFinite(n) ? n : null;
 }
 
-function decimalsFromStep(stepAttr: string | null): number {
-  if (!stepAttr || stepAttr === 'any') return 1;
-  const i = stepAttr.indexOf('.');
-  return i >= 0 ? stepAttr.length - i - 1 : 0;
-}
-
-function clampNumber(v: number, min: number | null, max: number | null): number {
-  let out = v;
-  if (min !== null) out = Math.max(min, out);
-  if (max !== null) out = Math.min(max, out);
-  return out;
-}
-
-function roundToStep(v: number, step: number | null): number {
-  if (step === null || step <= 0) return v;
-  return Math.round(v / step) * step;
-}
-
-function formatForNumberInput(input: HTMLInputElement, value: number): string {
-  const step = parseOptionalNumberAttr(input, 'step');
-  const stepAttr = input.getAttribute('step');
-
-  let v = value;
-  v = roundToStep(v, step);
-
-  const decimals = decimalsFromStep(stepAttr);
-  // 避免 33.60000000000001 这类浮点长尾
-  const fixed = v.toFixed(decimals);
-  // number input 接受 "1.0"/"1.00"，不强制去尾；但把 -0 归一化
-  return fixed === '-0' || fixed === '-0.0' || fixed === '-0.00' ? fixed.replace('-', '') : fixed;
+function formatNumberAsEntered(value: number): string {
+  // 按用户需求：不要按 0.1/step 四舍五入，直接填入识别值本身。
+  // 这里只做最小清理：处理 -0 以及 NaN/Infinity。
+  if (!Number.isFinite(value)) return '';
+  const s = String(value);
+  return s === '-0' ? '0' : s;
 }
 
 function computeNegativeValueForInput(rawValue: number, input: HTMLInputElement): number {
@@ -531,7 +507,12 @@ async function fillPositiveAttributes(root: Document | HTMLElement, attrs: any[]
 
     if (valueInput) {
       const v = Math.abs(Number(attr.value));
-      setNativeValue(valueInput, formatForNumberInput(valueInput, v));
+      let finalValue = v;
+      // 特殊处理：后坐力(recoil)作为正面属性时，数值应为负（-后坐力是正面效果）
+      if (attr.url_name === 'recoil') {
+        finalValue = -v;
+      }
+      setNativeValue(valueInput, formatNumberAsEntered(finalValue));
       triggerInputEvent(valueInput);
       triggerKeyupEvent(valueInput);
       valueInput.dispatchEvent(new Event('blur', { bubbles: true }));
@@ -581,8 +562,12 @@ async function fillNegativeAttribute(root: Document | HTMLElement, attr: any, di
     // 根据不同负面输入框（倍率 x / 百分比减法）写入正确的数值范围与符号
     const max = parseOptionalNumberAttr(valueInput, 'max');
     const abs = Math.abs(Number(attr.value));
-    const computed = max !== null && max <= 0 ? -abs : abs;
-    setNativeValue(valueInput, formatForNumberInput(valueInput, computed));
+    let computed = max !== null && max <= 0 ? -abs : abs;
+    // 特殊处理：后坐力(recoil)作为负面属性时，数值应为正（+后坐力是负面效果）
+    if (attr.url_name === 'recoil') {
+      computed = abs;
+    }
+    setNativeValue(valueInput, formatNumberAsEntered(computed));
     triggerInputEvent(valueInput);
     triggerKeyupEvent(valueInput);
     valueInput.dispatchEvent(new Event('blur', { bubbles: true }));
