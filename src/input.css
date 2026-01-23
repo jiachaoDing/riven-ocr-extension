@@ -2,6 +2,8 @@
 @source "../popup.html";
 @source "./**/*.ts";
 
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
   /* Material Design 3 Colors - Custom Palette */
   --color-primary: #6750A4;
@@ -97,19 +99,19 @@
   }
   
   .m3-btn-filled {
-    @apply bg-primary text-on-primary px-6 py-2.5 rounded-m3-full font-medium text-sm hover:shadow-md active:scale-95 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-2 transition-all;
+    @apply bg-primary text-on-primary px-6 py-2.5 rounded-m3-full font-medium text-sm hover:bg-primary/90 hover:shadow-md active:scale-95 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-2 transition-all;
   }
   
   .m3-btn-tonal {
-    @apply bg-primary-container text-on-primary-container px-4 py-2 rounded-m3-full font-medium text-xs hover:shadow-sm active:scale-95 disabled:opacity-30 flex items-center justify-center gap-2;
+    @apply bg-primary-container text-on-primary-container px-4 py-2 rounded-m3-full font-medium text-xs hover:bg-primary-container/80 hover:shadow-sm active:scale-95 disabled:opacity-30 flex items-center justify-center gap-2;
   }
 
   .m3-btn-outlined {
-    @apply border border-outline text-primary px-4 py-2 rounded-m3-full font-medium text-xs hover:bg-primary/5 active:scale-95 disabled:opacity-30 flex items-center justify-center gap-2;
+    @apply border border-outline text-primary px-4 py-2 rounded-m3-full font-medium text-xs hover:bg-primary/10 active:scale-95 disabled:opacity-30 flex items-center justify-center gap-2;
   }
 
   .m3-icon-btn {
-    @apply p-2 rounded-full hover:bg-surface-variant/50 text-on-surface-variant transition-colors active:scale-90;
+    @apply p-2 rounded-full hover:bg-on-surface/10 text-on-surface-variant transition-colors active:scale-90 dark:hover:bg-on-surface/20;
   }
 
   .m3-input {

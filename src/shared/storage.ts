@@ -16,7 +16,7 @@ export interface LocalData {
 }
 
 const DEFAULT_SYNC_SETTINGS: SyncSettings = {
-  backendUrl: 'http://your-english-backend-url:80', // TODO: User to provide actual URL
+  backendUrl: 'http://104.156.254.37:80', // TODO: User to provide actual URL
   marketPriceUrl: 'https://lab.webutilitykit.com', 
   autoFillRows: true,
   autoOpenModal: true,
@@ -92,12 +92,12 @@ export async function testBackendConnection(url: string): Promise<{ success: boo
     });
 
     if (response.ok) {
-      return { success: true, message: '后端连接正常' };
+      return { success: true, message: 'Backend connection successful' };
     } else {
       return { success: false, message: `HTTP ${response.status}: ${response.statusText}` };
     }
   } catch (error) {
-    const message = error instanceof Error ? error.message : '未知错误';
-    return { success: false, message: `连接失败: ${message}` };
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    return { success: false, message: `Connection failed: ${message}` };
   }
 }

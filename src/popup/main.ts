@@ -3,6 +3,7 @@ import type { OcrRivenResult, MarketPriceResult } from '../shared/types';
 import { getLastResult, getSyncSettings, setSyncSettings } from '../shared/storage';
 import { loadDictionary, getAttributeEntry } from '../shared/dictionary';
 import { SettingsManager } from './settings';
+import { compressImage } from './image-utils';
 
 // --- Initialize Settings ---
 const settingsManager = new SettingsManager();
@@ -140,7 +141,7 @@ async function displayOcrResult(result: OcrRivenResult) {
 
     <div class="mt-5 space-y-2">
       <div class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-60">Attributes</div>
-      <div class="bg-surface/40 rounded-lg p-2.5 space-y-1.5 border border-outline/5">
+      <div class="bg-surface-variant/20 dark:bg-surface-variant/10 rounded-lg p-2.5 space-y-1.5 border border-outline/5">
         ${positiveAttrs.length > 0
           ? positiveAttrs.map(a => `
             <div class="flex items-center gap-2 text-[13px] font-medium text-emerald-600 dark:text-emerald-400">
@@ -161,9 +162,9 @@ async function displayOcrResult(result: OcrRivenResult) {
     <div id="market-price-container">${priceHtml}</div>
 
     <div class="mt-6 flex items-center justify-between border-t border-outline/10 pt-4">
-      <div class="flex flex-col">
-        <span class="text-[9px] uppercase font-bold text-on-surface-variant opacity-50 tracking-widest">Confidence</span>
-        <span class="text-xs font-bold text-primary">${(result.confidence * 100).toFixed(1)}%</span>
+      <div class="flex items-center gap-1.5 text-[11px] font-bold text-amber-600 dark:text-amber-400">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Please double-check submitting..
       </div>
       <button id="write-button" class="m3-btn-tonal !bg-primary !text-on-primary shadow-sm hover:shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -186,19 +187,19 @@ async function displayOcrResult(result: OcrRivenResult) {
     if (container) {
       if (priceData && priceData.success) {
         container.innerHTML = `
-          <a href="https://lab.webutilitykit.com/apps/RivenTracker/?weapon=${result.weapon_url_name}" target="_blank" class="block mt-4 group no-underline">
-            <div class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30 rounded-xl p-3 transition-all hover:scale-[1.02] hover:shadow-md active:scale-95">
+          <a href="https://lab.webutilitykit.com/apps/RivenTracker/en/?weapon=${result.weapon_url_name}" target="_blank" class="block mt-4 group no-underline">
+            <div class="bg-amber-50 dark:bg-amber-400/10 border border-amber-200 dark:border-amber-400/20 rounded-xl p-3 transition-all hover:scale-[1.02] hover:shadow-md active:scale-95">
               <div class="flex justify-between items-center mb-1">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700/70 dark:text-amber-500/70">Market Trend</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700/70 dark:text-amber-300/80">Unrolled Market Trend</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 opacity-50"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </div>
               <div class="flex justify-between items-end">
                 <div class="flex items-baseline gap-1">
-                  <span class="text-2xl font-black text-amber-600 dark:text-amber-400 tabular-nums">${priceData.avg_bottom_price}</span>
-                  <span class="text-[10px] font-bold text-amber-600/60 uppercase">PLT</span>
+                  <span class="text-2xl font-black text-amber-600 dark:text-amber-300 tabular-nums">${priceData.avg_bottom_price}</span>
+                  <span class="text-[10px] font-bold text-amber-600/60 dark:text-amber-300/60 uppercase">P</span>
                 </div>
                 <div class="text-[10px] text-on-surface-variant opacity-60 font-medium">
-                  ${priceData.active_count} Listings
+                   ${priceData.active_count} In-game
                 </div>
               </div>
               <div class="mt-2 text-[8px] text-on-surface-variant opacity-40 text-right uppercase tracking-widest font-bold">
@@ -313,13 +314,9 @@ fillButton.addEventListener('click', async () => {
     setStatus('Recognizing image...');
     fillButton.disabled = true;
 
-    const reader = new FileReader();
-    const base64Promise = new Promise<string>((resolve) => {
-      reader.onload = () => resolve((reader.result as string).split(',')[1]);
-      reader.readAsDataURL(currentImageFile!);
-    });
+    // 压缩图片并获取 Base64
+    const base64 = await compressImage(currentImageFile!);
     
-    const base64 = await base64Promise;
     const response = await chrome.runtime.sendMessage({
       type: 'PARSE_IMAGE_BASE64',
       payload: { base64 }

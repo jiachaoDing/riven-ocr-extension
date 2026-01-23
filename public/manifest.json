@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Riven Lens OCR",
+  "name": "Riven OCR",
   "version": "1.0.0",
-  "description": "Automatically recognize Warframe Riven mods and fill them into warframe.market auction forms.",
+  "description": "Extract Warframe Riven mod stats from screenshots and auto-fill warframe.market auction forms.",
 
-  "author": "yinb9933@gmail.com",
+  "author": "DingJC",
 
   "action": {
     "default_popup": "popup.html",
@@ -33,7 +33,7 @@
   "host_permissions": [
     "https://warframe.market/*",
     "https://lab.webutilitykit.com/*",
-    "http://49.234.200.196:80/*"
+    "http://104.156.254.37:80/*"
   ],
 
   "content_scripts": [
