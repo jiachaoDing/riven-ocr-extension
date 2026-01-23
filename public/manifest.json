@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Riven OCR",
+  "name": "Riven Lens",
   "version": "1.0.0",
   "description": "Extract Warframe Riven mod stats from screenshots and auto-fill warframe.market auction forms.",
 

@@ -1,30 +1,29 @@
-
 # riven-ocr-extension
 
-**Riven OCR Assistant** 是一款专为《星际战甲》（Warframe）玩家设计的浏览器扩展插件。它通过先进的 OCR（光学字符识别）技术，极大地简化了玩家在 `warframe.market` 平台上架裂罅 Mod（紫卡）的流程。
+**Riven OCR Assistant** is a browser extension designed specifically for Warframe players. It uses advanced OCR (Optical Character Recognition) technology to greatly simplify the process of listing Riven Mods (purple cards) on the `warframe.market` platform.
 
-### 🌟 核心功能
+### 🌟 Core Features
 
-*   **智能图像识别**：支持通过 **粘贴剪贴板图片**、**拖拽上传** 或 **文件选择** 快速导入紫卡截图。
-*   **高精度解析**：基于 PaddleOCR 与 FastAPI 后端服务，精准识别紫卡的所有核心数据，包括武器名称、紫卡名称、极性、段位要求、洗炼次数、Mod 等级以及所有正面和负面属性。
-*   **中英双语支持**：内置完整的武器与属性中英字典，支持在中文和英文界面的 `warframe.market` 之间无缝切换。
-*   **一键自动填表**：识别成功后，可一键将数据自动填入 `warframe.market` 的拍卖创建表单。自动处理类别选择、下拉菜单匹配和数值录入，用户只需最终确认。
-*   **市场行情联动**：识别结果下方即时显示来自 `Riven Tracker` 的昨日底价均价，帮助玩家快速制定合理的售价。
+*   **Smart Image Recognition**: Supports quick import of Riven screenshots through **clipboard paste**, **drag-and-drop upload**, or **file selection**.
+*   **High-Precision Parsing**: Based on PaddleOCR and FastAPI backend services, accurately recognizes all core Riven data including weapon name, Riven name, polarity, mastery requirements, rerolls count, mod level, and all positive and negative attributes.
+*   **Bilingual Support**: Built-in complete weapon and attribute dictionaries for both Chinese and English, enabling seamless switching between Chinese and English `warframe.market` interfaces.
+*   **One-Click Auto-Fill**: After successful recognition, automatically fills data into the `warframe.market` auction creation form with one click. Handles category selection, dropdown matching, and value input automatically - users only need to make final confirmation.
+*   **Market Price Integration**: Displays yesterday's average minimum prices from `Riven Tracker` below recognition results to help players quickly set reasonable prices.
 
-### 🚀 技术栈
+### 🚀 Technology Stack
 
-*   **前端框架**：TypeScript + Vite (Manifest V3)
-*   **核心逻辑**：基于浏览器的 Service Worker 异步处理与 Content Script 自动化操作。
-*   **存储机制**：利用 `chrome.storage.sync` 同步用户配置，`chrome.storage.local` 缓存识别历史与字典数据。
-*   **后端支撑**：配套 [Riven-OCR-Backend](https://github.com/your-repo/riven-ocr-backend)（基于 FastAPI + PaddleOCR）。
+*   **Frontend Framework**: TypeScript + Vite (Manifest V3)
+*   **Core Logic**: Browser-based Service Worker for asynchronous processing and Content Script for automated operations.
+*   **Storage Mechanism**: Uses `chrome.storage.sync` for user configuration synchronization and `chrome.storage.local` for caching recognition history and dictionary data.
+*   **Backend Support**: Accompanied by [Riven-OCR-Backend](https://github.com/your-repo/riven-ocr-backend) (based on FastAPI + PaddleOCR).
 
-### 🛠️ 安装与使用
+### 🛠️ Installation and Usage
 
-1.  **后端准备**：确保你的 OCR 后端服务已启动（支持本地部署或远程服务器）。
-2.  **插件配置**：在插件设置页面配置正确的后端 URL。
-3.  **开始识别**：在 `warframe.market` 拍卖页面，打开插件弹窗，粘贴你的紫卡截图。
-4.  **写入页面**：确认识别结果无误后，点击“写入页面”，观察表单自动完成填写。
+1.  **Backend Setup**: Ensure your OCR backend service is running (supports local deployment or remote server).
+2.  **Extension Configuration**: Configure the correct backend URL in the extension settings page.
+3.  **Start Recognition**: On the `warframe.market` auction page, open the extension popup and paste your Riven screenshot.
+4.  **Write to Page**: After confirming the recognition results are correct, click "Write to Page" and watch the form auto-fill.
 
-### 🔒 安全与合规
+### 🔒 Security and Compliance
 
-本插件仅辅助填写表单，**不会自动提交拍卖请求**，完全符合 `warframe.market` 的使用规范，确保玩家账号安全。
+This extension only assists with form filling and **does not automatically submit auction requests**, fully complying with `warframe.market`'s usage policies to ensure player account security.
