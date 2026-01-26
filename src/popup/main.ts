@@ -3,7 +3,6 @@ import type { OcrRivenResult, MarketPriceResult } from '../shared/types';
 import { getLastResult, getSyncSettings, setSyncSettings } from '../shared/storage';
 import { loadDictionary, getAttributeEntry } from '../shared/dictionary';
 import { SettingsManager } from './settings';
-import { compressImage } from './image-utils';
 
 // --- Initialize Settings ---
 const settingsManager = new SettingsManager();
@@ -314,9 +313,13 @@ fillButton.addEventListener('click', async () => {
     setStatus('Recognizing image...');
     fillButton.disabled = true;
 
-    // 压缩图片并获取 Base64
-    const base64 = await compressImage(currentImageFile!);
+    const reader = new FileReader();
+    const base64Promise = new Promise<string>((resolve) => {
+      reader.onload = () => resolve((reader.result as string).split(',')[1]);
+      reader.readAsDataURL(currentImageFile!);
+    });
     
+    const base64 = await base64Promise;
     const response = await chrome.runtime.sendMessage({
       type: 'PARSE_IMAGE_BASE64',
       payload: { base64 }

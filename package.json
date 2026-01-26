@@ -17,7 +17,7 @@
     "dictionary"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "@types/chrome": "^0.1.33",
