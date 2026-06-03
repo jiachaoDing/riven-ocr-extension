@@ -16,7 +16,7 @@
 *   **前端框架**：TypeScript + Vite (Manifest V3)
 *   **核心逻辑**：基于浏览器的 Service Worker 异步处理与 Content Script 自动化操作。
 *   **存储机制**：利用 `chrome.storage.sync` 同步用户配置，`chrome.storage.local` 缓存识别历史与字典数据。
-*   **后端支撑**：配套 [Riven-OCR-Backend](https://github.com/your-repo/riven-ocr-backend)（基于 FastAPI + PaddleOCR）。
+*   **后端支撑**：配套 [Riven-OCR](https://github.com/jiachaoDing/Riven-OCR)（基于 FastAPI + PaddleOCR）。
 
 ### 🛠️ 安装与使用
 
