@@ -275,24 +275,111 @@ async function simulateTyping(input: HTMLInputElement, text: string) {
   await new Promise(resolve => setTimeout(resolve, 100));
 }
 
+function classNameIncludes(el: Element, part: string): boolean {
+  return Array.from(el.classList).some((name) => name.includes(part));
+}
+
+function closestByClassPart(el: Element | null, part: string): HTMLElement | null {
+  let current = el;
+  while (current && current !== document.documentElement) {
+    if (classNameIncludes(current, part)) return current as HTMLElement;
+    current = current.parentElement;
+  }
+  return null;
+}
+
+function findFieldGroupByLabel(root: Document | HTMLElement, labels: string[]): HTMLElement | null {
+  const normalizedLabels = labels.map((label) => label.toLowerCase());
+  const labelElements = Array.from(root.querySelectorAll('label'));
+  const label = labelElements.find((el) => {
+    const text = el.textContent?.trim().toLowerCase() || '';
+    const htmlFor = (el as HTMLLabelElement).htmlFor?.toLowerCase() || '';
+    return normalizedLabels.some((target) => text.includes(target) || htmlFor.includes(target));
+  });
+  if (!label) return null;
+
+  return (
+    closestByClassPart(label, 'form-group') ||
+    closestByClassPart(label, 'auction-create__stats') ||
+    label.parentElement
+  ) as HTMLElement | null;
+}
+
+function findSeeker(container: Element | null): HTMLElement | null {
+  if (!container) return null;
+  return container.querySelector(
+    '.item-seeker, .attribute-seeker, [class*="seeker--"]'
+  ) as HTMLElement | null;
+}
+
+function findSeekerInput(seeker: Element | null): HTMLInputElement | null {
+  if (!seeker) return null;
+  return seeker.querySelector(
+    '.item-seeker__input .real-input input, ' +
+      '.attribute-seeker__dropdown .dropdown__inputs .real-input input, ' +
+      '.attribute-seeker input, ' +
+      '[class*="real-input"] input, ' +
+      'input[type="text"]'
+  ) as HTMLInputElement | null;
+}
+
+async function openSeekerDropdown(seeker: HTMLElement, input: HTMLInputElement | null): Promise<void> {
+  const button = seeker.querySelector(
+    '.item-seeker__action, .attribute-seeker__action, [class*="action-button"], button'
+  ) as HTMLElement | null;
+
+  simulateUserClick(button || input || seeker);
+  await new Promise(resolve => setTimeout(resolve, 150));
+}
+
+function getVisibleDropdownItems(root: Element, selector: string): Element[] {
+  const selectors = [
+    selector,
+    'li.selectable span',
+    '[class*="dropdown--"] [class*="entry--"] span',
+    '[class*="dropdown--"] [class*="entry--"]',
+    '[role="option"]'
+  ];
+  const seen = new Set<Element>();
+  const items: Element[] = [];
+
+  for (const scope of [root, document]) {
+    for (const candidateSelector of selectors) {
+      for (const item of Array.from(scope.querySelectorAll(candidateSelector))) {
+        if (seen.has(item) || !isElementVisible(item)) continue;
+        seen.add(item);
+        items.push(item);
+      }
+    }
+  }
+
+  return items;
+}
+
+function dropdownTextMatches(text: string, searchText: string): boolean {
+  const item = normalize(text);
+  const target = normalize(searchText);
+  return item === target || item.includes(target) || target.includes(item);
+}
+
 async function selectFromDropdown(root: Element, input: HTMLInputElement, searchText: string, selector = 'li.selectable span') {
   await simulateTyping(input, searchText);
 
   // 等待下拉菜单出现
   await new Promise(resolve => setTimeout(resolve, 200));
 
-  // 在整个文档中查找下拉项，因为下拉菜单可能不在 root 元素内
-  // 只点击“可见”的项，避免点到隐藏的旧列表（这是重复录入的常见来源）
-  const dropdownItems = Array.from(document.querySelectorAll(selector)).filter(isElementVisible);
+  // 新版 warframe.market 将下拉项放在 seeker--*/dropdown--* 内；旧版仍保留 selectable 兜底。
+  const dropdownItems = getVisibleDropdownItems(root, selector);
   console.log('[Riven OCR] Found dropdown items:', dropdownItems.length);
 
   for (const item of Array.from(dropdownItems)) {
     const text = item.textContent?.trim();
     console.log('[Riven OCR] Checking dropdown item:', text);
-    if (text && (text.toLowerCase().includes(searchText.toLowerCase()) || searchText.toLowerCase().includes(text.toLowerCase()))) {
+    if (text && dropdownTextMatches(text, searchText)) {
       console.log('[Riven OCR] Clicking dropdown item:', text);
       const clickable =
-        ((item as HTMLElement).closest('li.selectable') ||
+        ((item as HTMLElement).closest('[class*="entry--"]') ||
+          (item as HTMLElement).closest('li.selectable') ||
           (item as HTMLElement).closest('li') ||
           (item as HTMLElement)) as HTMLElement;
       simulateUserClick(clickable);
@@ -306,7 +393,15 @@ async function selectFromDropdown(root: Element, input: HTMLInputElement, search
 
 async function clearSelectedUnitsWithin(container: Element): Promise<void> {
   const selectedUnits = Array.from(container.querySelectorAll('.attribute-seeker__selected .selected-unit'));
-  if (selectedUnits.length === 0) return;
+  const newRemoveButtons = Array.from(
+    container.querySelectorAll(
+      '[class*="icon-times"], [class*="icon-x"], [class*="icon-close"], [aria-label*="remove" i], [aria-label*="clear" i]'
+    )
+  )
+    .map((el) => el.closest('button, [role="button"]'))
+    .filter((el): el is HTMLElement => !!el);
+
+  if (selectedUnits.length === 0 && newRemoveButtons.length === 0) return;
 
   console.log('[Riven OCR] Clearing selected units within container:', selectedUnits.length);
   for (const unit of selectedUnits) {
@@ -318,6 +413,11 @@ async function clearSelectedUnitsWithin(container: Element): Promise<void> {
       simulateUserClick(removeBtn);
       await new Promise((r) => setTimeout(r, 100));
     }
+  }
+
+  for (const btn of newRemoveButtons) {
+    simulateUserClick(btn);
+    await new Promise((r) => setTimeout(r, 100));
   }
 }
 
@@ -353,9 +453,14 @@ async function clearExistingAttributes(root: Document | HTMLElement): Promise<vo
     root.querySelectorAll(
       '.attribute-seeker__selected .selected-unit .btn, ' +
         '.attribute-seeker__selected .selected-unit button, ' +
-        '.attribute-seeker__selected .selected-unit [role="button"]'
+        '.attribute-seeker__selected .selected-unit [role="button"], ' +
+        '[class*="seeker--"] [class*="icon-times"], ' +
+        '[class*="seeker--"] [class*="icon-x"], ' +
+        '[class*="seeker--"] [class*="icon-close"]'
     )
-  ) as HTMLElement[];
+  )
+    .map((el) => ((el as HTMLElement).closest('button, [role="button"]') || el) as HTMLElement)
+    .filter((el, index, arr) => arr.indexOf(el) === index);
   
   if (removeButtons.length > 0) {
     console.log(`[Riven OCR] Found ${removeButtons.length} attributes to clear`);
@@ -417,27 +522,24 @@ async function fillCategory(root: Document | HTMLElement): Promise<void> {
 async function fillWeapon(root: Document | HTMLElement, weaponSearchText: string): Promise<void> {
   console.log('[Riven OCR] Filling weapon with search text:', weaponSearchText);
 
-  // 查找武器选择器 - 使用文档中描述的结构
-  const itemSeeker = root.querySelector('.item-seeker') as HTMLElement;
+  // 新版使用 hash class 的 seeker--*，旧版仍保留 item-seeker 兜底。
+  const fieldGroup = findFieldGroupByLabel(root, ['武器名称', 'weapon', 'itemname']);
+  const itemSeeker =
+    (root.querySelector('.item-seeker') as HTMLElement | null) ||
+    findSeeker(fieldGroup);
   if (!itemSeeker) {
     console.warn('[Riven OCR] Item seeker container not found');
     return;
   }
 
-  // 查找输入框
-  const input = itemSeeker.querySelector('.item-seeker__input .real-input input') as HTMLInputElement;
+  const input = findSeekerInput(itemSeeker);
   console.log('[Riven OCR] Weapon input found:', !!input);
 
   if (input && weaponSearchText) {
-    // 点击action按钮打开dropdown
-    const actionButton = itemSeeker.querySelector('.item-seeker__action') as HTMLButtonElement;
-    if (actionButton) {
-      actionButton.click();
-      await new Promise(resolve => setTimeout(resolve, 100));
-    }
+    await openSeekerDropdown(itemSeeker, input);
 
     console.log('[Riven OCR] Selecting from dropdown...');
-    const found = await selectFromDropdown(itemSeeker, input, weaponSearchText, 'li.selectable span');
+    const found = await selectFromDropdown(itemSeeker, input, weaponSearchText);
     if (!found) {
       console.warn('[Riven OCR] Weapon not found in dropdown:', weaponSearchText);
     } else {
@@ -448,33 +550,100 @@ async function fillWeapon(root: Document | HTMLElement, weaponSearchText: string
   }
 }
 
+function getStatRows(root: Document | HTMLElement): HTMLElement[] {
+  return Array.from(root.querySelectorAll('.auction-create__stats')) as HTMLElement[];
+}
+
+function getPositiveStatRows(root: Document | HTMLElement): HTMLElement[] {
+  return getStatRows(root).filter((row) => {
+    const valueInput = row.querySelector('input[id^="auction-create__value_"]') as HTMLInputElement | null;
+    const hasSeeker = !!findSeeker(row);
+    const isNegative = !!row.querySelector('.negative_label') || row.textContent?.includes('负面词条');
+    const isAddRow = row.textContent?.includes('+ 增加') || row.textContent?.includes('+ Add');
+    return !!valueInput && hasSeeker && !isNegative && !isAddRow;
+  });
+}
+
+function getNegativeStatRow(root: Document | HTMLElement): HTMLElement | null {
+  const rowWithNegativeClass = getStatRows(root).find((row) =>
+    !!row.querySelector('.negative_label') && !!findSeeker(row)
+  );
+  if (rowWithNegativeClass) return rowWithNegativeClass;
+
+  const labelGroup = findFieldGroupByLabel(root, ['负面词条', 'negative']);
+  const labelRow = closestByClassPart(labelGroup, 'auction-create__stats');
+  if (labelRow) return labelRow;
+
+  return getStatRows(root).find((row) => {
+    const valueInput = row.querySelector('input[id^="auction-create__value_"]') as HTMLInputElement | null;
+    if (!valueInput || !findSeeker(row)) return false;
+    const max = parseOptionalNumberAttr(valueInput, 'max');
+    return !!row.querySelector('.negative_label') || max !== null && max <= 0;
+  }) || null;
+}
+
+function findValueInputInRow(row: HTMLElement | null): HTMLInputElement | null {
+  return row?.querySelector('input[id^="auction-create__value_"]') as HTMLInputElement | null;
+}
+
+async function waitForEnabledValueInputInRow(row: HTMLElement | null, timeout = 1500): Promise<HTMLInputElement | null> {
+  const started = Date.now();
+  while (Date.now() - started < timeout) {
+    const input = findValueInputInRow(row);
+    if (input && !input.disabled) return input;
+    await new Promise(resolve => setTimeout(resolve, 50));
+  }
+  return findValueInputInRow(row);
+}
+
+async function fillNegativeValueInput(input: HTMLInputElement, attr: any): Promise<void> {
+  // warframe.market 新版负面值输入会模拟手动输入：用户键入 9.2 后，页面状态写成 -9.2。
+  const raw = computeNegativeValueForInput(attr.value, input);
+  setNativeValue(input, formatNumberAsEntered(raw));
+  triggerInputEvent(input);
+  triggerKeyupEvent(input);
+  await new Promise(resolve => setTimeout(resolve, 100));
+
+  const max = parseOptionalNumberAttr(input, 'max');
+  const current = Number(input.value);
+  if (max !== null && max <= 0 && Number.isFinite(current) && current > 0) {
+    setNativeValue(input, formatNumberAsEntered(-Math.abs(raw)));
+    triggerInputEvent(input);
+    triggerKeyupEvent(input);
+  }
+
+  input.dispatchEvent(new Event('blur', { bubbles: true }));
+}
+
+async function ensurePositiveStatRow(root: Document | HTMLElement, index: number): Promise<HTMLElement | null> {
+  let rows = getPositiveStatRows(root);
+  if (rows[index]) return rows[index];
+
+  const buttons = Array.from(root.querySelectorAll('button.btn__light--c9XBJ, button.btn, button'));
+  const addButton = buttons.find(btn =>
+    btn.textContent?.includes('+ 增加') ||
+    btn.textContent?.includes('+ Add')
+  ) as HTMLButtonElement | undefined;
+
+  if (addButton) {
+    console.log('[Riven OCR] Clicking add button for positive attribute', index);
+    simulateUserClick(addButton);
+    await new Promise(resolve => setTimeout(resolve, 250));
+    rows = getPositiveStatRows(root);
+  }
+
+  return rows[index] || null;
+}
+
 async function fillPositiveAttributes(root: Document | HTMLElement, attrs: any[], dict: any, lang: Lang): Promise<void> {
   console.log('[Riven OCR] Filling positive attributes, count:', attrs.length);
 
-  // 获取现有的正面词条输入行 - 使用文档中描述的结构
-  let positiveContainers = root.querySelectorAll('.attribute-seeker.minimalistic:not(.negative)');
-
   for (let i = 0; i < attrs.length; i++) {
     const attr = attrs[i];
-    let container = positiveContainers[i] as HTMLElement;
-
-    // 如果不够行数，尝试点击添加按钮
-    if (!container) {
-      // 修复选择器：querySelector 不支持 :contains
-      const buttons = Array.from(root.querySelectorAll('button.btn__light--c9XBJ, button.btn'));
-      const addButton = buttons.find(btn => 
-        btn.textContent?.includes('+ 增加') || 
-        btn.textContent?.includes('+ Add')
-      ) as HTMLButtonElement;
-
-      if (addButton) {
-        console.log('[Riven OCR] Clicking add button for positive attribute', i);
-        addButton.click();
-        await new Promise(resolve => setTimeout(resolve, 200));
-        positiveContainers = root.querySelectorAll('.attribute-seeker.minimalistic:not(.negative)');
-        container = positiveContainers[i] as HTMLElement;
-      }
-    }
+    const row = await ensurePositiveStatRow(root, i);
+    const container =
+      (root.querySelectorAll('.attribute-seeker.minimalistic:not(.negative)')[i] as HTMLElement | undefined) ||
+      findSeeker(row);
 
     if (!container) {
       console.warn('[Riven OCR] Cannot find container for positive attribute', i);
@@ -483,26 +652,24 @@ async function fillPositiveAttributes(root: Document | HTMLElement, attrs: any[]
 
     console.log('[Riven OCR] Filling positive attribute', i, attr.url_name);
 
-    // 点击action按钮打开dropdown
-    const actionButton = container.querySelector('.attribute-seeker__action') as HTMLButtonElement;
-    if (actionButton) {
-      actionButton.click();
-      await new Promise(resolve => setTimeout(resolve, 100));
-    }
-
-    // 填充属性
-    const dropdownInputs = container.querySelector('.attribute-seeker__dropdown .dropdown__inputs .real-input input') as HTMLInputElement;
-    const valueInput = root.querySelector(`#auction-create__value_${i}`) as HTMLInputElement;
+    const dropdownInputs = findSeekerInput(container);
+    const valueInput =
+      (row?.querySelector('input[id^="auction-create__value_"]') ||
+        root.querySelector(`#auction-create__value_${i}`)) as HTMLInputElement | null;
 
     if (dropdownInputs) {
+      await openSeekerDropdown(container, dropdownInputs);
       const searchText = buildAttributeSearchText(attr.url_name, dict, lang);
       if (searchText) {
-        const selected = await selectFromDropdown(container, dropdownInputs, searchText, 'li.selectable span');
+        const selected = await selectFromDropdown(container, dropdownInputs, searchText);
         if (!selected) {
           console.warn('[Riven OCR] Positive attribute not selected, skip value input:', attr.url_name);
           continue;
         }
       }
+    } else {
+      console.warn('[Riven OCR] Positive attribute input not found:', attr.url_name);
+      continue;
     }
 
     if (valueInput) {
@@ -523,7 +690,10 @@ async function fillPositiveAttributes(root: Document | HTMLElement, attrs: any[]
 async function fillNegativeAttribute(root: Document | HTMLElement, attr: any, dict: any, lang: Lang): Promise<void> {
   console.log('[Riven OCR] Filling negative attribute:', attr.url_name);
 
-  const negativeContainer = root.querySelector('.attribute-seeker.minimalistic.negative') as HTMLElement;
+  const negativeRow = getNegativeStatRow(root);
+  const negativeContainer =
+    (root.querySelector('.attribute-seeker.minimalistic.negative') as HTMLElement | null) ||
+    findSeeker(negativeRow);
   if (!negativeContainer) {
     console.warn('[Riven OCR] Negative attribute container not found');
     return;
@@ -534,43 +704,33 @@ async function fillNegativeAttribute(root: Document | HTMLElement, attr: any, di
   // 关键：只清理负面容器自己的已选词条，防止残留导致 payload 出现“重复负面 + 一条没 value”
   await clearSelectedUnitsWithin(negativeContainer);
 
-  // 点击action按钮打开dropdown
-  const actionButton = negativeContainer.querySelector('.attribute-seeker__action') as HTMLButtonElement;
-  if (actionButton) {
-    actionButton.click();
-    await new Promise(resolve => setTimeout(resolve, 100));
-  }
-
-  // 填充属性
-  const dropdownInputs = negativeContainer.querySelector('.attribute-seeker__dropdown .dropdown__inputs .real-input input') as HTMLInputElement;
-  const valueInput =
-    (negativeContainer.querySelector('input[id^="auction-create__value_negative"]') ||
-      root.querySelector('#auction-create__value_negative')) as HTMLInputElement;
+  const dropdownInputs = findSeekerInput(negativeContainer);
 
   if (dropdownInputs) {
+    await openSeekerDropdown(negativeContainer, dropdownInputs);
     const searchText = buildAttributeSearchText(attr.url_name, dict, lang);
     if (searchText) {
-      const selected = await selectFromDropdown(negativeContainer, dropdownInputs, searchText, 'li.selectable span');
+      const selected = await selectFromDropdown(negativeContainer, dropdownInputs, searchText);
       if (!selected) {
         console.warn('[Riven OCR] Negative attribute not selected, skip value input:', attr.url_name);
         return;
       }
     }
+  } else {
+    console.warn('[Riven OCR] Negative attribute input not found:', attr.url_name);
+    return;
   }
 
+  const refreshedNegativeRow = getNegativeStatRow(root) || negativeRow;
+  const valueInput =
+    ((negativeContainer.querySelector('input[id^="auction-create__value_negative"]:not([disabled])') ||
+      await waitForEnabledValueInputInRow(refreshedNegativeRow) ||
+      root.querySelector('#auction-create__value_negative')) as HTMLInputElement | null);
+
   if (valueInput) {
-    // 根据不同负面输入框（倍率 x / 百分比减法）写入正确的数值范围与符号
-    const max = parseOptionalNumberAttr(valueInput, 'max');
-    const abs = Math.abs(Number(attr.value));
-    let computed = max !== null && max <= 0 ? -abs : abs;
-    // 特殊处理：后坐力(recoil)作为负面属性时，数值应为正（+后坐力是负面效果）
-    if (attr.url_name === 'recoil') {
-      computed = abs;
-    }
-    setNativeValue(valueInput, formatNumberAsEntered(computed));
-    triggerInputEvent(valueInput);
-    triggerKeyupEvent(valueInput);
-    valueInput.dispatchEvent(new Event('blur', { bubbles: true }));
+    await fillNegativeValueInput(valueInput, attr);
+  } else {
+    console.warn('[Riven OCR] Negative value input not found after selecting attribute:', attr.url_name);
   }
 
   // 兜底：如果依然出现多个 selected-unit，删除到只剩 1 个（避免提交 invalid_form）
